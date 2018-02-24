@@ -1,0 +1,57 @@
+﻿@using SiteFrame.Model;
+@{
+    List<Role> list = ViewData["list"] as List<Role>;
+    int page = (int)ViewData["page"];
+    int pageSize = (int)ViewData["pageSize"];
+    int rowCount = (int)ViewData["rowCount"];
+}
+<table class="tableClass">
+    <tr>
+        <th>序号</th>
+        <th>名称</th>
+        <th style="text-align: center">创建时间</th>
+        <th style="text-align: center">创建人</th>
+        <th style="text-align: center">操作</th>
+    </tr>
+    @if (list.Count > 0)
+    {
+        int i = 1;
+        foreach (Role item in list)
+        {
+        <tr>
+            <td>@i</td>
+            <td>@item.r_name</td>
+            <td style="text-align: center">@item.r_createTime</td>
+            <td style="text-align: center">@item.r_createUser</td>
+            <td style="text-align: center">
+                <a href="javascript:void(0);" class="op" onclick="EditRole(false,'@item.r_gid')">改</a>
+                <a href="javascript:void(0);" class="op" onclick="RoleDelete('@item.r_gid')">删</a>
+            </td>
+        </tr>
+            i++;
+        }
+    }
+    else
+    { 
+        <tr>
+            <td style="text-align: center" colspan="8">暂无任何数据</td>
+        </tr> 
+    }
+</table>
+<div id="pageBar" class="page"></div>
+
+<script type="text/javascript">
+    $(function () {
+        //页码条
+        UserPage.MakePageBar("pageBar", '@rowCount', '@page','@pageSize', function () {
+            LoadList(UserPage.currentPage);
+        });
+        $(".tableClass tr:gt(0)").mouseenter(function () {
+            $(this).addClass("mouseOver");
+        }).mouseleave(function () {
+            $(this).removeClass("mouseOver");
+        }).click(function () {
+            $(this).addClass("mouseClick").siblings().removeClass("mouseClick");
+        });
+    });
+</script>

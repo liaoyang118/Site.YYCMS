@@ -1,0 +1,65 @@
+﻿@using Site.Service.SiteService.SiteServices;
+@{
+    List<Site_Cates> list = ViewData["list"] as List<Site_Cates>;
+    int isSub = (int)ViewData["isSub"];
+    string c_path = ViewData["c_path"].ToString();
+    if (isSub == 1)
+    {
+        list = list.Where(item => item.c_path.Length == 4 && item.c_path.StartsWith(c_path)).ToList();
+    }
+    else
+    {
+        list = list.Where(item => item.c_path.Length == 2).ToList();
+    }
+}
+
+
+@if (list.Count > 0)
+{
+    foreach (var item in list)
+    {
+        if (isSub == 1)
+        {
+            <a href="javascript:void(0)" cate_gid="@item.c_gid">@item.c_name</a>
+
+        }
+        else
+        {
+            <a href="javascript:void(0)" c_path="@item.c_path">@item.c_name</a>
+
+        }
+    }
+
+    <script>
+    $(function () {
+        var issub = '@isSub';
+        if (issub == '1') {
+            $("#div_cate_sub_list").find("a").click(function () {
+                $(this).addClass("hint_cate_cur").siblings().removeClass("hint_cate_cur");
+                var cate_gid = $(this).attr("cate_gid");
+                if (cate_gid) {
+                    $("#cate_gid").val(cate_gid);
+                    SearchListByCateId(cate_gid, 1);
+                }
+            });
+
+        } else {
+            $("#div_cate_list").find("a").click(function () {
+                $(this).addClass("hint_cate_cur").siblings().removeClass("hint_cate_cur");
+                var c_path = $(this).attr("c_path");
+                if (c_path) {
+                    $("#c_path").val(c_path);
+                    LoadSubCateList(1);
+                }
+            });
+        }
+    })
+
+
+    </script>
+}
+else
+{
+    <span>暂无分类</span>
+}
+

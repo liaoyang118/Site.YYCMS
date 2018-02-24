@@ -1,0 +1,647 @@
+@@{
+    ViewBag.Title = "最全小说阅读网";
+    ViewBag.keywords = "宇扬小说网，有你想要的，有你想看的";
+    ViewBag.description = "宇扬小说网，最全各类小说";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Site.Service.SiteService.SiteServices;
+@using Site.Common;
+@{
+    /**/
+
+    Dictionary<string, List<Site_CMSItem>> dic = ViewBag.dataList;
+}
+@if (dic.Count > 0)
+{
+    <div id="div_slide" class="row">
+        <div class="col-xs-12 col-sm-8 text-center">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 text-center">
+                    <!--轮播-->
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            @{
+                                var list = dic["09"];
+                                for (int i = 0; i < 0 + list.GetLength<Site_CMSItem>(3); i++)
+                                {
+                                    <div class="item @(i == 0 ? "active" : "")">
+                                        <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" target="_blank" title="@list[i].i_title">
+                                            <img width="360" height="158" src="@list[i].i_c_img_src" alt="@list[i].i_title" data-holder-rendered="true">
+                                        </a>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden-xs col-sm-6 text-left">
+                    <table class="table">
+                        <tr>
+                            @{
+                                list = dic["07"];
+
+                                for (int i = 0; i <list.GetLength<Site_CMSItem>(2); i++)
+                                {
+                                    <td>
+                                        《<a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>》
+                                        <br />
+                                        <span class="text_author">作者：@list[i].i_subTitle</span>
+                                    </td>
+                                }
+                            }
+                        </tr>
+                        <tr>
+                            @for (int i = 2; i < 2 + list.GetLength<Site_CMSItem>(2); i++)
+                            {
+                                <td>
+                                    《<a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>》
+                                    <br />
+                                    <span class="text_author">作者：@list[i].i_subTitle</span>
+                                </td>
+                            }
+                        </tr>
+                        <tr>
+                            @for (int i = 4; i < 4 + list.GetLength<Site_CMSItem>(2); i++)
+                            {
+                                <td>
+                                    《<a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>》
+                                    <br />
+                                    <span class="text_author">作者：@list[i].i_subTitle</span>
+                                </td>
+                            }
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="alert alert-info text-left hidden-xs" role="alert">
+                <strong>注意：</strong> 喜欢我们就收藏我们的站点吧。记住本站域名：xs.jsonyang.com
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-left">
+                    <table class="table">
+                        <tr>
+                            @{
+                                for (int i = 6; i < 6 + list.GetLength<Site_CMSItem>(4); i++)
+                                {
+                                    <td>
+                                        《<a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>》
+                                        <br />
+                                        <span class="text_author">作者：@list[i].i_subTitle</span>
+                                    </td>
+                                }
+                            }
+                        </tr>
+                        <tr>
+                            @for (int i = 10; i < 10 + list.GetLength<Site_CMSItem>(4); i++)
+                            {
+                                <td>
+                                    《<a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>》
+                                    <br />
+                                    <span class="text_author">作者：@list[i].i_subTitle</span>
+                                </td>
+                            }
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--轮播右侧推荐-->
+        <div class="hidden-xs col-sm-4 text-center">
+            <div class="list-group">
+                @{
+                    list = dic["08"];
+                    for (int i = 0; i < 0 + list.GetLength<Site_CMSItem>(3); i++)
+                    {
+
+                        <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-4">
+                                    <div class="thumbnail" style="margin-bottom:0px;">
+                                        <img width="140" height="180" src="@list[i].i_c_img_src" width="140" height="180" alt="@list[i].i_title">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-8 text-left">
+                                    <h4 class="list-group-item-heading" style="color:#F60;">《@list[i].i_title》</h4>
+                                    <p class="list-group-item-text">@list[i].i_intro.Replace("<br />", "").SubOmitString(70)</p>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <!--分类-->
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3 class="panel-title">玄幻</h3>
+                        </div>
+                        <div class="col-sm-3 text-right">
+                            <a href="@SiteUntility.GenerateListUrl(1)" target="_blank" class="panel-title">更多>></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    @{
+                        list = dic["10"];
+                        for (int i = 0; i < 0 + list.GetLength<Site_CMSItem>(3); i++)
+                        {
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="thumbnail">
+                                        <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" target="_blank" title="@list[i].i_title">
+                                            <img width="140" height="180" src="@list[i].i_c_img_src" width="140" height="180" alt="@list[i].i_title">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="caption">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <span>《<a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" target="_blank" title="@list[i].i_title">@list[i].i_title</a>》</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12 text-left">
+                                                <span>@list[i].i_subTitle</span>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <p>@list[i].i_intro.Replace("<br />", "").SubOmitString(70)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table">
+                                    <tr>
+                                        @for (int i = 3; i < 3 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @for (int i = 5; i < 5 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @for (int i = 7; i < 7 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3 class="panel-title">修真</h3>
+                        </div>
+                        <div class="col-sm-3 text-right">
+                            <a href="@SiteUntility.GenerateListUrl(4)" target="_blank" class="panel-title">更多>></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    @{
+                        list = dic["13"];
+                        for (int i = 0; i < 0 + list.GetLength<Site_CMSItem>(3); i++)
+                        {
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="thumbnail">
+                                        <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" target="_blank" title="@list[i].i_title">
+                                            <img width="140" height="180" src="@list[i].i_c_img_src" width="140" height="180" alt="@list[i].i_title">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="caption">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <span>《<a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" target="_blank" title="@list[i].i_title">@list[i].i_title</a>》</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12 text-left">
+                                                <span>@list[i].i_subTitle</span>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <p>@list[i].i_intro.Replace("<br />", "").SubOmitString(70)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table">
+                                    <tr>
+                                        @for (int i = 3; i < 3 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @for (int i = 5; i < 5 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @for (int i = 7; i < 7 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div><!-- /.col-sm-4 -->
+        <div class="col-sm-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3 class="panel-title">都市</h3>
+                        </div>
+                        <div class="col-sm-3 text-right">
+                            <a href="@SiteUntility.GenerateListUrl(2)" target="_blank" class="panel-title">更多>></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    @{
+                        list = dic["11"];
+                        for (int i = 0; i < 0 + list.GetLength<Site_CMSItem>(3); i++)
+                        {
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="thumbnail">
+                                        <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" target="_blank" title="@list[i].i_title">
+                                            <img width="140" height="180" src="@list[i].i_c_img_src" width="140" height="180" alt="@list[i].i_title">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="caption">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <span>《<a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" target="_blank" title="@list[i].i_title">@list[i].i_title</a>》</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12 text-left">
+                                                <span>@list[i].i_subTitle</span>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <p>@list[i].i_intro.Replace("<br />", "").SubOmitString(70)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table">
+                                    <tr>
+                                        @for (int i = 3; i < 3 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @for (int i = 5; i < 5 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @for (int i = 7; i < 7 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3 class="panel-title">恐怖</h3>
+                        </div>
+                        <div class="col-sm-3 text-right">
+                            <a href="@SiteUntility.GenerateListUrl(7)" target="_blank" class="panel-title">更多>></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    @{
+                        list = dic["14"];
+                        for (int i = 0; i < 0 + list.GetLength<Site_CMSItem>(3); i++)
+                        {
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="thumbnail">
+                                        <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" target="_blank" title="@list[i].i_title">
+                                            <img width="140" height="180" src="@list[i].i_c_img_src" width="140" height="180" alt="@list[i].i_title">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="caption">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <span>《<a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" target="_blank" title="@list[i].i_title">@list[i].i_title</a>》</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12 text-left">
+                                                <span>@list[i].i_subTitle</span>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <p>@list[i].i_intro.Replace("<br />", "").SubOmitString(70)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table">
+                                    <tr>
+                                        @for (int i = 3; i < 3 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @for (int i = 5; i < 5 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @for (int i = 7; i < 7 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div><!-- /.col-sm-4 -->
+        <div class="col-sm-4">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3 class="panel-title">网游</h3>
+                        </div>
+                        <div class="col-sm-3 text-right">
+                            <a href="@SiteUntility.GenerateListUrl(3)" target="_blank" class="panel-title">更多>></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    @{
+                        list = dic["12"];
+                        for (int i = 0; i < 0 + list.GetLength<Site_CMSItem>(3); i++)
+                        {
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="thumbnail">
+                                        <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" target="_blank" title="@list[i].i_title">
+                                            <img width="140" height="180" src="@list[i].i_c_img_src" width="140" height="180" alt="@list[i].i_title">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="caption">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <span>《<a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" target="_blank" title="@list[i].i_title">@list[i].i_title</a>》</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12 text-left">
+                                                <span>@list[i].i_subTitle</span>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <p>@list[i].i_intro.Replace("<br />", "").SubOmitString(70)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table">
+                                    <tr>
+                                        @for (int i = 3; i < 3 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @for (int i = 5; i < 5 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @for (int i = 7; i < 7 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3 class="panel-title">科幻</h3>
+                        </div>
+                        <div class="col-sm-3 text-right">
+                            <a href="@SiteUntility.GenerateListUrl(6)" target="_blank" class="panel-title">更多>></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    @{
+                        list = dic["15"];
+                        for (int i = 0; i < 0 + list.GetLength<Site_CMSItem>(3); i++)
+                        {
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="thumbnail">
+                                        <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" target="_blank" title="@list[i].i_title">
+                                            <img width="140" height="180" src="@list[i].i_c_img_src" width="140" height="180" alt="@list[i].i_title">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="caption">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <span>《<a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" target="_blank" title="@list[i].i_title">@list[i].i_title</a>》</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12 text-left">
+                                                <span>@list[i].i_subTitle</span>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <p>@list[i].i_intro.Replace("<br />", "").SubOmitString(70)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table">
+                                    <tr>
+                                        @for (int i = 3; i < 3 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @for (int i = 5; i < 5 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @for (int i = 7; i < 7 + list.GetLength<Site_CMSItem>(2); i++)
+                                        {
+                                            <td>
+                                                <a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>
+                                                <br />
+                                                <span class="text_author">作者：@list[i].i_subTitle</span>
+                                            </td>
+                                        }
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div><!-- /.col-sm-4 -->
+    </div>
+}
+<!--最近更新列表-->
+@@{
+    Html.RenderAction("LastUpdate");
+  }

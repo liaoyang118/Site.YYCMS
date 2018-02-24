@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta name="keywords" content="@ViewBag.keywords" />
+    <meta name="description" content="@ViewBag.description" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />	
+    @Styles.Render("~/Content/Bootstrap/css/temp")
+    @Styles.Render("~/Content/Bootstrap/temp")
+    <!--[if IE 7]><link rel="stylesheet" href="css/ie7.css" type="text/css" media="all" />
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <link rel="stylesheet" href="css/ie.css" type="text/css" media="all" />
+    <![endif]-->
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="/favicon.ico" />
+    @Scripts.Render("~/Scripts/Bootstrap/js/temp")
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/ie7-fixed.js"></script>
+    <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?e2ea764aa534ea265a02a51d5f9d3b95";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+<body class="sub-1sidebar">
+
+    <!--导航条 start-->
+    @{
+        Html.RenderPartial("~/Views/Home/List_Nav.cshtml");
+    }
+    <!--导航条 end-->
+    <!--内容 start-->
+    <div class="wrapper">
+        @RenderBody()
+    </div>
+    <!--内容 end-->
+</body>
+</html>

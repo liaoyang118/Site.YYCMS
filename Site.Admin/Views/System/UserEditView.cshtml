@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "UserEditView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using SiteFrame.Model;
+@using Site.Common;
+
+@{
+    User info = ViewBag.uInfo as User;
+}
+@section head{
+    <script type="text/javascript">
+
+        $(function () {
+            $("#btnSubmit").button({
+                icons: {
+                    primary: "ui-icon-check "
+                }
+            });
+            $("#btnCancle").button({
+                icons: {
+                    primary: "ui-icon-closethick "
+                }
+            });
+
+        });
+
+        function btnSubmitClick() {
+            if ($("#u_username").val().length <= 0) {
+                parent.mDialogUI.message("用户名不能为空", "提示", 180, 50, 2);
+                return false;
+            }
+            if ($("#u_username").val().length >=25) {
+                parent.mDialogUI.message("用户名不能超过25字", "提示", 180, 50, 2);
+                return false;
+            }
+            if ($("#u_nickName").val().length >= 25) {
+                parent.mDialogUI.message("用户昵称不能超过25字", "提示", 180, 50, 2);
+                return false;
+            }
+            if ($("#u_password").length > 0) {
+                if ($("#u_password").val().length <= 0) {
+                    parent.mDialogUI.message("密码不能为空", "提示", 180, 50, 2);
+                    return false;
+                }
+            }
+
+            if ($("#u_status option:selected").val() == -1) {
+                parent.mDialogUI.message("必须选择用户状态", "提示", 180, 50, 2);
+                return false;
+            }
+
+
+            var data = {
+                u_username: $("#u_username").val(),
+                u_nickName: $("#u_nickName").val(),
+                u_password: $("#u_password").val(),
+                u_status: $("#u_status option:selected").val(),
+                u_gid: $("#u_gid").val()
+            };
+
+            $.ajax({
+                url: "/System/UserEdit",
+                type: "post",
+                dataType: "json",
+                cache: false,
+                data: data,
+                success: function (json) {
+                    if (json.success) {
+                        parent.mDialogUI.successMessage(json.errors.text, "成功", 180, 70, 2);
+                        parent.LoadList(parent.querys.page);
+                        parent.mDialogUI.closeWindow('@ViewData["window"]');
+                    }
+                    else {
+                        parent.mDialogUI.errorMessage(json.errors.text, "失败", 180, 70, 2);
+                    }
+                },
+                error: function (xhr, xhrText, error) {
+                    parent.mDialogUI.errorMessage(error, "错误", 200, 70);
+                }
+            });
+        }
+    </script>
+}
+<div class="container-10">
+    <table class="editTable">
+        <tr>
+            <td><span class="red">*</span>用户名：</td>
+            <td>
+                <input name="u_username" id="u_username" type="text" style="width: 240px;" value="@info.u_username" />
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>用户昵称：</td>
+            <td>
+                <input name="u_nickName" id="u_nickName" type="text" style="width: 240px;" value="@info.u_nickName" />
+            </td>
+        </tr>
+        @if (string.IsNullOrEmpty(info.u_gid))
+        {
+            <tr>
+                <td><span class="red">*</span>用户密码：</td>
+                <td>
+                    <input name="u_password" id="u_password" type="password" style="width: 240px;" value="@info.u_password" />
+                </td>
+            </tr>
+        }
+        <tr>
+            <td><span class="red">*</span>用户状态：</td>
+            <td>
+                <select id="u_status">
+                    <option value="-1">--请选择--</option>
+                    @{
+                        Array arr = Enum.GetValues(typeof(SiteEnum.SiteUserStatus));
+                        foreach (int item in arr)
+                        {
+                            <option @Html.Raw(item == info.u_status ? "selected=\"selected\"" : "") value="@item">@Enum.GetName(typeof(SiteEnum.SiteUserStatus), item)</option>
+                        }
+                    }
+                </select>
+            </td>
+        </tr>
+    </table>
+    <div style="float: right; margin-top: 10px;">
+        <input type="hidden" name="u_gid" id="u_gid" value="@info.u_gid" />
+        <button id="btnSubmit" onclick="btnSubmitClick();">确定</button>
+        <button id="btnCancle" onclick="parent.mDialogUI.closeWindow('@ViewData["window"]');">取消</button>
+    </div>
+</div>

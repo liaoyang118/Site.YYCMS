@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://service.jsonyang.com" elementFormDefault="qualified" targetNamespace="http://service.jsonyang.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8896/YuYangService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Site.YuYangModel" />
+  <xs:element name="Fiction_Insert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Site.YuYangModel" minOccurs="0" name="obj" nillable="true" type="q1:Fiction" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Fiction_InsertResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Fiction_InsertResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Fiction_DeleteById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Fiction_DeleteByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Fiction_DeleteByIdResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Fiction_UpdateById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Site.YuYangModel" minOccurs="0" name="obj" nillable="true" type="q2:Fiction" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Fiction_UpdateByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Fiction_UpdateByIdResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Fiction_SelectById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Fiction_SelectByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Site.YuYangModel" minOccurs="0" name="Fiction_SelectByIdResult" nillable="true" type="q3:Fiction" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Fiction_SelectPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cloumns" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="orderBy" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="where" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Fiction_SelectPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Site.YuYangModel" minOccurs="0" name="Fiction_SelectPageResult" nillable="true" type="q4:ArrayOfFiction" />
+        <xs:element minOccurs="0" name="rowCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContentCate_Insert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Site.YuYangModel" minOccurs="0" name="obj" nillable="true" type="q5:ContentCate" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContentCate_InsertResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ContentCate_InsertResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContentCate_DeleteById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContentCate_DeleteByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ContentCate_DeleteByIdResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContentCate_UpdateById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Site.YuYangModel" minOccurs="0" name="obj" nillable="true" type="q6:ContentCate" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContentCate_UpdateByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ContentCate_UpdateByIdResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContentCate_SelectById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContentCate_SelectByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Site.YuYangModel" minOccurs="0" name="ContentCate_SelectByIdResult" nillable="true" type="q7:ContentCate" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContentCate_SelectPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cloumns" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="orderBy" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="where" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContentCate_SelectPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Site.YuYangModel" minOccurs="0" name="ContentCate_SelectPageResult" nillable="true" type="q8:ArrayOfContentCate" />
+        <xs:element minOccurs="0" name="rowCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChapterVisits_Insert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Site.YuYangModel" minOccurs="0" name="obj" nillable="true" type="q9:ChapterVisits" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChapterVisits_InsertResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ChapterVisits_InsertResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChapterVisits_DeleteById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChapterVisits_DeleteByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ChapterVisits_DeleteByIdResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChapterVisits_UpdateById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Site.YuYangModel" minOccurs="0" name="obj" nillable="true" type="q10:ChapterVisits" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChapterVisits_UpdateByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ChapterVisits_UpdateByIdResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChapterVisits_SelectById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChapterVisits_SelectByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Site.YuYangModel" minOccurs="0" name="ChapterVisits_SelectByIdResult" nillable="true" type="q11:ChapterVisits" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChapterVisits_SelectPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cloumns" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="orderBy" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="where" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChapterVisits_SelectPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Site.YuYangModel" minOccurs="0" name="ChapterVisits_SelectPageResult" nillable="true" type="q12:ArrayOfChapterVisits" />
+        <xs:element minOccurs="0" name="rowCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

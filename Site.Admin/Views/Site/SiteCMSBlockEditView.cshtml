@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "CatesEditView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Site.Service.SiteService.SiteServices;
+@using Site.Admin.Common;
+@using Site.Common;
+@{
+    Site_CMSBlock info = ViewData["info"] as Site_CMSBlock;
+    int siteName = ViewBag.siteName;
+    string p_gid = ViewBag.p_gid;
+}
+@section head{
+
+    <script type="text/javascript">
+
+    $(function () {
+        $("#btnSubmit").button({
+            icons: {
+                primary: "ui-icon-check "
+            }
+        });
+        $("#btnCancle").button({
+            icons: {
+                primary: "ui-icon-closethick "
+            }
+        });
+
+    });
+
+    function btnSubmitClick() {
+        if ($("#b_name").val().length <= 0) {
+            parent.mDialogUI.message("区块名称不能为空", "提示", 180, 50, 2);
+            return false;
+        }
+        if ($("#b_path").val().length <= 0) {
+            parent.mDialogUI.message("区块路径不能为空", "提示", 180, 50, 2);
+            return false;
+        }
+
+        var data = {
+            b_name: $("#b_name").val(),
+            b_path: $("#b_path").val(),
+            p_gid: '@p_gid',
+            siteName: '@siteName',
+            b_gid: $("#b_gid").val(),
+            b_img_size: $("#b_img_size").val()
+            };
+
+            $.ajax({
+                url: "/Site/SiteCMSBlockEdit",
+                type: "post",
+                dataType: "json",
+                cache: false,
+                data: data,
+                success: function (json) {
+                    if (json.success) {
+                        parent.mDialogUI.successMessage(json.errors.text, "成功", 180, 70, 2);
+                        parent.LoadList(parent.querys.page);
+                        parent.mDialogUI.closeWindow('@ViewData["window"]');
+                }
+                else {
+                    parent.mDialogUI.errorMessage(json.errors.text, "失败", 180, 70, 2);
+                }
+            },
+            error: function (xhr, xhrText, error) {
+                parent.mDialogUI.errorMessage(error, "错误", 200, 70);
+            }
+        });
+    }
+    </script>
+}
+
+<div class="container-10">
+    <div class="hint">
+        路径：子路径以父路径 开头，如 11，1101，1102
+    </div>
+    <table class="editTable">
+        <tr>
+            <td><span class="red">*</span>区块路径：</td>
+            <td>
+                <input name="b_path" id="b_path" type="text" style="width: 240px;" value="@info.b_path" />
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>区块名称：</td>
+            <td>
+                <input name="b_name" id="b_name" type="text" style="width: 240px;" value="@info.b_name" />
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>图片尺寸：</td>
+            <td>
+                <input name="b_img_size" id="b_img_size" type="text" style="width: 240px;" value="@info.b_img_size" />
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">&nbsp;</span>尺寸格式：</td>
+            <td>
+                <span class="red">W * H </span>
+            </td>
+        </tr>
+    </table>
+    <div style="float: right; margin-top: 10px;">
+        <input type="hidden" name="b_gid" id="b_gid" value="@info.b_gid" />
+        <button id="btnSubmit" onclick="btnSubmitClick();">确定</button>
+        <button id="btnCancle" onclick="parent.mDialogUI.closeWindow('@ViewData["window"]');">取消</button>
+    </div>
+</div>

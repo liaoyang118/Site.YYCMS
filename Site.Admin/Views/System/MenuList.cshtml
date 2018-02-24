@@ -1,0 +1,32 @@
+﻿@using SiteFrame.Model;
+@{
+    List<SystemModual> list = ViewData["list"] as List<SystemModual>;
+    if (list.Count > 0)
+    {
+        foreach (SystemModual s in list)
+        {
+            if (s.m_parent == 0)
+            {
+                <li class="mainItem"><span>@s.m_name</span></li>
+                foreach (SystemModual t in list)
+                {
+                    if(t.m_parent==s.m_id)
+                    {
+                        string action="/"+t.m_Controller+"/"+t.m_Action;
+                        <li class="item"><span action="@action" idv="@t.m_id">@t.m_name</span></li>
+                    }
+                }
+            }
+        }
+    }
+}
+<script type="text/javascript">
+    $(function () {
+        $(".menuList li span").click(function () {
+            var id = $(this).attr("idv");
+            var action = $(this).attr("action");
+            var title = $(this).html();
+            mLayout.addTab(id, title, action);
+        });
+    })
+</script>

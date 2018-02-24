@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://service.jsonyang.com" elementFormDefault="qualified" targetNamespace="http://service.jsonyang.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8889/SiteService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Site.SiteModel" />
+  <xs:element name="Site_Cates_Insert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="obj" nillable="true" type="q1:Site_Cates" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Cates_InsertResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_Cates_InsertResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Cates_DeleteByc_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="c_gid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Cates_DeleteByc_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_Cates_DeleteByc_gidResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Cates_UpdateByc_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="obj" nillable="true" type="q2:Site_Cates" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Cates_UpdateByc_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_Cates_UpdateByc_gidResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Cates_SelectByc_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="c_gid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Cates_SelectByc_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_Cates_SelectByc_gidResult" nillable="true" type="q3:Site_Cates" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Cates_SelectBaseCateByc_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="c_gid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Cates_SelectBaseCateByc_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_Cates_SelectBaseCateByc_gidResult" nillable="true" type="q4:Site_Cates" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Cates_SelectByc_id">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="c_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Cates_SelectByc_idResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_Cates_SelectByc_idResult" nillable="true" type="q5:Site_Cates" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Cates_SelectPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cloumns" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="orderBy" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="where" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Cates_SelectPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_Cates_SelectPageResult" nillable="true" type="q6:ArrayOfSite_Cates" />
+        <xs:element minOccurs="0" name="rowCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSPage_Insert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="obj" nillable="true" type="q7:Site_CMSPage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSPage_InsertResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_CMSPage_InsertResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSPage_DeleteByp_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="p_gid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSPage_DeleteByp_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_CMSPage_DeleteByp_gidResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSPage_UpdateByp_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="obj" nillable="true" type="q8:Site_CMSPage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSPage_UpdateByp_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_CMSPage_UpdateByp_gidResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSPage_SelectPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cloumns" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="orderBy" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="where" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSPage_SelectPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_CMSPage_SelectPageResult" nillable="true" type="q9:ArrayOfSite_CMSPage" />
+        <xs:element minOccurs="0" name="rowCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSPage_SelectByp_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="p_gid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSPage_SelectByp_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_CMSPage_SelectByp_gidResult" nillable="true" type="q10:Site_CMSPage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSBlock_Insert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="obj" nillable="true" type="q11:Site_CMSBlock" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSBlock_InsertResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_CMSBlock_InsertResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSBlock_DeleteByb_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="b_gid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSBlock_DeleteByb_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_CMSBlock_DeleteByb_gidResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSBlock_UpdateByb_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="obj" nillable="true" type="q12:Site_CMSBlock" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSBlock_UpdateByb_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_CMSBlock_UpdateByb_gidResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSBlock_SelectByb_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="b_gid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSBlock_SelectByb_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_CMSBlock_SelectByb_gidResult" nillable="true" type="q13:Site_CMSBlock" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSBlock_SelectPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cloumns" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="orderBy" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="where" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSBlock_SelectPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_CMSBlock_SelectPageResult" nillable="true" type="q14:ArrayOfSite_CMSBlock" />
+        <xs:element minOccurs="0" name="rowCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSItem_Insert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="obj" nillable="true" type="q15:Site_CMSItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSItem_InsertResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_CMSItem_InsertResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSItem_DeleteByi_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="i_gid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSItem_DeleteByi_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_CMSItem_DeleteByi_gidResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSItem_UpdateByi_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="obj" nillable="true" type="q16:Site_CMSItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSItem_UpdateByi_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_CMSItem_UpdateByi_gidResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSItem_SelectByi_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="i_gid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSItem_SelectByi_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_CMSItem_SelectByi_gidResult" nillable="true" type="q17:Site_CMSItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSItem_SelectByc_gidAndb_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="c_gid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="b_gid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSItem_SelectByc_gidAndb_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_CMSItem_SelectByc_gidAndb_gidResult" nillable="true" type="q18:Site_CMSItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSItem_SelectPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cloumns" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="orderBy" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="where" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_CMSItem_SelectPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_CMSItem_SelectPageResult" nillable="true" type="q19:ArrayOfSite_CMSItem" />
+        <xs:element minOccurs="0" name="rowCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Content_Insert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="obj" nillable="true" type="q20:Site_Content" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Content_InsertResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_Content_InsertResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Content_DeleteByc_id">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="c_id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Content_DeleteByc_idResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_Content_DeleteByc_idResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Content_UpdateByc_id">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="obj" nillable="true" type="q21:Site_Content" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Content_UpdateByc_idResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Site_Content_UpdateByc_idResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Content_SelectByc_id">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="c_id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Content_SelectByc_idResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_Content_SelectByc_idResult" nillable="true" type="q22:Site_Content" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Content_SelectByc_gid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="c_gid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Content_SelectByc_gidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_Content_SelectByc_gidResult" nillable="true" type="q23:Site_Content" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Content_SelectPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cloumns" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="orderBy" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="where" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Content_SelectPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_Content_SelectPageResult" nillable="true" type="q24:ArrayOfSite_Content" />
+        <xs:element minOccurs="0" name="rowCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Content_SelectPageByc_id">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cateId" type="xs:int" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Site_Content_SelectPageByc_idResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Site.SiteModel" minOccurs="0" name="Site_Content_SelectPageByc_idResult" nillable="true" type="q25:ArrayOfSite_Content" />
+        <xs:element minOccurs="0" name="rowCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

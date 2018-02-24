@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ba429072-23ae-4ca8-bddf-bcf09fb7f636" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8889/SiteService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SiteService3.xsd" MetadataType="Schema" ID="5cca5885-b138-4499-a5ab-dae63ffb1259" SourceId="1" SourceUrl="http://localhost:8889/SiteService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SiteService1.disco" MetadataType="Disco" ID="de151dae-6204-4c4d-ad53-f85249914faf" SourceId="1" SourceUrl="http://localhost:8889/SiteService.svc?disco" />
+    <MetadataFile FileName="SiteService1.wsdl" MetadataType="Wsdl" ID="ed1f581e-854a-4fa2-8fe3-7e67dd81e4c1" SourceId="1" SourceUrl="http://localhost:8889/SiteService.svc?wsdl" />
+    <MetadataFile FileName="SiteService31.xsd" MetadataType="Schema" ID="4fe9bcd0-4ff2-4ef2-ab40-7c69dacbd0af" SourceId="1" SourceUrl="http://localhost:8889/SiteService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SiteService32.xsd" MetadataType="Schema" ID="5da63ead-0df5-447e-b675-ee6d2104d88b" SourceId="1" SourceUrl="http://localhost:8889/SiteService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

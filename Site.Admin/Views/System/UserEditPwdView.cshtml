@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "UserEditPwdView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    string u_gid = ViewBag.u_gid;
+}
+@section head{
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSubmit").button({
+                icons: {
+                    primary: "ui-icon-check "
+                }
+            });
+            $("#btnCancle").button({
+                icons: {
+                    primary: "ui-icon-closethick "
+                }
+            });
+
+        });
+
+        function btnSubmitClick() {
+
+            if ($("#u_password").length > 0) {
+                if ($("#u_password").val().length <= 0) {
+                    parent.mDialogUI.message("密码不能为空", "提示", 180, 50, 2);
+                    return false;
+                }
+
+                if ($("#u_password").val().length >= 32) {
+                    parent.mDialogUI.message("密码不能超过32位", "提示", 180, 50, 2);
+                    return false;
+                }
+            }
+
+
+
+            var data = {
+                u_password: $("#u_password").val(),
+                u_gid: $("#u_gid").val()
+            };
+
+            $.ajax({
+                url: "/System/UserEditPwd",
+                type: "post",
+                dataType: "json",
+                cache: false,
+                data: data,
+                success: function (json) {
+                    if (json.success) {
+                        parent.mDialogUI.successMessage(json.errors.text, "成功", 180, 70, 2);
+                        parent.LoadList(parent.querys.page);
+                        parent.mDialogUI.closeWindow('@ViewData["window"]');
+                    }
+                    else {
+                        parent.mDialogUI.errorMessage(json.errors.text, "失败", 180, 70, 2);
+                    }
+                },
+                error: function (xhr, xhrText, error) {
+                    parent.mDialogUI.errorMessage(error, "错误", 200, 70);
+                }
+            });
+        }
+
+    </script>
+}
+<div class="container-10">
+    <table class="editTable">
+        <tr>
+            <td><span class="red">*</span>密码：</td>
+            <td>
+                <input name="u_password" id="u_password" type="password" style="width: 240px;" value="" />
+            </td>
+        </tr>
+    </table>
+    <div style="float: right; margin-top: 20px;">
+        <input type="hidden" name="u_gid" id="u_gid" value="@u_gid" />
+        <button id="btnSubmit" onclick="btnSubmitClick();">确定</button>
+        <button id="btnCancle" onclick="parent.mDialogUI.closeWindow('@ViewData["window"]');">取消</button>
+    </div>
+</div>

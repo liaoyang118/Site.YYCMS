@@ -1,0 +1,91 @@
+﻿@using Site.Service.SiteService.SiteServices;
+@using Site.Common;
+@{
+
+    int pageSize = ViewBag.pageSize;
+    int pageIndex = ViewBag.pageIndex;
+    int rowCount = ViewBag.rowCount;
+
+    //int cateId = ViewBag.cateId;
+    Site_Cates c_info = ViewBag.c_info;
+    List<Site_Content> list = ViewBag.list;
+}
+@{
+    ViewBag.Title = "宇扬网-" + c_info.c_name;
+    ViewBag.keywords = "宇扬网_" + c_info.c_name;
+    ViewBag.description = ViewBag.Title + ",汇聚全网最全信息，即时信息";
+
+    ViewBag.CateName = c_info.c_name;
+    ViewBag.cateId = c_info.c_id;
+
+    Layout = "~/Views/Shared/_Layout_List_T1.cshtml";
+}
+
+<div id="main-content">
+    <!--左侧列表-->
+    <div class="primary">
+        <section>
+            @if (list.Count > 0)
+            {
+                foreach (Site_Content item in list)
+                {
+                <article class="entry-item box-hover clearfix">
+                @if (!string.IsNullOrEmpty(item.c_img_src))
+                        {
+                        <a href="@SiteUntility.GetRelationDetailUrl(item.c_gid)" title="@item.c_title" target="_blank">
+                            <img class="hover-effect responsive-img" src="@item.c_img_src" alt="@item.c_title" style="opacity: 1;width:244px;height:117px;">
+                        </a>
+                        }
+                <div class="entry-content">
+                    <span class="entry-category">时间:&nbsp;</span><span class="entry-date">&nbsp;&nbsp;@item.c_createTime.ToString("yyyy.MM.dd")</span>
+                    <h3 class="entry-title"><a href="@SiteUntility.GetRelationDetailUrl(item.c_gid)" title="@item.c_title" target="_blank">@item.c_title</a></h3>
+                    <p>@item.c_intro</p>
+                    <span class="entry-author">作者:&nbsp;</span><a class="entry-author" href="javascript:void(0);">@item.c_createUserNickName</a>
+                </div>
+            </article>
+                }
+            }
+            else
+            {
+            <article class="entry-item box-hover clearfix">
+                <div class="entry-content">
+                    <h3 class="entry-title"><a href="javascript:void(0);">暂无更多内容</a></h3>
+                </div>
+            </article>
+            }
+
+            <!--分页条-->
+            @Html.Raw(SiteUntility.CreateListPage(c_info.c_id.ToString(), pageSize, pageIndex, rowCount))
+
+        </section>
+    </div>
+
+    <!--右侧内容-->
+    @{
+        Html.RenderPartial("~/Views/Common/List_Right.cshtml");
+    }
+
+    <div class="clear"></div>
+
+    <!--列表页底部广告-->
+    <div id="footer-aside" class="box-hover" style="padding: 20px 0;">
+        <aside class="widget">
+            <div class="adv-footer">
+                <a class="banner-bottom-left" href="#"><img class="hover-effect responsive-img" src="~/Content/Bootstrap/placeholders/728x90-banner.jpg" alt=""></a>
+                <a class="banner-bottom-right" href="#"><img class="hover-effect responsive-img ml-10" src="~/Content/Bootstrap/placeholders/220x90/sample-ad-3.jpg" alt=""></a>
+            </div><!--end:adv-footer-->
+            <div class="clear"></div>
+        </aside>
+    </div>
+
+    <!--底部-->
+    @{
+        Html.RenderPartial("~/Views/Common/Main_Foot.cshtml");
+    }
+
+</div>
+
+
+
+
+

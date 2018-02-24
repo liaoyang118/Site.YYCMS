@@ -1,0 +1,12 @@
+#submit-comment, .green-button, .blue-button, .orange-button, .red-button, .pink-button, .grey-button, .black-button  {
+	behavior: url(js/PIE.htc);
+}
+
+.home-page #sidebar-b {
+	margin-left:-2px;
+	border-left:1px solid #cfcfcf;
+}
+.home-page #sidebar-a {
+	border-right:1px solid #cfcfcf;
+}
+

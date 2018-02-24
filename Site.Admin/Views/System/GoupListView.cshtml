@@ -1,0 +1,66 @@
+﻿@using SiteFrame.Model;
+@{
+    List<SystemGroup> list = ViewData["list"] as List<SystemGroup>;
+    int page = (int)ViewData["page"];
+    int pageSize = (int)ViewData["pageSize"];
+    int rowCount = (int)ViewData["rowCount"];
+}
+<table class="tableClass">
+    <tr>
+        <th style="width:80px;">序号</th>
+        <th style="width:80px;">排序</th>
+        <th style="text-align: center">图标</th>
+        <th style="text-align: center">名称</th>
+        <th style="text-align: center">创建时间</th>
+        <th style="text-align: center">创建人</th>
+        <th style="text-align: left">操作</th>
+    </tr>
+    @if (list.Count > 0)
+    {
+        int i = 1;
+        foreach (SystemGroup item in list)
+        {
+            <tr>
+                <td style="width:80px;">@i</td>
+                <td style="width:80px;">@item.g_sort</td>
+                <td style="text-align: center">
+                @if (!string.IsNullOrEmpty(item.g_gid))
+                {
+                    <img width="30" height="30" src="@item.g_picCover" alt="@item.g_name" />
+                }
+                </td>
+                <td style="text-align: center">@item.g_name</td>
+                <td style="text-align: center">@item.g_createTime</td>
+                <td style="text-align: center">@item.g_createUser</td>
+                <td style="text-align: left">
+                    <a href="javascript:void(0);" class="op" onclick="EditSysGroup(false,'@item.g_gid')">改</a>
+                    <a href="javascript:void(0);" class="op" onclick="groupDelete('@item.g_gid')">删</a>
+                </td>
+            </tr>
+            i++;
+        }
+    }
+    else
+    {
+        <tr>
+            <td style="text-align: center" colspan="8">暂无任何数据</td>
+        </tr>
+    }
+</table>
+<div id="pageBar" class="page"></div>
+
+<script type="text/javascript">
+    $(function () {
+        //页码条
+        UserPage.MakePageBar("pageBar", '@rowCount', '@page','@pageSize', function () {
+            LoadList(UserPage.currentPage);
+        });
+        $(".tableClass tr:gt(0)").mouseenter(function () {
+            $(this).addClass("mouseOver");
+        }).mouseleave(function () {
+            $(this).removeClass("mouseOver");
+        }).click(function () {
+            $(this).addClass("mouseClick").siblings().removeClass("mouseClick");
+        });
+    });
+</script>

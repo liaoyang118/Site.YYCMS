@@ -1,0 +1,55 @@
+﻿.close
+{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-top: 6px;
+    background: url(/Img/close.png) no-repeat 0px 0px;
+}
+ 
+    .close:hover
+    {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        margin-top: 6px;
+        background: url(/Img/close.png) no-repeat -20px 0px;
+    }
+ 
+.modal
+{
+    background: #4fb4d4;
+    position: absolute;
+    border-radius: 10px;
+    z-index: 100;
+}
+ 
+    .modal .title
+    {
+        width: 96%;
+        height: 32px;
+        margin: 0px auto;
+        top:0px;
+        cursor: move;
+    }
+ 
+        .modal .title .left
+        {
+            float: left;
+            height: 100%;
+            font-size: 20px;
+            font-family: '微软雅黑';
+            line-height: 32px;
+        }
+ 
+        .modal .title .right
+        {
+            float: right;
+            height: 100%;
+        }
+ 
+    .modal .main
+    {
+        background: #fff;
+        margin: 0px auto;
+    }

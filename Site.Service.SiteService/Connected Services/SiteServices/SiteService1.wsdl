@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://service.jsonyang.com" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SiteService" targetNamespace="http://service.jsonyang.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="SiteBinding_ISiteService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://service.jsonyang.com/Imports">
+      <xsd:import schemaLocation="http://localhost:8889/SiteService.svc?xsd=xsd0" namespace="http://service.jsonyang.com" />
+      <xsd:import schemaLocation="http://localhost:8889/SiteService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8889/SiteService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Site.SiteModel" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISiteService_Site_Cates_Insert_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Cates_Insert" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Cates_Insert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Cates_InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Cates_DeleteByc_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Cates_DeleteByc_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Cates_DeleteByc_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Cates_DeleteByc_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Cates_UpdateByc_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Cates_UpdateByc_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Cates_UpdateByc_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Cates_UpdateByc_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Cates_SelectByc_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Cates_SelectByc_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Cates_SelectByc_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Cates_SelectByc_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Cates_SelectBaseCateByc_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Cates_SelectBaseCateByc_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Cates_SelectBaseCateByc_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Cates_SelectBaseCateByc_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Cates_SelectByc_id_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Cates_SelectByc_id" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Cates_SelectByc_id_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Cates_SelectByc_idResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Cates_SelectPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Cates_SelectPage" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Cates_SelectPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Cates_SelectPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSPage_Insert_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSPage_Insert" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSPage_Insert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSPage_InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSPage_DeleteByp_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSPage_DeleteByp_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSPage_DeleteByp_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSPage_DeleteByp_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSPage_UpdateByp_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSPage_UpdateByp_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSPage_UpdateByp_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSPage_UpdateByp_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSPage_SelectPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSPage_SelectPage" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSPage_SelectPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSPage_SelectPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSPage_SelectByp_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSPage_SelectByp_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSPage_SelectByp_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSPage_SelectByp_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSBlock_Insert_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSBlock_Insert" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSBlock_Insert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSBlock_InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSBlock_DeleteByb_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSBlock_DeleteByb_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSBlock_DeleteByb_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSBlock_DeleteByb_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSBlock_UpdateByb_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSBlock_UpdateByb_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSBlock_UpdateByb_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSBlock_UpdateByb_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSBlock_SelectByb_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSBlock_SelectByb_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSBlock_SelectByb_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSBlock_SelectByb_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSBlock_SelectPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSBlock_SelectPage" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSBlock_SelectPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSBlock_SelectPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSItem_Insert_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSItem_Insert" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSItem_Insert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSItem_InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSItem_DeleteByi_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSItem_DeleteByi_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSItem_DeleteByi_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSItem_DeleteByi_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSItem_UpdateByi_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSItem_UpdateByi_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSItem_UpdateByi_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSItem_UpdateByi_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSItem_SelectByi_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSItem_SelectByi_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSItem_SelectByi_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSItem_SelectByi_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSItem_SelectByc_gidAndb_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSItem_SelectByc_gidAndb_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSItem_SelectByc_gidAndb_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSItem_SelectByc_gidAndb_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSItem_SelectPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSItem_SelectPage" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_CMSItem_SelectPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_CMSItem_SelectPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Content_Insert_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Content_Insert" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Content_Insert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Content_InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Content_DeleteByc_id_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Content_DeleteByc_id" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Content_DeleteByc_id_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Content_DeleteByc_idResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Content_UpdateByc_id_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Content_UpdateByc_id" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Content_UpdateByc_id_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Content_UpdateByc_idResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Content_SelectByc_id_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Content_SelectByc_id" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Content_SelectByc_id_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Content_SelectByc_idResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Content_SelectByc_gid_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Content_SelectByc_gid" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Content_SelectByc_gid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Content_SelectByc_gidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Content_SelectPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Content_SelectPage" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Content_SelectPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Content_SelectPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Content_SelectPageByc_id_InputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Content_SelectPageByc_id" />
+  </wsdl:message>
+  <wsdl:message name="ISiteService_Site_Content_SelectPageByc_id_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Site_Content_SelectPageByc_idResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISiteService">
+    <wsdl:operation name="Site_Cates_Insert">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Cates_Insert" message="tns:ISiteService_Site_Cates_Insert_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Cates_InsertResponse" message="tns:ISiteService_Site_Cates_Insert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_Cates_DeleteByc_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Cates_DeleteByc_gid" message="tns:ISiteService_Site_Cates_DeleteByc_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Cates_DeleteByc_gidResponse" message="tns:ISiteService_Site_Cates_DeleteByc_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_Cates_UpdateByc_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Cates_UpdateByc_gid" message="tns:ISiteService_Site_Cates_UpdateByc_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Cates_UpdateByc_gidResponse" message="tns:ISiteService_Site_Cates_UpdateByc_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_Cates_SelectByc_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Cates_SelectByc_gid" message="tns:ISiteService_Site_Cates_SelectByc_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Cates_SelectByc_gidResponse" message="tns:ISiteService_Site_Cates_SelectByc_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_Cates_SelectBaseCateByc_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Cates_SelectBaseCateByc_gid" message="tns:ISiteService_Site_Cates_SelectBaseCateByc_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Cates_SelectBaseCateByc_gidResponse" message="tns:ISiteService_Site_Cates_SelectBaseCateByc_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_Cates_SelectByc_id">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Cates_SelectByc_id" message="tns:ISiteService_Site_Cates_SelectByc_id_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Cates_SelectByc_idResponse" message="tns:ISiteService_Site_Cates_SelectByc_id_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_Cates_SelectPage">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Cates_SelectPage" message="tns:ISiteService_Site_Cates_SelectPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Cates_SelectPageResponse" message="tns:ISiteService_Site_Cates_SelectPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSPage_Insert">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSPage_Insert" message="tns:ISiteService_Site_CMSPage_Insert_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSPage_InsertResponse" message="tns:ISiteService_Site_CMSPage_Insert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSPage_DeleteByp_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSPage_DeleteByp_gid" message="tns:ISiteService_Site_CMSPage_DeleteByp_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSPage_DeleteByp_gidResponse" message="tns:ISiteService_Site_CMSPage_DeleteByp_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSPage_UpdateByp_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSPage_UpdateByp_gid" message="tns:ISiteService_Site_CMSPage_UpdateByp_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSPage_UpdateByp_gidResponse" message="tns:ISiteService_Site_CMSPage_UpdateByp_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSPage_SelectPage">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSPage_SelectPage" message="tns:ISiteService_Site_CMSPage_SelectPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSPage_SelectPageResponse" message="tns:ISiteService_Site_CMSPage_SelectPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSPage_SelectByp_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSPage_SelectByp_gid" message="tns:ISiteService_Site_CMSPage_SelectByp_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSPage_SelectByp_gidResponse" message="tns:ISiteService_Site_CMSPage_SelectByp_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSBlock_Insert">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSBlock_Insert" message="tns:ISiteService_Site_CMSBlock_Insert_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSBlock_InsertResponse" message="tns:ISiteService_Site_CMSBlock_Insert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSBlock_DeleteByb_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSBlock_DeleteByb_gid" message="tns:ISiteService_Site_CMSBlock_DeleteByb_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSBlock_DeleteByb_gidResponse" message="tns:ISiteService_Site_CMSBlock_DeleteByb_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSBlock_UpdateByb_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSBlock_UpdateByb_gid" message="tns:ISiteService_Site_CMSBlock_UpdateByb_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSBlock_UpdateByb_gidResponse" message="tns:ISiteService_Site_CMSBlock_UpdateByb_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSBlock_SelectByb_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSBlock_SelectByb_gid" message="tns:ISiteService_Site_CMSBlock_SelectByb_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSBlock_SelectByb_gidResponse" message="tns:ISiteService_Site_CMSBlock_SelectByb_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSBlock_SelectPage">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSBlock_SelectPage" message="tns:ISiteService_Site_CMSBlock_SelectPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSBlock_SelectPageResponse" message="tns:ISiteService_Site_CMSBlock_SelectPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSItem_Insert">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSItem_Insert" message="tns:ISiteService_Site_CMSItem_Insert_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSItem_InsertResponse" message="tns:ISiteService_Site_CMSItem_Insert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSItem_DeleteByi_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSItem_DeleteByi_gid" message="tns:ISiteService_Site_CMSItem_DeleteByi_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSItem_DeleteByi_gidResponse" message="tns:ISiteService_Site_CMSItem_DeleteByi_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSItem_UpdateByi_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSItem_UpdateByi_gid" message="tns:ISiteService_Site_CMSItem_UpdateByi_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSItem_UpdateByi_gidResponse" message="tns:ISiteService_Site_CMSItem_UpdateByi_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSItem_SelectByi_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSItem_SelectByi_gid" message="tns:ISiteService_Site_CMSItem_SelectByi_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSItem_SelectByi_gidResponse" message="tns:ISiteService_Site_CMSItem_SelectByi_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSItem_SelectByc_gidAndb_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSItem_SelectByc_gidAndb_gid" message="tns:ISiteService_Site_CMSItem_SelectByc_gidAndb_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSItem_SelectByc_gidAndb_gidResponse" message="tns:ISiteService_Site_CMSItem_SelectByc_gidAndb_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSItem_SelectPage">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSItem_SelectPage" message="tns:ISiteService_Site_CMSItem_SelectPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_CMSItem_SelectPageResponse" message="tns:ISiteService_Site_CMSItem_SelectPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_Content_Insert">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Content_Insert" message="tns:ISiteService_Site_Content_Insert_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Content_InsertResponse" message="tns:ISiteService_Site_Content_Insert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_Content_DeleteByc_id">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Content_DeleteByc_id" message="tns:ISiteService_Site_Content_DeleteByc_id_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Content_DeleteByc_idResponse" message="tns:ISiteService_Site_Content_DeleteByc_id_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_Content_UpdateByc_id">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Content_UpdateByc_id" message="tns:ISiteService_Site_Content_UpdateByc_id_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Content_UpdateByc_idResponse" message="tns:ISiteService_Site_Content_UpdateByc_id_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_Content_SelectByc_id">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Content_SelectByc_id" message="tns:ISiteService_Site_Content_SelectByc_id_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Content_SelectByc_idResponse" message="tns:ISiteService_Site_Content_SelectByc_id_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_Content_SelectByc_gid">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Content_SelectByc_gid" message="tns:ISiteService_Site_Content_SelectByc_gid_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Content_SelectByc_gidResponse" message="tns:ISiteService_Site_Content_SelectByc_gid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_Content_SelectPage">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Content_SelectPage" message="tns:ISiteService_Site_Content_SelectPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Content_SelectPageResponse" message="tns:ISiteService_Site_Content_SelectPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Site_Content_SelectPageByc_id">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Content_SelectPageByc_id" message="tns:ISiteService_Site_Content_SelectPageByc_id_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/ISiteService/Site_Content_SelectPageByc_idResponse" message="tns:ISiteService_Site_Content_SelectPageByc_id_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SiteBinding_ISiteService" type="tns:ISiteService">
+    <wsp:PolicyReference URI="#SiteBinding_ISiteService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Site_Cates_Insert">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_Cates_Insert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_Cates_DeleteByc_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_Cates_DeleteByc_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_Cates_UpdateByc_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_Cates_UpdateByc_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_Cates_SelectByc_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_Cates_SelectByc_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_Cates_SelectBaseCateByc_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_Cates_SelectBaseCateByc_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_Cates_SelectByc_id">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_Cates_SelectByc_id" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_Cates_SelectPage">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_Cates_SelectPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSPage_Insert">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSPage_Insert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSPage_DeleteByp_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSPage_DeleteByp_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSPage_UpdateByp_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSPage_UpdateByp_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSPage_SelectPage">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSPage_SelectPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSPage_SelectByp_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSPage_SelectByp_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSBlock_Insert">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSBlock_Insert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSBlock_DeleteByb_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSBlock_DeleteByb_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSBlock_UpdateByb_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSBlock_UpdateByb_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSBlock_SelectByb_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSBlock_SelectByb_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSBlock_SelectPage">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSBlock_SelectPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSItem_Insert">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSItem_Insert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSItem_DeleteByi_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSItem_DeleteByi_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSItem_UpdateByi_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSItem_UpdateByi_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSItem_SelectByi_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSItem_SelectByi_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSItem_SelectByc_gidAndb_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSItem_SelectByc_gidAndb_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_CMSItem_SelectPage">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_CMSItem_SelectPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_Content_Insert">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_Content_Insert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_Content_DeleteByc_id">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_Content_DeleteByc_id" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_Content_UpdateByc_id">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_Content_UpdateByc_id" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_Content_SelectByc_id">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_Content_SelectByc_id" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_Content_SelectByc_gid">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_Content_SelectByc_gid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_Content_SelectPage">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_Content_SelectPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Site_Content_SelectPageByc_id">
+      <soap12:operation soapAction="http://service.jsonyang.com/ISiteService/Site_Content_SelectPageByc_id" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SiteService">
+    <wsdl:port name="SiteBinding_ISiteService" binding="tns:SiteBinding_ISiteService">
+      <soap12:address location="http://localhost:8889/SiteService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost:8889/SiteService.svc</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>localhost</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,86 @@
+﻿@using SiteFrame.Model;
+@{
+    Dictionary<ModulePermission, bool> mbDic = ViewBag.mbDic;
+    string ruid = ViewBag.ruid;
+    string m_gid = ViewBag.m_gid;
+}
+<div style="text-align: center;"><span class="bold">权限</span></div>
+<div style="overflow-y: visible;">
+
+    <table class="tableClass" id="preTabList">
+        @if (mbDic.Count > 0)
+        {
+            <tr>
+                <td>
+                  @foreach (KeyValuePair<ModulePermission, bool> item in mbDic)
+                    {
+                   <input type="checkbox" @{if(item.Value){<text>checked="checked"</text>}} id="chk_@item.Key.p_id" name="chk_@item.Key.p_id" value="@item.Key.p_gid" />
+                    <span style="cursor:pointer;" @{if(item.Value){<text>class="red"</text>}} id="lab_@item.Key.p_id" val="@item.Key.p_id" pgid="@item.Key.p_gid" for="chk_@item.Key.p_id">@item.Key.p_name</span>
+                    }
+                </td>
+            </tr>
+        }
+        else
+        { 
+            <tr>
+                <td style="text-align: center" colspan="2">暂无任何权限</td>
+            </tr> 
+        }
+    </table>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(".tableClass tr").mouseenter(function () {
+            $(this).addClass("mouseOver");
+        }).mouseleave(function () {
+            $(this).removeClass("mouseOver");
+        });
+
+        $("#preTabList span[id^='lab_']").click(function () {
+            var _id = $(this).attr("val");
+            var _inp = $("#chk_" + _id);
+            _inp.click();
+        });
+
+        $("#preTabList tr td input[type='checkbox']").click(function () {
+            var _lab = $(this).next("span");
+            _lab.toggleClass("red");
+            var _id = _lab.attr("val");
+            var pgid = _lab.attr("pgid");
+            var _val = $(this).is(":checked") == true ? 1 : 0;// 取选中后的值
+            opraterPer('@ruid', pgid, _val);
+
+        });
+        
+        function opraterPer(rgid,pgid,oType)
+        {
+            var data = {
+                rgid: rgid,
+                pgid: pgid,
+                oType: oType
+            };
+            mDialogUI.loading("处理中...");
+            $.ajax({
+                url: "/System/PerOperation",
+                type: "post",
+                dataType: "json",
+                cache: false,
+                data: data,
+                success: function (json) {
+                    mDialogUI.closeLoading();
+                    if (json.success) {
+                        mDialogUI.successMessage(json.errors.text, "成功", 180, 70, 2);
+                    }
+                    else {
+                        mDialogUI.errorMessage(json.errors.text, "失败", 180, 70, 2);
+                    }
+                },
+                error: function (xhr, xhrText, error) {
+                    mDialogUI.closeLoading();
+                    mDialogUI.errorMessage(error, "错误", 200, 70);
+                }
+            });
+        }
+    })
+
+</script>

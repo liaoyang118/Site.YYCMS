@@ -1,0 +1,88 @@
+﻿@using Site.Service.SiteService.SiteServices;
+@{
+    int siteName = (int)ViewData["siteName"];
+    List<Site_CMSPage> list = ViewData["list"] as List<Site_CMSPage>;
+    int page = (int)ViewData["page"];
+    int pageSize = (int)ViewData["pageSize"];
+    int rowCount = (int)ViewData["rowCount"];
+}
+<table class="tableClass">
+    <tr>
+        <th style="width:80px;">序号</th>
+        <th style="width:80px;">路径</th>
+        <th>页面名称</th>
+        <th style="text-align: left">相对路径</th>
+        <th style="text-align: center">创建人</th>
+        <th style="text-align: center">创建时间</th>
+        <th style="text-align: center">责任人</th>
+        <th style="text-align: left">操作</th>
+    </tr>
+    @if (list.Count > 0)
+    {
+        int i = 1;
+        foreach (Site_CMSPage item in list)
+        {
+        <tr>
+            <td style="width:80px;">@i</td>
+            <td style="width:80px;">@item.p_path</td>
+            <td style="text-align: left">
+                @{
+                        if (item.p_path.Length==2)
+                        {
+                    <strong>@item.p_name</strong>
+                        }
+                        else
+                        {
+                    <span>&nbsp;&nbsp;&nbsp;@item.p_name</span>
+                        }
+                }
+            </td>
+
+            <td>
+                <span class="red">@item.p_tempPath</span><br />
+                <span class="green">@item.p_filePath</span>
+            </td>
+            <td style="text-align: center">@item.p_createUser</td>
+            <td style="text-align: center">@item.p_createTime.ToString("yyyy-MM-dd")<br />@item.p_createTime.ToString("HH:mm:ss")</td>
+            <td style="text-align: center">@item.p_pageDuty</td>
+            <td style="text-align: left">
+            @{
+              <a href="javascript:void(0);" class="op" onclick="btnEdit(false,'@item.p_gid')">改</a>
+              if (item.p_path.Length==4)
+              {
+                
+                <a href="javascript:void(0);" class="op" onclick="btnDelete('@item.p_gid')">删</a>
+                <a href="javascript:void(0);" class="op" onclick="btnManager('@item.p_id','@item.p_gid','@item.p_name','@siteName')">管理</a>
+                <a href="javascript:void(0);" class="op" onclick="btnPublish('@item.p_gid')">发布</a>
+                <a href="javascript:void(0);" class="op" onclick="btnEditTemp('@item.p_tempPath')">模板</a>
+              }
+            }
+            </td>
+        </tr>
+            i++;
+        }
+    }
+    else
+    {
+        <tr>
+            <td style="text-align: center" colspan="8">暂无任何数据</td>
+        </tr>
+    }
+</table>
+<div id="pageBar" class="page"></div>
+
+<script type="text/javascript">
+    $(function () {
+        //页码条
+        UserPage.MakePageBar("pageBar", '@rowCount', '@page', '@pageSize', function () {
+            LoadList(UserPage.currentPage);
+        });
+        $(".tableClass tr:gt(0)").mouseenter(function () {
+            $(this).addClass("mouseOver");
+        }).mouseleave(function () {
+            $(this).removeClass("mouseOver");
+        }).click(function () {
+            $(this).addClass("mouseClick").siblings().removeClass("mouseClick");
+        });
+    });
+</script>

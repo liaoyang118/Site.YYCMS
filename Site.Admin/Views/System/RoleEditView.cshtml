@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "RoleEditView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using SiteFrame.Model;
+@{
+    Role info = ViewData["info"] as Role;
+}
+
+@section head{
+
+    <script type="text/javascript">
+
+        $(function () {
+            $("#btnSubmit").button({
+                icons: {
+                    primary: "ui-icon-check "
+                }
+            });
+            $("#btnCancle").button({
+                icons: {
+                    primary: "ui-icon-closethick "
+                }
+            });
+
+        });
+
+
+        function btnSubmitClick() {
+            if ($("#r_name").val().length <= 0) {
+                parent.mDialogUI.message("角色名不能为空", "提示", 180, 50, 2);
+                return;
+            }
+            var data = {
+                r_name: $("#r_name").val(),
+                r_gid: $("#r_gid").val()
+            };
+            parent.mDialogUI.loading("处理中...");
+            $.ajax({
+                url: "/System/RoleEdit",
+                type: "post",
+                dataType: "json",
+                cache: false,
+                data: data,
+                success: function (json) {
+                    parent.mDialogUI.closeLoading();
+                    if (json.success) {
+                        parent.mDialogUI.successMessage(json.errors.text, "成功", 180, 70, 2);
+                        parent.LoadList(parent.querys.page);
+                        parent.mDialogUI.closeWindow('@ViewData["window"]');
+                    }
+                    else {
+                        parent.mDialogUI.errorMessage(json.errors.text, "失败", 180, 70, 2);
+                    }
+                },
+                error: function (xhr, xhrText, error) {
+                    parent.mDialogUI.closeLoading();
+                    parent.mDialogUI.errorMessage(error, "错误", 200, 70);
+                }
+            });
+        }
+    </script>
+}
+
+<div class="container-10">
+    <table class="editTable">
+        <tr>
+            <td><span class="red">*</span>角色名称：</td>
+            <td>
+                <input name="r_name" id="r_name" type="text" style="width: 140px;" value="@info.r_name" onkeydown="if(event.keyCode=='13'){$('#btnSubmit').click();}" /></td>
+        </tr>
+    </table>
+    <div style="float: right; margin-top: 10px;">
+        <input type="hidden" name="r_gid" id="r_gid" value="@info.r_gid" />
+        <button id="btnSubmit" onclick="btnSubmitClick();">确定</button>
+        <button id="btnCancle" onclick="parent.mDialogUI.closeWindow('@ViewData["window"]');">取消</button>
+    </div>
+</div>

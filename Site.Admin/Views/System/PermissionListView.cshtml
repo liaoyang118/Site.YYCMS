@@ -1,0 +1,155 @@
+﻿@{
+    ViewBag.Title = "PermissionListView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using SiteFrame.Model;
+@{
+    List<ModulePermission> list = ViewData["list"] as List<ModulePermission>;  
+}
+@section head{
+    <script type="text/javascript">
+
+        $(function () {
+            $("#btnSubmit").button({
+                icons: {
+                    primary: "ui-icon-check "
+                }
+            });
+            $("#btnCancle").button({
+                icons: {
+                    primary: "ui-icon-closethick "
+                }
+            });
+
+            $(".tableClass tr:gt(0)").mouseenter(function () {
+                $(this).addClass("mouseOver");
+            }).mouseleave(function () {
+                $(this).removeClass("mouseOver");
+            }).click(function () {
+                $(this).addClass("mouseClick").siblings().removeClass("mouseClick");
+            });
+
+        });
+
+        function btnSubmitClick() {
+            if ($("#p_name").val().length <= 0) {
+                parent.mDialogUI.message("权限名称不能为空", "提示", 180, 50, 2);
+                return false;
+            }
+            if ($("#p_path").val().length <= 0) {
+                parent.mDialogUI.message("权限路径不能为空", "提示", 180, 50, 2);
+                return false;
+            }
+
+            var data = {
+                p_name: $("#p_name").val(),
+                p_path: $("#p_path").val(),
+                m_gid: $("#m_gid").val(),
+            };
+            parent.mDialogUI.loading("处理中...");
+            $.ajax({
+                url: "/System/PermissionEdit",
+                type: "post",
+                dataType: "json",
+                cache: false,
+                data: data,
+                success: function (json) {
+                    parent.mDialogUI.closeLoading();
+                    if (json.success) {
+                        parent.mDialogUI.successMessage(json.errors.text, "成功", 180, 70, 2);
+                        location.reload();
+                    }
+                    else {
+                        parent.mDialogUI.errorMessage(json.errors.text, "失败", 180, 70, 2);
+                    }
+                },
+                error: function (xhr, xhrText, error) {
+                    parent.mDialogUI.closeLoading();
+                    parent.mDialogUI.errorMessage(error, "错误", 200, 70);
+                }
+            });
+
+        }
+
+        function PermissionDelete(p_gid) {
+            parent.mDialogUI.confirm("删除", "确定要删除该条数据吗？", function () {
+                parent.mDialogUI.loading("加载数据中");
+                $.ajax({
+                    url: "/system/PermissionDelete",
+                    type: "post",
+                    dataType: "json",
+                    data: { p_gid: p_gid },
+                    cache: false,
+                    success: function (json) {
+                        if (json.success) {
+                            parent.mDialogUI.closeLoading();
+                            parent.mDialogUI.successMessage(json.errors.text, "成功", 180, 50, 2);
+                            location.reload();
+                        }
+                        else {
+                            parent.mDialogUI.errorMessage(json.errors.text, "失败", 180, 50);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        parent.mDialogUI.closeLoading();
+                        parent.mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                    }
+                });
+            });
+        }
+    </script>
+}
+<div class="container-10">
+    <table class="tableClass">
+        <tr>
+            <th>序号</th>
+            <th>权限名称</th>
+            <th>权限路径</th>
+            <th style="text-align: center">创建人</th>
+            <th style="text-align: center">操作</th>
+        </tr>
+        @if (list.Count > 0)
+        {
+            int i = 1;
+            foreach (ModulePermission item in list)
+            {
+            <tr>
+                <td>@i</td>
+                <td>@item.p_name</td>
+                <td>@item.p_path</td>
+                <td style="text-align: center">@item.p_createUser</td>
+                <td style="text-align: center">
+                    <a href="javascript:void(0);" class="op" onclick="PermissionDelete('@item.p_gid')">删</a>
+                </td>
+
+            </tr>
+                i++;
+            }
+        }
+        else
+        { 
+            <tr>
+                <td style="text-align: center" colspan="5">暂无任何数据</td>
+            </tr> 
+        }
+    </table>
+    <div style="margin-top: 10px;">
+        <table class="editTable">
+            <tr>
+                <td><span class="red">*</span>权限名称：</td>
+                <td>
+                    <input name="p_name" id="p_name" type="text" style="width: 240px;" value="" /></td>
+            </tr>
+            <tr>
+                <td><span class="red">*</span>权限路径：</td>
+                <td>
+                    <input name="p_path" id="p_path" placeholder="Controller.Action(不区分大小写)" type="text" style="width: 240px;" value="" /></td>
+            </tr>
+        </table>
+    </div>
+    <div style="float: right; margin-top: 10px;">
+        <input type="hidden" name="m_gid" id="m_gid" value="@ViewData["m_gid"]" />
+        <button id="btnSubmit" onclick="btnSubmitClick();">新增</button>
+        <button id="btnCancle" onclick="parent.mDialogUI.closeWindow('@ViewData["window"]');">取消</button>
+    </div>
+</div>

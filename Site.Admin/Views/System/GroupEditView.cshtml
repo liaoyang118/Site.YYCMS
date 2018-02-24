@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "SystemGroupEditView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using SiteFrame.Model;
+@{
+    SystemGroup info = ViewData["info"] as SystemGroup;
+}
+@section head{
+    <script src="~/JS/jQuery.Form.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $("#btnSubmit").button({
+                icons: {
+                    primary: "ui-icon-check "
+                }
+            });
+            $("#btnCancle").button({
+                icons: {
+                    primary: "ui-icon-closethick "
+                }
+            });
+        });
+
+        function btnSubmitClick() {
+            if ($("#g_name").val().length <= 0) {
+                parent.mDialogUI.message("组名称不能为空", "提示", 180, 50, 2);
+                return false;
+            }
+            if ($("#g_picCover").val().length <= 0) {
+                if ($("#coverFile").val().length <= 0) {
+                    parent.mDialogUI.message("组图标不能为空", "提示", 180, 50, 2);
+                    return false;
+                }
+            }
+
+            //jquery.form 插件
+            @*$("#sysGroupForm").ajaxForm({
+                //定义返回JSON数据，还包括xml和script格式,必须指定表单的action和method
+                dataType: 'json',
+                success: function (json) {
+                    if (json.success) {
+                        parent.mDialogUI.successMessage(json.errors.text, "成功", 180, 70, 2);
+                        parent.LoadList(parent.querys.page);
+                        parent.mDialogUI.closeWindow('@ViewData["window"]');
+                    }
+                    else {
+                        parent.mDialogUI.errorMessage(json.errors.text, "失败", 180, 70, 2);
+                    }
+                },
+                error: function (xhr, xhrText, error) {
+                    parent.mDialogUI.errorMessage(error, "错误", 200, 70);
+                }
+            });*@
+
+            //自定义扩展
+            $.ajaxFile("sysGroupForm", "/System/SystemGroupEdit", "post", function (json) {
+                if (json.success) {
+                    parent.mDialogUI.successMessage(json.errors.text, "成功", 180, 70, 2);
+                    parent.LoadList(parent.querys.page);
+                    parent.mDialogUI.closeWindow('@ViewData["window"]');
+                }
+                else {
+                    parent.mDialogUI.errorMessage(json.errors.text, "失败", 180, 70, 2);
+                }
+            });
+        }
+    </script>
+}
+
+<div class="container-10">
+    <form id="sysGroupForm" action="/System/SystemGroupEdit" method="post">
+        <table class="editTable">
+            <tr>
+                <td><span class="red">*</span>组 名 称：</td>
+                <td>
+                    <input name="g_name" id="g_name" type="text" style="width: 140px;" value="@info.g_name" />
+                </td>
+                <td rowspan="4">
+                   @if(!string.IsNullOrEmpty(info.g_gid))
+                    {
+                        <img style="padding: 5px 30px;" width="60" height="60" src="@info.g_picCover" alt="@info.g_name" />
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td><span class="red">*</span>组 图 标：</td>
+                <td>
+                    <input name="g_picCover" id="g_picCover" type="text" style="width: 140px;" value="@info.g_picCover" />
+                </td>
+            </tr>
+            <tr>
+                <td><span class="red">*</span>设置图标：</td>
+                <td>
+                    <input name="coverFile" id="coverFile" type="file" style="width: 140px;" />
+                </td>
+            </tr>
+            <tr>
+                <td><span class="red">*</span>组 排 序：</td>
+                <td>
+                    <input name="g_sort" id="g_sort" type="text" style="width: 140px;" value="@info.g_sort" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <span class="red">图片格式：.png 60*60</span>
+                </td>
+            </tr>
+        </table>
+        <div style="float: right; margin-top: 20px;">
+            <input type="hidden" name="g_gid" id="g_gid" value="@info.g_gid" />
+            <button id="btnSubmit" onclick="btnSubmitClick(); return false;">确定</button>
+            <button id="btnCancle" onclick="parent.mDialogUI.closeWindow('@ViewData["window"]');">取消</button>
+        </div>
+    </form>
+</div>

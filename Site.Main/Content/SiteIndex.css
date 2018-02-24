@@ -1,0 +1,248 @@
+﻿
+
+
+
+
+.content_hot {
+    height: 300px;
+    width: 100%;
+    background-color: #d2d2d2;
+    margin-top: 10px;
+    border: 1px solid #eaeaea;
+}
+
+
+
+/*轮播*/
+.img_lb {
+    width: 2800px;
+    height: 300px;
+    display: flex;
+    position: relative;
+}
+/*轮播标题*/
+.img_title {
+    position: absolute;
+    bottom: 0px;
+    width: 700px;
+    line-height: 40px;
+    background-color: rgba(108, 112, 115, 0.78);
+}
+
+    .img_title span {
+        margin-left: 10px;
+        color: #fff;
+        font-size: 18px;
+    }
+
+
+.img_lb img {
+    width: 700px;
+    height: 300px;
+}
+
+.content_cate {
+    float: left;
+    width: 229px;
+    height: 300px;
+    margin-top: 10px;
+    border: 1px solid #eaeaea;
+    overflow: hidden;
+}
+
+.l3 {
+    margin-left: 3px;
+}
+
+.t5 {
+    margin-top: 5px;
+}
+
+
+
+.cate_block {
+    background-color: #b5b1b1;
+}
+
+    .cate_block span {
+        line-height: 32px;
+        margin-left: 5px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+.more {
+    float: right;
+    line-height: 36px;
+    text-decoration: none;
+    font-size: 14px;
+    color: blue;
+}
+
+    .more:hover {
+        color: #0094ff;
+        text-decoration: underline;
+    }
+
+/*左箭头*/
+.img_scroll_l {
+    position: absolute;
+    top: 110px;
+    width: 40px;
+    line-height: 259px;
+    text-align: center;
+}
+/*右箭头*/
+.img_scroll_r {
+    width: 40px;
+    margin-right: 0px;
+    position: relative;
+    top: -300px;
+    line-height: 259px;
+    text-align: center;
+}
+
+.img_scroll {
+    background-color: rgba(243, 255, 253, 0.38);
+    border-left: bisque;
+}
+
+    .img_scroll:hover {
+        background-color: rgba(243, 255, 253, 0.64);
+        cursor: pointer;
+    }
+
+.content_list_hot {
+    width: 190px;
+    height: 300px;
+    margin: 0px;
+    float: left;
+    overflow-y: hidden;
+}
+
+
+    .content_list_hot ul {
+        text-align: left;
+        margin: 0px;
+    }
+
+        .content_list_hot ul li {
+            line-height: 32px;
+        }
+
+        .content_list_hot ul a {
+            text-decoration: none;
+        }
+
+            .content_list_hot ul a:hover {
+                color: #0094ff;
+                text-decoration: underline;
+            }
+
+
+.content_block {
+    width: 300px;
+    height: 300px;
+    margin: 0px;
+    float: left;
+}
+/*右侧推荐热点*/
+.content_img_hot {
+    width: 300px;
+    height: 90px;
+    margin: 10px 0px;
+}
+
+    .content_img_hot:hover {
+        background-color: rgba(181, 177, 177, 0.61);
+    }
+
+
+    .content_img_hot img {
+        height: 90px;
+        width: 100px;
+        float: left;
+    }
+
+    .content_img_hot div {
+        width: 200px;
+        float: left;
+        overflow: hidden;
+    }
+
+        .content_img_hot div span {
+            padding-left: 10px;
+            font-size: 18px;
+            width: 190px;
+            overflow: hidden;
+            height: 24px;
+            display: block;
+        }
+
+        .content_img_hot div p {
+            height: 66px;
+            margin: 0px 2px;
+            text-indent: 2em;
+            font-size: 14px;
+            color: #a7a7a7;
+        }
+
+/*分类热点*/
+.content_cate_hot {
+    width: 229px;
+    height: 60px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.hot_title {
+    color: #cc0000;
+}
+
+    .content_cate_hot img {
+        height: 60px;
+        width: 60px;
+        float: left;
+    }
+
+    .content_cate_hot div {
+        width: 159px;
+        float: left;
+        overflow: hidden;
+    }
+
+        .content_cate_hot div span {
+            font-size: 18px;
+            overflow: hidden;
+            height: 60px;
+            display: block;
+            margin-left: 10px;
+        }
+
+.content_cate_hot_list {
+    width: 229px;
+    height: 204px;
+    margin-left: 0px;
+    float: left;
+    overflow-y: hidden;
+}
+
+    .content_cate_hot_list ul {
+        padding-left: 18px;
+        margin: 3px 9px;
+    }
+
+        .content_cate_hot_list ul li {
+            line-height: 32px;
+        }
+
+        .content_cate_hot_list ul a {
+            text-decoration: none;
+        }
+
+            .content_cate_hot_list ul a:hover {
+                color: #0094ff;
+                text-decoration: underline;
+            }
+
+

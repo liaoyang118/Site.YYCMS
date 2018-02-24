@@ -1,0 +1,40 @@
+﻿@using SiteFrame.Model;
+@{
+    List<Role> roleList = ViewData["roleList"] as List<Role>;
+}
+<div style="text-align: center;"><span class="bold">角色</span></div>
+<div style="overflow-y: visible;" >
+    <table class="tableClass">
+        @if (roleList.Count > 0)
+        {
+            foreach (Role item in roleList)
+            {
+            <tr ruid="@item.r_gid">
+                <td>@item.r_name</td>
+                <td style="display: none">@item.r_gid</td>
+            </tr>
+            }
+        }
+        else
+        { 
+            <tr>
+                <td style="text-align: center" colspan="2">暂无任何数据</td>
+            </tr> 
+        }
+    </table>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(".tableClass tr").mouseenter(function () {
+            $(this).addClass("mouseOver");
+        }).mouseleave(function () {
+            $(this).removeClass("mouseOver");
+        }).click(function () {
+            $(this).addClass("mouseClick").siblings().removeClass("mouseClick");
+            //加载模块列表
+            var ruid = $(this).attr("ruid");
+            LoadModuleList(ruid);
+        });
+    })
+
+</script>

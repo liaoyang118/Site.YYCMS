@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "GroupList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using SiteFrame.Model;
+@section head{
+    
+
+    <script type="text/javascript">
+        var querys = { page: 1, pagesize: 3 };
+        $(function () {
+
+            $("#btn_search").button({
+                icons: {
+                    primary: "ui-icon-search"
+                }
+            });
+            $("#btn_search_all").button({
+                icons: {
+                    primary: "ui-icon-search"
+                }
+            });
+            $("#btn_add").button({
+                icons: {
+                    primary: "ui-icon-plus"
+                }
+            });
+            LoadList(1);
+        });
+
+        function LoadList(page) {
+            mDialogUI.loading("加载数据中");
+            querys.page = page;
+            $.ajax({
+                url: "/System/GoupListView",
+                type: "get",
+                dataType: "html",
+                cache: false,
+                data: querys,
+                success: function (html) {
+                    mDialogUI.closeLoading();
+                    $("#div_list").html(html);
+                },
+                error: function (xhr, xhrText, error) {
+                    mDialogUI.closeLoading();
+                    mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                }
+            });
+        }
+
+        function EditSysGroup(type, g_gid) {
+            var title;
+            if (type) {
+                title = "新增模块组";
+            }
+            else {
+                title = "修改模块组";
+            }
+            mDialogUI.openWindow("/system/GroupEditView?g_gid=" + g_gid, title, 400, 250, true);
+        }
+
+        function groupDelete(g_gid) {
+            mDialogUI.confirm("删除", "确定要删除该条数据吗？", function () {
+                mDialogUI.loading("加载数据中");
+                $.ajax({
+                    url: "/system/SystemGroupDelete",
+                    type: "post",
+                    dataType: "json",
+                    data: { g_gid: g_gid },
+                    cache: false,
+                    success: function (json) {
+                        if (json.success) {
+                            mDialogUI.closeLoading();
+                            mDialogUI.successMessage(json.errors.text, "成功", 180, 50, 2);
+                            LoadList(querys.page);
+                        }
+                        else {
+                            mDialogUI.errorMessage(json.errors.text, "失败", 180, 50);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                    }
+                });
+            });
+        }
+
+        function btn_searchClick(type) {
+            if (type) {
+                $("#g_name").val("");
+            }
+            querys.g_name = $("#g_name").val();
+            LoadList(1);
+        }
+
+    </script>
+}
+
+<div class="container">
+    <div class="headDiv">
+        <div>
+            模块组名称：<input type="text" name="g_name" id="g_name" value="" onkeydown="if(event.keyCode=='13'){$('#btn_search').click();}" />
+
+            <button id="btn_search" onclick="btn_searchClick()">确定</button>
+            <button id="btn_search_all" onclick="btn_searchClick('all')">全部</button>
+            <div style="float: right;">
+                <button id="btn_add" onclick="EditSysGroup(true,'');">增加</button>
+            </div>
+        </div>
+    </div>
+    <div id="div_list">
+        正在加载中....
+    </div>
+
+</div>

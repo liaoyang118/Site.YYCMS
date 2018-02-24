@@ -1,0 +1,85 @@
+﻿@using Site.Service.SiteService.SiteServices;
+@using Site.Admin.Common;
+@using Site.Common;
+@{
+    Dictionary<string, List<Site_CMSItem>> dic = ViewBag.dataList;
+}
+@if (dic.Count > 0)
+{
+    <div class="secondary">
+        <div id="sidebar-b" class="sidebar">
+            <aside class="widget box-hover" style="width: 284px;">
+                <header class="entry-header">
+                    <h4 class="widget-title clearfix"><span>阅读排行</span></h4>
+                </header>
+                @{
+                    for (int i = 0; i < dic["10"].GetLength<Site_CMSItem>(1); i++)
+                    {
+                        <!--图 244*117-->
+                        <article class="entry-box clearfix">
+                            <img class="hover-effect hover-effect responsive-img" src="@dic["10"][i].i_c_img_src" alt="" style="opacity:1;">
+                            <div class="entry-content">
+                                <h3 class="entry-title"><a href="@SiteUntility.GetRelationDetailUrl(dic["10"][i].i_c_gid)" target="_blank" title="@dic["10"][i].i_title">@dic["10"][i].i_title</a></h3>
+                                <p>@dic["10"][i].i_intro</p>
+                            </div>
+                        </article>
+                    }
+                }
+                
+                <!--文-->
+                <ul class="older-posts">
+                    @{
+                        for (int i = 1; i < dic["10"].GetLength<Site_CMSItem>(7); i++)
+                        {
+                            <li><a href="@SiteUntility.GetRelationDetailUrl(dic["10"][i].i_c_gid)" target="_blank" title="@dic["10"][i].i_title">@dic["10"][i].i_title</a></li>
+                        }
+                    }
+                </ul>
+            </aside>
+            
+            <aside class="widget box-hover" style="width: 284px;">
+                <header class="entry-header">
+                    <h4 class="widget-title clearfix"><span>热门推荐</span></h4>
+                </header>
+                @{
+                    for (int i = 0; i < dic["11"].GetLength<Site_CMSItem>(1); i++)
+                    {
+                        <!--图 244*117-->
+                        <article class="entry-box clearfix">
+                            <img class="hover-effect hover-effect responsive-img" src="@dic["11"][i].i_c_img_src" alt="" style="opacity:1;">
+                            <div class="entry-content">
+                                <h3 class="entry-title"><a href="@SiteUntility.GetRelationDetailUrl(dic["11"][i].i_c_gid)" target="_blank" title="@dic["11"][i].i_title">@dic["11"][i].i_title</a></h3>
+                                <p>@dic["11"][i].i_intro</p>
+                            </div>
+                        </article>
+                    }
+                }
+
+                <!--文-->
+                <ul class="older-posts">
+                    @{
+                        for (int i = 1; i < dic["11"].GetLength<Site_CMSItem>(7); i++)
+                        {
+                            <li><a href="@SiteUntility.GetRelationDetailUrl(dic["11"][i].i_c_gid)" target="_blank" title="@dic["11"][i].i_title">@dic["11"][i].i_title</a></li>
+                        }
+                    }
+                </ul>
+            </aside>
+
+
+            <!--列表页右侧广告-->
+            <div id="undefined-sticky-wrapper" class="sticky-wrapper" style="height: 281px;">
+                <aside class="widget box-hover b-last-widget" style="width: 284px;">
+                    <div class="adv-125-125 clearfix">
+                        <a href="#"><img class="hover-effect responsive-img" alt="" src="~/Content/Bootstrap/placeholders/125x125/sample-ad-1.jpg" style="opacity: 1;"></a>
+                        <a href="#"><img class="hover-effect responsive-img" alt="" src="~/Content/Bootstrap/placeholders/125x125/sample-ad-1.jpg" style="opacity: 1;"></a>
+                        <a href="#"><img class="hover-effect responsive-img" alt="" src="~/Content/Bootstrap/placeholders/125x125/sample-ad-1.jpg"></a>
+                        <a href="#"><img class="hover-effect responsive-img" alt="" src="~/Content/Bootstrap/placeholders/125x125/sample-ad-1.jpg" style="opacity: 1;"></a>
+                    </div>
+                </aside>
+            </div><!--end:widget-->
+            <div class="clear"></div>
+        </div><!--end:sidebar-->
+        <div class="clear"></div>
+    </div>
+}

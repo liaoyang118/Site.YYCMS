@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "RoleList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using SiteFrame.Model;
+
+@section head{
+    <script src="/Dialog/jquery.artDialog.source.js"></script>
+    <script src="/Dialog/plugins/iframeTools.source.js"></script>
+    <link href="/Dialog/skins/blue.css" rel="stylesheet" />
+    <script src="/JS/mDialogV2.js"></script>
+
+<script type="text/javascript">
+        var querys = { page: 1, pagesize: 3 };
+        $(function () {
+
+            $("#btn_search").button({
+                icons: {
+                    primary: "ui-icon-search"
+                }
+            });
+            $("#btn_search_all").button({
+                icons: {
+                    primary: "ui-icon-search"
+                }
+            });
+            $("#btn_add").button({
+                icons: {
+                    primary: "ui-icon-plus"
+                }
+            });
+            LoadList(1);
+        });
+
+        function LoadList(page) {
+            mDialogUI.loading("加载数据中");
+            querys.page = page;
+            $.ajax({
+                url: "/System/RoleListView",
+                type: "get",
+                dataType: "html",
+                cache: false,
+                data: querys,
+                success: function (html) {
+                    mDialogUI.closeLoading();
+                    $("#div_list").html(html);
+                },
+                error: function (xhr, xhrText, error) {
+                    mDialogUI.closeLoading();
+                    mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                }
+            });
+        }
+
+        function EditRole(type, r_gid) {
+            var title;
+            if (type) {
+                title = "新增角色";
+            }
+            else {
+                title = "修改角色";
+            }
+            mDialogUI.openWindow("/system/RoleEditView?r_gid=" + r_gid, title, 300, 100, true);
+        }
+
+        function RoleDelete(r_gid) {
+            mDialogUI.confirm("删除", "确定要删除该条数据吗？", function () {
+                mDialogUI.loading("加载数据中");
+                $.ajax({
+                    url: "/system/RoleDelete",
+                    type: "post",
+                    dataType: "json",
+                    data: { r_gid: r_gid },
+                    cache: false,
+                    success: function (json) {
+                        if (json.success) {
+                            mDialogUI.closeLoading();
+                            mDialogUI.successMessage(json.errors.text, "成功", 180, 50, 2);
+                            LoadList(querys.page);
+                        }
+                        else {
+                            mDialogUI.errorMessage(json.errors.text, "失败", 180, 50);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        mDialogUI.closeLoading();
+                        mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                    }
+                });
+            });
+        }
+
+        function btn_searchClick(type) {
+            if (type) {
+                $("#r_name").val("");
+            }
+
+            querys.r_name = $("#r_name").val();
+
+            LoadList(1);
+        }
+    </script>
+
+}
+
+<div class="container">
+    <div class="headDiv">
+        <div>
+            角色名称：<input type="text" name="r_name" id="r_name" value="" onkeydown="if(event.keyCode=='13'){$('#btn_search').click();}" />
+
+            <button id="btn_search" onclick="btn_searchClick()">确定</button>
+            <button id="btn_search_all" onclick="btn_searchClick('all')">全部</button>
+            <div style="float: right;">
+                <button id="btn_add" onclick="EditRole(true,'');">增加</button>
+            </div>
+        </div>
+
+    </div>
+    <div id="div_list">
+        正在加载中....
+    </div>
+
+</div>

@@ -1,0 +1,39 @@
+﻿.detial_ad_block {
+    width: 700px;
+    height: 80px;
+    background-color: #808080;
+}
+
+.detial_nav {
+    width: 700px;
+    height: 30px;
+    line-height: 30px;
+}
+
+    .detial_nav a:hover {
+        color: #0094ff;
+        text-decoration: underline;
+    }
+
+
+.content_title {
+    text-align: center;
+    font-size: 24px;
+}
+
+.content_auth {
+    text-align: center;
+    height: 24px;
+    line-height: 20px;
+}
+
+    .content_auth span {
+        font-size: 12px;
+        margin: 0px 15px;
+        color: #87898a;
+    }
+
+.content_block p {
+    margin: 2px;
+    font-family: "Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif";
+}

@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "SiteCMSPageEditTemp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    string content = ViewBag.content;
+    string p_tempPath = ViewBag.p_tempPath;
+}
+@section head{
+    <script type="text/javascript">
+        $(function () {
+            $("#btnSubmit").button({
+                icons: {
+                    primary: "ui-icon-check "
+                }
+            });
+            $("#btnCancle").button({
+                icons: {
+                    primary: "ui-icon-closethick "
+                }
+            });
+        });
+        function btnSubmitClick() {
+            var content = $("#tempContent").val();
+            if (content.length <= 0) {
+                parent.mDialogUI.message("模板内容不能为空", "提示", 180, 50, 2);
+                return false;
+            }
+
+            $.ajax({
+                url: "/Site/SiteCMSPageTempEdit",
+                type: "post",
+                dataType: "json",
+                cache: false,
+                data: {
+                    content: content,
+                    p_tempPath:'@p_tempPath'
+                },
+                success: function (json) {
+                    if (json.success) {
+                        parent.mDialogUI.successMessage(json.errors.text, "成功", 180, 70, 2);
+                        parent.mDialogUI.closeWindow('@ViewData["window"]');
+                    }
+                    else {
+                        parent.mDialogUI.errorMessage(json.errors.text, "失败", 180, 70, 2);
+                    }
+                },
+                error: function (xhr, xhrText, error) {
+                    parent.mDialogUI.errorMessage(error, "错误", 200, 70);
+                }
+            });
+
+        }
+
+
+    </script>
+}
+<div class="container-10">
+    <textarea id="tempContent" rows="40" cols="137">@content</textarea>
+    <div style="float: right; margin-top: 10px;">
+        <button id="btnSubmit" onclick="btnSubmitClick();">确定</button>
+        <button id="btnCancle" onclick="parent.mDialogUI.closeWindow('@ViewData["window"]');">取消</button>
+    </div>
+</div>

@@ -1,0 +1,268 @@
+﻿* {
+    margin: 0px;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.bk {
+    background: url(/Img/bk001.jpg) no-repeat;
+    z-index: -10;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+}
+
+.head-r {
+    border: 1px solid #808080;
+    border-radius: 5px;
+    height: 20px;
+    width: 300px;
+    float: right;
+    margin-right: 10px;
+    background: rgba(253, 252, 130, 0.82);
+    text-align: center;
+    font-family: 黑体;
+}
+
+.logo {
+    clear: both;
+    border: none;
+    width: 150px;
+    height: 80px;
+    margin-left: 10px;
+    background: url(/Img/logo.png);
+}
+
+.main-menu {
+    position: absolute;
+    left: 170px;
+    top: 22px;
+    height: 80px;
+    min-width: 300px;
+}
+
+.div_main_menu {
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin: 0px 3px;
+    text-align: center;
+    background: url(/Img/system_border.png);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+    .div_main_menu:hover {
+        width: 80px;
+        height: 80px;
+        float: left;
+        margin: 0px 3px;
+        text-align: center;
+        cursor: pointer;
+        background: url(/Img/system_hove.png);
+    }
+
+    .div_main_menu .title {
+        background: url(/Img/system_title.png);
+        width: 80px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 16px;
+        display: block;
+        position: absolute;
+        top: 60px;
+        z-index: 234;
+        color: #fff;
+    }
+
+.leftMenu {
+    border: 1px solid #807900;
+    background: rgba(87, 192, 255, 0.41);
+    z-index: -9;
+    width: 130px;
+    top: 120px;
+    position: absolute;
+    left: 10px;
+    padding: 5px 10px;
+    display: none;
+}
+
+.leftMenu-title {
+    border-bottom: 1px solid #808080;
+    font-size: 18px;
+}
+
+    .leftMenu-title a {
+        width: 20px;
+        height: 20px;
+        background: url(/Img/close.png);
+        float: right;
+    }
+
+        .leftMenu-title a:hover {
+            width: 20px;
+            height: 20px;
+            background: url(/Img/close.png) -20px 0px;
+            float: right;
+        }
+
+.menuList {
+    padding: 5px 5px;
+    line-height: 25px;
+    overflow: auto;
+}
+
+    .menuList li {
+        list-style: none;
+    }
+
+    .menuList .item span:hover {
+        cursor: pointer;
+        color: #0f13f2;
+        text-decoration: underline;
+    }
+
+    .menuList .item {
+        background: url(/Img/menu2.png) no-repeat;
+        position: relative;
+        margin-left: 15px;
+        font-size: 13px;
+    }
+
+        .menuList .item span {
+            margin-left: 12px;
+        }
+
+    .menuList .mainItem {
+        background: url(/Img/menu1.png) no-repeat;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+        .menuList .mainItem span {
+            margin-left: 12px;
+        }
+
+
+.main {
+    position: absolute;
+    border: 3px solid rgba(17, 131, 181, 1);
+    top: 120px;
+    left: 170px;
+    right: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(76, 228, 240, 1);
+    z-index: -8;
+    min-width: 600px;
+}
+
+.tab {
+    width: 99%;
+    height: 30px;
+    margin: 3px auto;
+    border-radius: 5px;
+}
+
+    .tab .tablist {
+        list-style: none;
+        width: 80%;
+        position: relative;
+        left: 10px;
+        top: 6px;
+        overflow: hidden;
+        font-family: "微软雅黑","黑体",serif;
+    }
+
+        .tab .tablist .tabna {
+            float: left;
+            min-width: 80px;
+            height: 25px;
+            margin-left: 3px;
+            border: 1px solid #4b4848;
+            text-align: center;
+            border-bottom: none;
+            cursor: pointer;
+            background: #B5C8CD;
+            border-radius: 3px;
+            line-height: 25px;
+            overflow: hidden;
+        }
+
+            .tab .tablist .tabna:hover {
+                float: left;
+                min-width: 80px;
+                height: 25px;
+                margin-left: 3px;
+                border: 1px solid #4b4848;
+                text-align: center;
+                border-bottom: none;
+                cursor: pointer;
+                background: #EBF6FA;
+                border-radius: 3px;
+                line-height: 25px;
+                overflow: hidden;
+            }
+
+.tabna .tab_close {
+    clear: both;
+    width: 16px;
+    height: 16px;
+    float: right;
+    background: url(/Img/tabclose.png) -16px 0px;
+    display: block;
+    position: relative;
+    margin-right: 3px;
+    margin-top: 3px;
+}
+
+
+.tab_cur {
+    float: left;
+    min-width: 80px;
+    height: 25px;
+    margin-left: 3px;
+    border: 1px solid #4b4848;
+    text-align: center;
+    border-bottom: none;
+    cursor: pointer;
+    border-radius: 3px;
+    line-height: 25px;
+    overflow: hidden;
+    background: url(/Img/tabcurrent.png) repeat-x;
+}
+
+    .tab_cur .tab_close {
+        clear: both;
+        width: 16px;
+        height: 16px;
+        float: right;
+        background: url(/Img/tabclose.png);
+        display: block;
+        position: relative;
+        margin-right: 3px;
+        margin-top: 3px;
+    }
+
+        .tab_cur .tab_close:hover {
+            clear: both;
+            width: 16px;
+            height: 16px;
+            float: right;
+            background: url(/Img/tabclose.png) 0px -16px;
+            display: block;
+            position: relative;
+            margin-right: 3px;
+            margin-top: 3px;
+        }
+
+.con_main {
+    position: relative;
+    margin: -3px auto;
+    background: #fff;
+}

@@ -1,0 +1,270 @@
+﻿@{
+    ViewBag.Title = "SiteContentList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Site.Service.SiteService;
+
+@section head{
+    <script type="text/javascript">
+        var cateQuerys = { page: 1, pagesize: 100 };
+        var subcateQuerys = { page: 1, pagesize: 100 };
+        var querys = { page: 1, pagesize: 10 };
+        $(function () {
+
+            $("#btn_search").button({
+                icons: {
+                    primary: "ui-icon-search"
+                }
+            });
+            $("#btn_search_all").button({
+                icons: {
+                    primary: "ui-icon-search"
+                }
+            });
+            $("#btn_add").button({
+                icons: {
+                    primary: "ui-icon-plus"
+                }
+            });
+
+            $("#btn_btachRecomment").button({
+                icons: {
+                    primary: "ui-icon-flag"
+                }
+            });
+
+            $("#btn_btachCheck").button({
+                icons: {
+                    primary: "ui-icon-check"
+                }
+            });
+
+            $("#btn_add").hide();
+
+            LoadCateList(1);
+        });
+
+        function LoadCateList(page) {
+            mDialogUI.loading("加载数据中");
+            cateQuerys.page = page;
+            cateQuerys.isSub = 0;
+            $.ajax({
+                url: "/site/SiteCatePartialListView",
+                type: "get",
+                dataType: "html",
+                cache: false,
+                data: cateQuerys,
+                success: function (html) {
+                    mDialogUI.closeLoading();
+                    $("#div_cate_list").html(html);
+                },
+                error: function (xhr, xhrText, error) {
+                    mDialogUI.closeLoading();
+                    mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                }
+            });
+        }
+
+        function LoadSubCateList(page) {
+            mDialogUI.loading("加载数据中");
+            subcateQuerys.page = page;
+            subcateQuerys.isSub = 1;
+            subcateQuerys.c_path = $("#c_path").val();
+            $.ajax({
+                url: "/site/SiteCatePartialListView",
+                type: "get",
+                dataType: "html",
+                cache: false,
+                data: subcateQuerys,
+                success: function (html) {
+                    mDialogUI.closeLoading();
+                    $("#div_cate_sub_list").html(html);
+                    $("#div_cate_sub_list").show();
+                    //清空列表内容
+                    $("#div_list").html("");
+                },
+                error: function (xhr, xhrText, error) {
+                    mDialogUI.closeLoading();
+                    mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                }
+            });
+        }
+
+
+        function SearchListByCateId(cateId, page) {
+            $("#div_list").show();
+            $("#btn_add").show();
+            mDialogUI.loading("加载数据中");
+            querys.page = page;
+            querys.cateId = cateId;
+            $.ajax({
+                url: "/Site/SiteContentListView",
+                type: "get",
+                dataType: "html",
+                cache: false,
+                data: querys,
+                success: function (html) {
+                    mDialogUI.closeLoading();
+                    $("#div_list").html(html);
+                },
+                error: function (xhr, xhrText, error) {
+                    mDialogUI.closeLoading();
+                    mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                }
+            });
+        }
+
+        function btnEdit(c_gid) {
+            var title;
+            if (c_gid) {
+                title = "新增内容";
+            }
+            else {
+                title = "修改内容";
+            }
+            var cate_gid = $("#cate_gid").val();
+            mDialogUI.openWindow("/Site/ContentEditView?cate_gid=" + cate_gid + "&c_gid=" + c_gid, title, 850, currentWHeight - 50, true);
+        }
+
+        function btnDelete(c_id) {
+            mDialogUI.confirm("删除", "确定要删除该条数据吗？", function () {
+                mDialogUI.loading("加载数据中");
+                $.ajax({
+                    url: "/Site/SiteContentDelete",
+                    type: "post",
+                    dataType: "json",
+                    data: { c_id: c_id },
+                    cache: false,
+                    success: function (json) {
+                        if (json.success) {
+                            mDialogUI.closeLoading();
+                            mDialogUI.successMessage(json.errors.text, "成功", 180, 50, 2);
+                            SearchListByCateId(querys.cateId, querys.page);
+                        }
+                        else {
+                            mDialogUI.errorMessage(json.errors.text, "失败", 180, 50);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                    }
+                });
+            });
+        }
+
+        function btn_searchClick(type) {
+            if (type) {
+                $("#c_name").val("");
+            }
+            querys.c_name = $("#c_name").val();
+
+            //SearchListByCateId(querys.cateId, 1);
+        }
+
+        function btnCheckContent(c_gid) {
+            var btns = ["通过审核", "待审核", "取消"];
+            mDialogUI.checkInfo("审核", "请选择下列的审核项", btns, function (result) {
+                var statue = 1;
+                var data = {};
+                if (result == "通过审核") {
+                    statue = 2;
+                }
+                else if (result == "待审核") {
+                    statue = 1;
+                }
+                data.c_gid = c_gid;
+                data.status = statue;
+
+                mDialogUI.loading("加载数据中");
+                $.ajax({
+                    url: "/Site/SiteContentCheck",
+                    type: "post",
+                    dataType: "json",
+                    data: data,
+                    cache: false,
+                    success: function (json) {
+                        mDialogUI.closeLoading();
+                        if (json.success) {
+                            mDialogUI.successMessage(json.errors.text, "成功", 240, 50, 2);
+                            SearchListByCateId(querys.cateId, querys.page);
+                        }
+                        else {
+                            mDialogUI.errorMessage(json.errors.text, "失败", 240, 50);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        mDialogUI.closeLoading();
+                        mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                    }
+                });
+
+            });
+        }
+
+        function btnRecommend(c_gid) {
+            var title = "推荐信息";
+            mDialogUI.openWindow("/Site/SiteContentRecommendList?c_gid=" + c_gid, title, 400, currentWHeight - 100, true);
+        }
+
+        function btachRecomment() {
+            var chked = GetCheck();
+            if (chked.length == 0) {
+                mDialogUI.message("未选择信息", "提示", 180, 50, 2);
+                return;
+            }
+            var c_gids = "";
+            $(chked).each(function (index, elem) {
+                c_gids += $(elem).val() + ",";
+            });
+            btnRecommend(c_gids);
+
+        }
+
+        function batchCheck() {
+            var chked = GetCheck();
+            if (chked.length == 0) {
+                mDialogUI.message("未选择信息", "提示", 180, 50, 2);
+                return;
+            }
+            var c_gids = "";
+            $(chked).each(function (index, elem) {
+                c_gids += $(elem).val() + ",";
+            });
+            btnCheckContent(c_gids);
+        }
+
+        function GetCheck() {
+            return $("input[name^='chk_']:checked");
+        }
+
+
+    </script>
+}
+
+<div class="container">
+    <div class="headDiv">
+        <div class="hint_cate" id="div_cate_list" style="width:99%;">
+            分类加载中...
+        </div>
+        <div class="hint_cate" id="div_cate_sub_list" style="width:99%;display:none;">
+            子分类加载中...
+        </div>
+        <div>
+            分类名称：<input type="text" name="c_name" id="c_name" value="" onkeydown="if(event.keyCode=='13'){$('#btn_search').click();}" />
+
+            <button id="btn_search" onclick="btn_searchClick()">确定</button>
+            <button id="btn_search_all" onclick="btn_searchClick('all')">全部</button>
+            <div style="float: right;">
+                <input type="hidden" id="cate_gid" name="cate_gid" value="" />
+                <input type="hidden" id="c_path" name="c_path" value="" />
+                <button id="btn_btachRecomment" onclick="btachRecomment();">批量推荐</button>
+                <button id="btn_btachCheck" onclick="batchCheck();">批量审核</button>
+                <button id="btn_add" onclick="btnEdit('');">增加</button>
+            </div>
+        </div>
+    </div>
+    <div id="div_list" style="display:none;">
+        正在加载中....
+    </div>
+
+</div>

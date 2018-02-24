@@ -1,0 +1,74 @@
+﻿@{
+    Site_Content info = ViewBag.info;
+    Site_Cates c_info = ViewBag.c_info;
+}
+@{
+    ViewBag.Title = info.c_title + "-宇扬网";
+    ViewBag.keywords = info.c_keywords;
+    ViewBag.description = info.c_intro;
+
+
+    ViewBag.CateName = c_info.c_name;
+    ViewBag.cateId = c_info.c_id;
+
+    Layout = "~/Views/Shared/_Layout_Detail_T1.cshtml";
+}
+@using Site.Service.SiteService.SiteServices;
+@using Site.Common;
+
+<div id="main-content">
+    <!--左侧内容-->
+    <div class="primary">
+        <article class="entry-item">
+            <header style="text-align:center;">
+                <h1 class="entry-title">@info.c_title</h1>
+                <span class="entry-author">作者：&nbsp;</span><a class="entry-author" href="javascript:void(0);">@info.c_createUserNickName</a>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <span class="entry-date" style="color:#808080;">@info.c_createTime.ToStringFullDate()</span>
+                <hr style="border: 1px dashed #808080;" />
+            </header>
+            @Html.Raw(info.c_content)
+            <div class="clear"></div>
+        </article>
+        <!--评论-->
+        <section id="comments" class="clearfix">
+            <!--高速版-->
+            <div id="SOHUCS" sid="@info.c_gid"></div>
+            <script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js"></script>
+            <script type="text/javascript">
+                window.changyan.api.config({
+                    appid: 'cyt8rTfDN',
+                    conf: 'prod_6affc491e37a8fba4859bf2ae926475a'
+                });
+            </script>
+        </section>
+    </div>
+
+    <!--右侧推荐-->
+    @{
+        Html.RenderPartial("~/Views/Common/List_Right.cshtml");
+    }
+
+    <div class="clear"></div>
+
+    <!--详情页底部广告-->
+    <div id="footer-aside" class="box-hover" style="padding: 20px 0;">
+        <aside class="widget">
+            <div class="adv-footer">
+                <a class="banner-bottom-left" href="#"><img class="hover-effect responsive-img" src="~/Content/Bootstrap/placeholders/728x90-banner.jpg" alt=""></a>
+                <a class="banner-bottom-right" href="#"><img class="hover-effect responsive-img ml-10" src="~/Content/Bootstrap/placeholders/220x90/sample-ad-3.jpg" alt=""></a>
+            </div><!--end:adv-footer-->
+            <div class="clear"></div>
+        </aside>
+    </div>
+
+    <!--底部-->
+    @{
+        Html.RenderPartial("~/Views/Common/Main_Foot.cshtml");
+    }
+
+</div>
+
+

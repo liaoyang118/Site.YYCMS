@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "宇扬网_访问出错了";
+    Layout = "~/Views/Shared/_Layout_T1.cshtml";
+}
+
+<section class="error-404 clearfix">
+    <div class="left-col">
+        <p>500</p>
+    </div><!--left-col-->
+    <div class="right-col">
+        <h1>500,访问出错了，...</h1>
+        <p>非常抱歉，您要访问的页面出错了，您可以点击以下链接返回上一页或是返回首页</p>
+        <ul class="arrow-list">
+            <li><a href="javascript:window.history.back();">返回上一页</a></li>
+            <li><a href="/">去首页</a></li>
+        </ul>
+    </div>
+</section>
+
+<!--500页底部广告-->
+<div id="footer-aside" class="box-hover">
+    <aside class="widget">
+        <div class="adv-footer">
+            <a class="banner-bottom-left" href="#"><img class="hover-effect responsive-img" src="~/Content/Bootstrap/placeholders/728x90-banner.jpg" alt=""></a>
+            <a class="banner-bottom-right" href="#"><img class="hover-effect responsive-img ml-10" src="~/Content/Bootstrap/placeholders/220x90/sample-ad-3.jpg" alt=""></a>
+        </div><!--end:adv-footer-->
+        <div class="clear"></div>
+    </aside>
+</div>
+
+<!--底部-->
+@{
+    Html.RenderPartial("~/Views/Common/Main_Foot.cshtml");
+}

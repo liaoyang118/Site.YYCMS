@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9eb21ccc-64fb-4044-8ba0-39ad28bad0ff" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8896/YuYangService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="YuYangService.xsd" MetadataType="Schema" ID="5c3c769d-e77e-464e-b34f-f9cc186b46b7" SourceId="1" SourceUrl="http://localhost:8896/YuYangService.svc?xsd=xsd0" />
+    <MetadataFile FileName="YuYangService.disco" MetadataType="Disco" ID="63e1c8da-722a-47ec-8b96-5e818b59e71e" SourceId="1" SourceUrl="http://localhost:8896/YuYangService.svc?disco" />
+    <MetadataFile FileName="YuYangService1.xsd" MetadataType="Schema" ID="2a2bf1dd-5a0b-4ded-bdd6-6ffc649b82a9" SourceId="1" SourceUrl="http://localhost:8896/YuYangService.svc?xsd=xsd1" />
+    <MetadataFile FileName="YuYangService2.xsd" MetadataType="Schema" ID="8a75d0a1-4c88-4f2c-8756-74e34a69c5d2" SourceId="1" SourceUrl="http://localhost:8896/YuYangService.svc?xsd=xsd2" />
+    <MetadataFile FileName="YuYangService.wsdl" MetadataType="Wsdl" ID="9cfcaa42-dc30-4f9b-97ae-1c960b31ff66" SourceId="1" SourceUrl="http://localhost:8896/YuYangService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

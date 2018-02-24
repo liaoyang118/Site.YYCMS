@@ -1,0 +1,315 @@
+﻿@{
+    ViewBag.Title = "SiteCMSBlockList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Site.Service.SiteService;
+@{
+    string p_gid = ViewBag.p_gid;
+    int siteName = ViewBag.siteName;
+    string sitePath = ViewBag.sitePath;
+}
+
+@section head{
+    <script type="text/javascript">
+        var querys = { page: 1, pagesize: 15 };
+        var querysItem = { page: 1, pagesize: 15 };
+        $(function () {
+
+            $("#btn_search").button({
+                icons: {
+                    primary: "ui-icon-search"
+                }
+            });
+            $("#btn_search_all").button({
+                icons: {
+                    primary: "ui-icon-search"
+                }
+            });
+            $("#btn_add").button({
+                icons: {
+                    primary: "ui-icon-plus"
+                }
+            });
+            $(document).on("click", "#div_list tr[b_gid]",function () {
+                var b_gid = $(this).attr("b_gid");
+                querysItem.b_gid = b_gid;
+                LoadListItem(1);
+            });
+
+            LoadList(1);
+            LoadListItem(1);
+        });
+
+        //加载信息项
+        function LoadList(page) {
+            mDialogUI.loading("加载数据中");
+            querys.page = page;
+            querys.p_gid = '@p_gid';
+            querys.siteName = '@siteName';
+            $.ajax({
+                url: "/Site/SiteCMSBlockListView",
+                type: "get",
+                dataType: "html",
+                cache: false,
+                data: querys,
+                success: function (html) {
+                    mDialogUI.closeLoading();
+                    $("#div_list").html(html);
+                },
+                error: function (xhr, xhrText, error) {
+                    mDialogUI.closeLoading();
+                    mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                }
+            });
+        }
+
+        function LoadListItem(page) {
+            mDialogUI.loading("加载数据中");
+            querysItem.page = page;
+            querysItem.p_gid = '@p_gid';
+            $.ajax({
+                url: "/Site/SiteCMSItemListView",
+                type: "get",
+                dataType: "html",
+                cache: false,
+                data: querysItem,
+                success: function (html) {
+                    mDialogUI.closeLoading();
+                    $("#div_list_item").html(html);
+                },
+                error: function (xhr, xhrText, error) {
+                    mDialogUI.closeLoading();
+                    mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                }
+            });
+        }
+
+        function btnEdit(type, p_gid, b_gid, siteName) {
+            var title;
+            if (type) {
+                title = "新增区块";
+            }
+            else {
+                title = "修改区块";
+            }
+            mDialogUI.openWindow("/Site/SiteCMSBlockEditView?p_gid=" + p_gid + "&b_gid=" + b_gid + "&siteName=" + siteName, title, 400, 250, true);
+        }
+
+        function btnEditItem(type, i_gid, b_gid,p_gid) {
+            var title;
+            if (type) {
+                title = "新增信息项";
+            }
+            else {
+                title = "修改信息项";
+            }
+            mDialogUI.openWindow("/Site/SiteCMSItemEditView?i_gid=" + i_gid + "&p_gid=" + p_gid+"&b_gid=" + b_gid, title, 400, 280, true);
+        }
+
+        function btnDelete(b_gid) {
+            mDialogUI.confirm("删除", "确定要删除该条数据吗？", function () {
+                mDialogUI.loading("加载数据中");
+                $.ajax({
+                    url: "/Site/SiteCMSBlockDelete",
+                    type: "post",
+                    dataType: "json",
+                    data: { b_gid: b_gid },
+                    cache: false,
+                    success: function (json) {
+                        mDialogUI.closeLoading();
+                        if (json.success) {
+                            mDialogUI.successMessage(json.errors.text, "成功", 180, 50, 2);
+                            LoadList(querys.page);
+                        }
+                        else {
+                            mDialogUI.errorMessage(json.errors.text, "失败", 180, 50);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        mDialogUI.closeLoading();
+                        mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                    }
+                });
+            });
+        }
+
+        function btnDeleteItem(i_gid) {
+            mDialogUI.confirm("删除", "确定要删除该条数据吗？", function () {
+                mDialogUI.loading("加载数据中");
+                $.ajax({
+                    url: "/Site/SiteCMSItemDelete",
+                    type: "post",
+                    dataType: "json",
+                    data: { i_gid: i_gid },
+                    cache: false,
+                    success: function (json) {
+                        mDialogUI.closeLoading();
+                        if (json.success) {
+                            mDialogUI.successMessage(json.errors.text, "成功", 180, 50, 2);
+                            LoadListItem(querysItem.page);
+                        }
+                        else {
+                            mDialogUI.errorMessage(json.errors.text, "失败", 180, 50);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        mDialogUI.closeLoading();
+                        mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                    }
+                });
+            });
+        }
+
+        function btn_searchClick(type) {
+            if (type) {
+                $("#b_name").val("");
+            }
+            querys.b_name = $("#b_name").val();
+            LoadList(1);
+        }
+
+        function btnPublish() {
+            mDialogUI.confirm("发布页面", "确定要发布该页面吗？", function () {
+                mDialogUI.loading("加载数据中");
+                $.ajax({
+                    url: "/Generated/PublishPage",
+                    type: "post",
+                    dataType: "json",
+                    data: { p_gid: '@p_gid', p_path: '@sitePath', siteName:'@siteName'},
+                    cache: false,
+                    success: function (json) {
+                        mDialogUI.closeLoading();
+                        if (json.success) {
+                            mDialogUI.successMessage(json.errors.text, "成功", 180, 50, 2);
+                            LoadList(querys.page);
+                        }
+                        else {
+                            mDialogUI.errorMessage(json.errors.text, "失败", 180, 50);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        mDialogUI.closeLoading();
+                        mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                    }
+                });
+            });
+        }
+
+        //审核项目
+        function btnCheckItem(i_gid,b_gid) {
+            var btns = ["通过审核", "待审核", "取消"];
+            mDialogUI.checkInfo("审核", "请选择下列的审核项", btns, function (result) {
+                var statue = 1;
+                var data = {};
+                if(result=="通过审核")
+                {
+                    statue = 2;
+                }
+                else if (result == "待审核")
+                {
+                    statue = 1;
+                }
+                data.i_gid = i_gid;
+                data.b_gid = b_gid;
+                data.status = statue;
+
+                mDialogUI.loading("加载数据中");
+                $.ajax({
+                    url: "/Site/SiteCMSItemCheck",
+                    type: "post",
+                    dataType: "json",
+                    data: data,
+                    cache: false,
+                    success: function (json) {
+                        mDialogUI.closeLoading();
+                        if (json.success) {
+                            mDialogUI.successMessage(json.errors.text, "成功", 180, 50, 2);
+                            LoadListItem(querysItem.page);
+                        }
+                        else {
+                            mDialogUI.errorMessage(json.errors.text, "失败", 180, 50);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        mDialogUI.closeLoading();
+                        mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                    }
+                });
+
+            });
+        }
+
+
+        function btachDelete(b_gid) {
+            var chked = GetCheck();
+            if (chked.length == 0) {
+                mDialogUI.message("未选择信息", "提示", 180, 50, 2);
+                return;
+            }
+            var i_gids = "";
+            $(chked).each(function (index, elem) {
+                i_gids += $(elem).val() + ",";
+            });
+            btnDeleteItem(i_gids);
+
+        }
+
+        function btachCheck(b_gid) {
+            var chked = GetCheck();
+            if (chked.length == 0) {
+                mDialogUI.message("未选择信息", "提示", 180, 50, 2);
+                return;
+            }
+            var i_gids = "";
+            $(chked).each(function (index, elem) {
+                i_gids += $(elem).val() + ",";
+            });
+            btnCheckItem(i_gids, b_gid);
+        }
+
+        function GetCheck() {
+            return $("input[name^='chk_']:checked");
+        }
+
+
+    </script>
+}
+
+<div class="container">
+    <div class="headDiv">
+        <div>
+            区块名称：<input type="text" name="b_name" id="b_name" value="" onkeydown="if(event.keyCode=='13'){$('#btn_search').click();}" />
+
+            <button id="btn_search" onclick="btn_searchClick()">确定</button>
+            <button id="btn_search_all" onclick="btn_searchClick('all')">全部</button>
+        </div>
+    </div>
+    <div>
+        <div style="float: left;width: 25%; border-style: none;">
+            <table style="border-top-style:none;">
+                <tr>
+                    <td style="width: 25%; border-style: none;">
+                        <div style="float: right;margin-bottom:10px;">
+                            <button id="btn_add" onclick="btnEdit(true, '@p_gid','','@siteName');">区块</button>
+                        </div>
+                        <div id="div_list">
+                            正在加载中....
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="float: left;width: 75%;border-style: none;">
+            <table style="border-top-style:none;width: 100%;">
+                <tr>
+                    <td style="border-style: none;">
+                        <div id="div_list_item">
+                            正在加载中....
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>

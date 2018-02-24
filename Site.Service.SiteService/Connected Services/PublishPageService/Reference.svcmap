@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0cfa9dce-0fb3-4bd1-8391-9a2b35b081a0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8891/PublishPageService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PublishPageService.wsdl" MetadataType="Wsdl" ID="e5fae8c8-df11-4b84-8604-db5698483fca" SourceId="1" SourceUrl="http://localhost:8891/PublishPageService.svc?wsdl" />
+    <MetadataFile FileName="PublishPageService.xsd" MetadataType="Schema" ID="ddbd8038-6695-4647-9b59-58cd2d9b7aac" SourceId="1" SourceUrl="http://localhost:8891/PublishPageService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PublishPageService1.xsd" MetadataType="Schema" ID="0fad559a-b7c0-470f-a78d-9b2c7748976a" SourceId="1" SourceUrl="http://localhost:8891/PublishPageService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PublishPageService.disco" MetadataType="Disco" ID="5bc76680-8c28-4bee-b946-a27c6ad7e03c" SourceId="1" SourceUrl="http://localhost:8891/PublishPageService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

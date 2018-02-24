@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head
+{
+    <script src="~/JS/common.js"></script>
+    <script type="text/javascript">
+        
+        function btn_cancel() {
+            //关闭模态窗口
+            parent.myDialog.RemoveModalWindow();
+        }
+        function btn_edit() {
+
+            var data = {
+                modualName: $("#modualName").val(),
+                Controller: $("#Controller").val(),
+                Action: $("#Action").val(),
+                group: $("#group option:selected").val()
+            };
+            $.ajax({
+                url: "/system/DoEdit",
+                data: data,
+                dataType: "json",
+                type: "post",
+                cache: false,
+                success: function (json) {
+                    if (json.success) {
+
+                    }
+                    else {
+
+                    }
+                },
+                error: function (xhr,text,throwError) {
+
+                }
+            });
+            
+
+        }
+    </script>
+    <style type="text/css">
+        #floot a {
+            margin-left: 60px;
+            width: 80px;
+        }
+        table tr {
+            height: 40px;
+        }
+        * {
+            font-family:"微软雅黑";
+        }
+    </style>
+}
+@using SiteFrame.Model;
+@{
+    SystemModual obj = ViewData["obj"] as SystemModual;
+    List<SystemModual> modualList = ViewData["modualList"] as List<SystemModual>;
+}
+<table style="text-align: right; margin: 20px 20px;">
+    <tr>
+        <td style="width: 30px;">
+            <label>模 块 名:</label>
+        </td>
+        <td style="text-align: left;">
+            <input name="modualName" id="modualName" class="easyui-validatebox" required="true" value="@obj.m_name"></td>
+    </tr>
+    <tr>
+        <td style="width: 30px;">
+            <label>Controller:</label>
+        </td>
+        <td style="text-align: left;">
+            <input name="Controller"  id="Controller" class="easyui-validatebox" required="true" value="@obj.m_Controller"></td>
+    </tr>
+    <tr>
+        <td style="width: 30px;">
+            <label>Action:</label>
+        </td>
+        <td style="text-align: left;">
+            <input name="Action" id="Action" class="easyui-validatebox" required="true" value="@obj.m_Action"></td>
+    </tr>
+    <tr>
+        <td style="width: 30px;">
+            <label>分　组:</label>
+        </td>
+        <td style="text-align: left;">
+            <select name="group" id="group" style="width: 170px;">
+                <option value="-1">默认（一级菜单）</option>
+                @{
+                    foreach (var item in modualList)
+                    {
+                        if (item.m_parent == 0)
+                        {
+                            <option value="@item.m_id" style="font-size:18px;">@item.m_name</option>
+                            var list = modualList.Where(m => m.m_parent == item.m_id);
+                            foreach (var t in list)
+                            {
+                                <option value="@t.m_id">&nbsp;&nbsp;&nbsp;@t.m_name</option>
+                            }
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    }
+            </select>
+        </td>
+    </tr>
+</table>
+<div id="floot">
+    <a id="btn_ok" href="javascript:void(0);" onclick="btn_edit();" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">确定</a>
+    <a id="btn_cancel" href="javascript:void(0);" onclick="btn_cancel();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">取消</a>
+</div>

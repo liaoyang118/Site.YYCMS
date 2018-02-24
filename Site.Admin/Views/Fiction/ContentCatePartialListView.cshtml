@@ -1,0 +1,32 @@
+﻿@using Site.Service.YuYangService.YuYangServices;
+@{
+    List<ContentCate> list = ViewData["list"] as List<ContentCate>;
+}
+
+@if (list.Count > 0)
+{
+    foreach (var item in list)
+    {
+       <a href="javascript:void(0)" c_id="@item.Id">@item.CateName</a>
+    }
+
+    <script>
+    $(function () {
+        $("#div_cate_list").find("a").click(function () {
+            $(this).addClass("hint_cate_cur").siblings().removeClass("hint_cate_cur");
+            var c_id = $(this).attr("c_id");
+            if (c_id) {
+                $("#c_id").val(c_id);
+                SearchListByCateId(c_id, 1);
+            }
+        });
+    })
+
+
+    </script>
+}
+else
+{
+    <span>暂无分类</span>
+}
+

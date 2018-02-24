@@ -1,0 +1,39 @@
+.list-carousel ul li {
+	height:295px;
+}
+
+@media only screen and (min-width: 940px) and (max-width: 1140px) {
+.sidebar .widget .newsletter .your-email .wpcf7-email {
+	width:52.06%;
+}
+.sidebar .widget .newsletter .wpcf7-submit {
+	padding:7px 7px 6px 7px;
+}
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 939px) {
+.sidebar .widget .newsletter .your-email .wpcf7-email {
+	width:41.06%;
+}
+.sidebar .widget .newsletter .wpcf7-submit {
+	padding:7px 7px 6px 7px;
+}	
+}
+
+@media only screen and (max-width: 767px) {
+.sidebar .widget .newsletter .your-email .wpcf7-email {
+	width:41.06%;
+}
+.sidebar .widget .newsletter .wpcf7-submit {
+	padding:7px 7px 6px 7px;
+}	
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.sidebar .widget .newsletter .your-email .wpcf7-email {
+	width:54.39%;
+}
+.sidebar .widget .newsletter .wpcf7-submit {
+	padding:7px 7px 6px 7px;
+}
+}

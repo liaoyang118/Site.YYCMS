@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "CatesEditView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Site.Service.SiteService.SiteServices;
+@using Site.Admin.Common;
+@using Site.Common;
+@{
+    Site_CMSPage info = ViewData["info"] as Site_CMSPage;
+    int siteName = ViewBag.siteName;
+}
+@section head{
+
+    <script type="text/javascript">
+
+        $(function () {
+            $("#btnSubmit").button({
+                icons: {
+                    primary: "ui-icon-check "
+                }
+            });
+            $("#btnCancle").button({
+                icons: {
+                    primary: "ui-icon-closethick "
+                }
+            });
+
+            $("#moduleGrade").change(function () {
+                showPartGrade();
+            });
+        });
+
+        function btnSubmitClick() {
+            if ($("#p_name").val().length <= 0) {
+                parent.mDialogUI.message("页面名称不能为空", "提示", 180, 50, 2);
+                return false;
+            }
+            if ($("#p_path").val().length <= 0) {
+                parent.mDialogUI.message("页面路径不能为空", "提示", 180, 50, 2);
+                return false;
+            }
+            if ($("#p_path").val().length > 2) {
+                if ($("#p_tempPath").val().length <= 0) {
+                    parent.mDialogUI.message("模板路径不能为空", "提示", 180, 50, 2);
+                    return false;
+                }
+                if ($("#p_filePath").val().length <= 0) {
+                    parent.mDialogUI.message("发布路径不能为空", "提示", 180, 50, 2);
+                    return false;
+                }
+                if ($("#p_pageDuty").val().length <= 0) {
+                    parent.mDialogUI.message("责任人不能为空", "提示", 180, 50, 2);
+                    return false;
+                }
+            }
+
+            var data = {
+                p_name: $("#p_name").val(),
+                p_path: $("#p_path").val(),
+                p_tempPath: $("#p_tempPath").val(),
+                p_filePath: $("#p_filePath").val(),
+                p_pageDuty: $("#p_pageDuty").val(),
+                p_gid: $("#p_gid").val(),
+                siteName: '@siteName'
+            };
+
+            $.ajax({
+                url: "/Site/SiteCMSPageEdit",
+                type: "post",
+                dataType: "json",
+                cache: false,
+                data: data,
+                success: function (json) {
+                    if (json.success) {
+                        parent.mDialogUI.successMessage(json.errors.text, "成功", 180, 70, 2);
+                        parent.LoadList(parent.querys.page);
+                        parent.mDialogUI.closeWindow('@ViewData["window"]');
+                    }
+                    else {
+                        parent.mDialogUI.errorMessage(json.errors.text, "失败", 180, 70, 2);
+                    }
+                },
+                error: function (xhr, xhrText, error) {
+                    parent.mDialogUI.errorMessage(error, "错误", 200, 70);
+                }
+            });
+        }
+    </script>
+}
+
+<div class="container-10">
+    <div class="hint">
+        路径：子路径以父路径 开头，如 11，1101，1102<br />
+        模板路径格式：~/Views/Template/index.cshtml
+    </div>
+    <table class="editTable">
+        <tr>
+            <td><span class="red">*</span>页面路径：</td>
+            <td>
+                <input name="p_path" id="p_path" type="text" style="width: 240px;" value="@info.p_path" />
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>页面名称：</td>
+            <td>
+                <input name="p_name" id="p_name" type="text" style="width: 240px;" value="@info.p_name" />
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>模板路径：</td>
+            <td>
+                <input name="p_tempPath" id="p_tempPath" type="text" style="width: 240px;" value="@info.p_tempPath" />
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>发布路径：</td>
+            <td>
+                <input name="p_filePath" id="p_filePath" type="text" style="width: 240px;" value="@info.p_filePath" />
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>责任人：</td>
+            <td>
+                <input name="p_pageDuty" id="p_pageDuty" type="text" style="width: 240px;" value="@info.p_pageDuty" />
+            </td>
+        </tr>
+    </table>
+    <div style="float: right; margin-top: 10px;">
+        <input type="hidden" name="p_gid" id="p_gid" value="@info.p_gid" />
+        <button id="btnSubmit" onclick="btnSubmitClick();">确定</button>
+        <button id="btnCancle" onclick="parent.mDialogUI.closeWindow('@ViewData["window"]');">取消</button>
+    </div>
+</div>

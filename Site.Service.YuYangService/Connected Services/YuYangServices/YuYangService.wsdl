@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://service.jsonyang.com" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="YuYangService" targetNamespace="http://service.jsonyang.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="SiteBinding_IYuYangService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://service.jsonyang.com/Imports">
+      <xsd:import schemaLocation="http://localhost:8896/YuYangService.svc?xsd=xsd0" namespace="http://service.jsonyang.com" />
+      <xsd:import schemaLocation="http://localhost:8896/YuYangService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8896/YuYangService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Site.YuYangModel" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IYuYangService_Fiction_Insert_InputMessage">
+    <wsdl:part name="parameters" element="tns:Fiction_Insert" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_Fiction_Insert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Fiction_InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_Fiction_DeleteById_InputMessage">
+    <wsdl:part name="parameters" element="tns:Fiction_DeleteById" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_Fiction_DeleteById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Fiction_DeleteByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_Fiction_UpdateById_InputMessage">
+    <wsdl:part name="parameters" element="tns:Fiction_UpdateById" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_Fiction_UpdateById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Fiction_UpdateByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_Fiction_SelectById_InputMessage">
+    <wsdl:part name="parameters" element="tns:Fiction_SelectById" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_Fiction_SelectById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Fiction_SelectByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_Fiction_SelectPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:Fiction_SelectPage" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_Fiction_SelectPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Fiction_SelectPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ContentCate_Insert_InputMessage">
+    <wsdl:part name="parameters" element="tns:ContentCate_Insert" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ContentCate_Insert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ContentCate_InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ContentCate_DeleteById_InputMessage">
+    <wsdl:part name="parameters" element="tns:ContentCate_DeleteById" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ContentCate_DeleteById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ContentCate_DeleteByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ContentCate_UpdateById_InputMessage">
+    <wsdl:part name="parameters" element="tns:ContentCate_UpdateById" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ContentCate_UpdateById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ContentCate_UpdateByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ContentCate_SelectById_InputMessage">
+    <wsdl:part name="parameters" element="tns:ContentCate_SelectById" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ContentCate_SelectById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ContentCate_SelectByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ContentCate_SelectPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:ContentCate_SelectPage" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ContentCate_SelectPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ContentCate_SelectPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ChapterVisits_Insert_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterVisits_Insert" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ChapterVisits_Insert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterVisits_InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ChapterVisits_DeleteById_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterVisits_DeleteById" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ChapterVisits_DeleteById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterVisits_DeleteByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ChapterVisits_UpdateById_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterVisits_UpdateById" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ChapterVisits_UpdateById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterVisits_UpdateByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ChapterVisits_SelectById_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterVisits_SelectById" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ChapterVisits_SelectById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterVisits_SelectByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ChapterVisits_SelectPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterVisits_SelectPage" />
+  </wsdl:message>
+  <wsdl:message name="IYuYangService_ChapterVisits_SelectPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChapterVisits_SelectPageResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IYuYangService">
+    <wsdl:operation name="Fiction_Insert">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/Fiction_Insert" message="tns:IYuYangService_Fiction_Insert_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/Fiction_InsertResponse" message="tns:IYuYangService_Fiction_Insert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Fiction_DeleteById">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/Fiction_DeleteById" message="tns:IYuYangService_Fiction_DeleteById_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/Fiction_DeleteByIdResponse" message="tns:IYuYangService_Fiction_DeleteById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Fiction_UpdateById">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/Fiction_UpdateById" message="tns:IYuYangService_Fiction_UpdateById_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/Fiction_UpdateByIdResponse" message="tns:IYuYangService_Fiction_UpdateById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Fiction_SelectById">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/Fiction_SelectById" message="tns:IYuYangService_Fiction_SelectById_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/Fiction_SelectByIdResponse" message="tns:IYuYangService_Fiction_SelectById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Fiction_SelectPage">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/Fiction_SelectPage" message="tns:IYuYangService_Fiction_SelectPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/Fiction_SelectPageResponse" message="tns:IYuYangService_Fiction_SelectPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ContentCate_Insert">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/ContentCate_Insert" message="tns:IYuYangService_ContentCate_Insert_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/ContentCate_InsertResponse" message="tns:IYuYangService_ContentCate_Insert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ContentCate_DeleteById">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/ContentCate_DeleteById" message="tns:IYuYangService_ContentCate_DeleteById_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/ContentCate_DeleteByIdResponse" message="tns:IYuYangService_ContentCate_DeleteById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ContentCate_UpdateById">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/ContentCate_UpdateById" message="tns:IYuYangService_ContentCate_UpdateById_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/ContentCate_UpdateByIdResponse" message="tns:IYuYangService_ContentCate_UpdateById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ContentCate_SelectById">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/ContentCate_SelectById" message="tns:IYuYangService_ContentCate_SelectById_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/ContentCate_SelectByIdResponse" message="tns:IYuYangService_ContentCate_SelectById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ContentCate_SelectPage">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/ContentCate_SelectPage" message="tns:IYuYangService_ContentCate_SelectPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/ContentCate_SelectPageResponse" message="tns:IYuYangService_ContentCate_SelectPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChapterVisits_Insert">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/ChapterVisits_Insert" message="tns:IYuYangService_ChapterVisits_Insert_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/ChapterVisits_InsertResponse" message="tns:IYuYangService_ChapterVisits_Insert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChapterVisits_DeleteById">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/ChapterVisits_DeleteById" message="tns:IYuYangService_ChapterVisits_DeleteById_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/ChapterVisits_DeleteByIdResponse" message="tns:IYuYangService_ChapterVisits_DeleteById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChapterVisits_UpdateById">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/ChapterVisits_UpdateById" message="tns:IYuYangService_ChapterVisits_UpdateById_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/ChapterVisits_UpdateByIdResponse" message="tns:IYuYangService_ChapterVisits_UpdateById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChapterVisits_SelectById">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/ChapterVisits_SelectById" message="tns:IYuYangService_ChapterVisits_SelectById_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/ChapterVisits_SelectByIdResponse" message="tns:IYuYangService_ChapterVisits_SelectById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChapterVisits_SelectPage">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IYuYangService/ChapterVisits_SelectPage" message="tns:IYuYangService_ChapterVisits_SelectPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IYuYangService/ChapterVisits_SelectPageResponse" message="tns:IYuYangService_ChapterVisits_SelectPage_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SiteBinding_IYuYangService" type="tns:IYuYangService">
+    <wsp:PolicyReference URI="#SiteBinding_IYuYangService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Fiction_Insert">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/Fiction_Insert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Fiction_DeleteById">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/Fiction_DeleteById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Fiction_UpdateById">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/Fiction_UpdateById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Fiction_SelectById">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/Fiction_SelectById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Fiction_SelectPage">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/Fiction_SelectPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContentCate_Insert">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/ContentCate_Insert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContentCate_DeleteById">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/ContentCate_DeleteById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContentCate_UpdateById">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/ContentCate_UpdateById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContentCate_SelectById">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/ContentCate_SelectById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContentCate_SelectPage">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/ContentCate_SelectPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChapterVisits_Insert">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/ChapterVisits_Insert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChapterVisits_DeleteById">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/ChapterVisits_DeleteById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChapterVisits_UpdateById">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/ChapterVisits_UpdateById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChapterVisits_SelectById">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/ChapterVisits_SelectById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChapterVisits_SelectPage">
+      <soap12:operation soapAction="http://service.jsonyang.com/IYuYangService/ChapterVisits_SelectPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="YuYangService">
+    <wsdl:port name="SiteBinding_IYuYangService" binding="tns:SiteBinding_IYuYangService">
+      <soap12:address location="http://localhost:8896/YuYangService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost:8896/YuYangService.svc</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>localhost</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

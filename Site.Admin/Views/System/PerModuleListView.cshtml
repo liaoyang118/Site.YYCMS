@@ -1,0 +1,59 @@
+﻿@using SiteFrame.Model;
+@{
+    List<SystemModual> moduleList = ViewData["moduleList"] as List<SystemModual>;
+    string ruid = ViewBag.ruid;
+}
+<div id="div_moduleList" style="width: 34%; border-right: 5px solid rgb(121, 151, 165); float: left;">
+    <div style="text-align: center;"><span class="bold">模块</span></div>
+    <div style="overflow-y: visible;">
+
+        <table class="tableClass">
+            @if (moduleList.Count > 0)
+            {
+                foreach (SystemModual item in moduleList)
+                {
+                <tr>
+                    @{
+                    if (item.m_parent == 0)
+                    { 
+                        <td><span class="bold">@item.m_name</span></td>
+                    }
+                    else
+                    { 
+                        <td t="item">&nbsp;&nbsp;@item.m_name</td>
+                    }
+                    }
+                    <td style="display: none">@item.m_gid</td>
+                </tr>
+                }
+            }
+            else
+            { 
+                <tr>
+                    <td style="text-align: center" colspan="2">暂无任何数据</td>
+                </tr> 
+            }
+        </table>
+    </div>
+</div>
+<div id="div_perList" style="width: 30%; border-right: 5px solid rgb(121, 151, 165); float: left;">
+    <div style="text-align: center;"><span class="bold">先选择左侧模块</span></div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(".tableClass tr").mouseenter(function () {
+            $(this).addClass("mouseOver");
+        }).mouseleave(function () {
+            $(this).removeClass("mouseOver");
+        }).click(function () {
+            $(this).addClass("mouseClick").siblings().removeClass("mouseClick");
+        });
+
+        $(".tableClass").find("td[t='item']").click(function () {
+            var m_gid = $(this).next().html();
+            LoadPerList(m_gid, '@ruid');
+        });
+
+    })
+
+</script>

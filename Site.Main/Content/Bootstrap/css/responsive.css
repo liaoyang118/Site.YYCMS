@@ -1,0 +1,1189 @@
+@media only screen and (min-width: 940px) and (max-width: 1140px) {
+
+/* =========================================================
+	Columns
+============================================================ */
+.home-page .primary {
+	width:48%;
+}
+.home-page .secondary {
+	width:51.7%;
+}
+.sidebar {
+	width:49.89%;
+}
+
+.wrapper {
+	width:94%;
+}
+.home-page #main-content{
+	background:url(../images/background/separator.png) 48% 0 repeat-y;
+}
+.home-page #main-content:after{
+	background:url(../images/background/separator.png) 74% 0 repeat-y;
+}
+.sub-1sidebar #main-content{
+	background:url(../images/background/separator.png) 74% 0 repeat-y;
+}
+.sub-1sidebar .primary {
+	width:74%;
+}
+.sub-1sidebar .secondary {
+	width:25.8%;
+}
+/* =========================================================
+	Header
+============================================================ */
+
+/*-- Header bottom ------------------------------------------------*/
+.horizontal_scroller {
+    width: 73%;
+}
+/*-- Social Links ------------------------------------------------*/
+.social-links {
+	width:42%;
+}
+/*-- Search ------------------------------------------------*/
+.search-box {
+	width:58%;
+}
+.search-box .search-form {
+	width:100%;
+}
+.search-box .search-text {
+	width:70%;
+}
+
+/* =========================================================
+	Main Content
+============================================================ */
+.entry-header {
+	width:99.62%;
+}
+.entry-header .header-inner {
+	padding:9px 2.65%;
+}
+.entry-header .header-inner a {
+	margin-right:8%;
+}
+.home-page .entry-item {
+	padding:3.77%;
+	width:92.41%;
+}
+.entry-item {
+	padding:2.77%;
+	width:94.38%;
+}
+.home-page .entry-item img{
+	margin-right:4.08%;
+	width:49.79%;
+}
+.entry-item img{
+	margin-right:2.77%;
+	width:49.79%;
+}
+.primary .entry-item .video-thumb{
+	margin-right:4.08%;
+	width:49.79%;
+}
+.primary .entry-item .video-thumb img{
+	width:100%;
+}
+/*======Pagination=========*/
+.pagination {
+	padding:3.77%;
+	width:92.41%;
+}
+/* =========================================================
+	Top Sidebar
+============================================================ */
+#top-sidebar, .feature-widget {
+	width:100%;
+}
+.feature-widget header {
+	width:99.84%;
+}
+.feature-widget .feature-title {
+	padding:3px 1.76% 4px 1.76%;
+	width:96.48%;
+}
+
+.feature-item .play-icon {
+	width:100%;
+}
+
+/* =========================================================
+	Sidebar
+============================================================ */
+.sidebar .widget .entry-header {
+	width:99.27%;
+}
+.sidebar .widget .entry-header .widget-title {
+	padding:5px 3.54%;
+}
+.sidebar .widget .entry-box {
+	margin: 20px 7.04% 0 7.04%;
+}
+.sidebar .widget .older-posts {
+	width:100%;
+}
+.sidebar .widget .older-posts li {
+	margin:5px 7.04%;
+}
+/*-- Accordion --*/
+.sidebar .widget .acc-wrapper {
+	width:100%;
+}
+.sidebar .widget .accordion-title {
+	width:99.27%;
+}
+.sidebar .widget .accordion-title h6 {
+	width:100%;
+}
+.sidebar .widget .accordion-title h6 a {
+	padding:5px 3.54%;
+}
+.accordion-container {
+	padding:20px 7.04% 0 7.04%;
+}
+.sidebar .widget .accordion-container ul, .sidebar .widget .accordion-container ul li, .sidebar .widget .accordion-container ul li article {
+	width:100%;
+}
+.sidebar .widget .accordion-container ul li img {
+	margin-right:4.09%;
+	width:25.4%;
+}
+/*-- Newsletter --*/
+.sidebar .widget .newsletter {
+	width:100%;
+}
+.sidebar .widget .newsletter .your-email {
+	width:74.18%;
+}
+.sidebar .widget .newsletter .your-email .wpcf7-email{
+    width:55.63%;
+}
+/******Contact form 7************/
+.sidebar .widget .wpcf7 {
+    padding:15px 7.04%;
+	width:85.91%;
+}
+.sidebar .widget .newsletter .wpcf7-form, .sidebar .widget .newsletter .wpcf7-form p, .sidebar .widget .wpcf7 .wpcf7-form, .sidebar .widget .wpcf7 .wpcf7-form p {
+	width:100%;
+}
+.sidebar .widget .your-name .wpcf7-text, #sidebar .widget .your-email .wpcf7-email{
+    width:55.63%;
+}
+/*--- ADV 125x125 ---*/
+.sidebar .widget .adv-125-125 {
+	width:100%;
+}
+.sidebar .widget .adv-125-125 a {
+	margin-left:3.52%;
+	width:44.01%;
+}
+#footer-aside, #footer-aside .widget, #footer-aside .adv-footer {
+	width:100%;
+}
+#footer-aside .adv-footer .banner-bottom-left {
+	width:66.18%;
+	display:inline-block;
+}
+#footer-aside .adv-footer .banner-bottom-right {
+	width:20.2%;
+	display:inline-block;
+}
+#footer-aside .adv-footer .banner-bottom-right img {
+	margin-left:4.34%;
+}
+
+/* =========================================================
+Footer
+============================================================ */
+footer #copyrights {
+	margin-left:1.81%;
+}
+footer #scroll-to-top {
+	margin-right:1.81%;
+}
+
+/* =========================================================
+	single page
+============================================================ */
+.sub-1sidebar .secondary .sidebar {
+	width:100%;
+}
+.sub-1sidebar .entry-header .header-inner {
+    padding: 9px 2.65%;
+}
+.sub-1sidebar .entry-item .feature-img{
+	margin-right:2.58%;
+}
+/*======Social Share=========*/
+.social-share {
+    padding: 15px 2.45%;
+}
+.about-author {	
+	padding:15px 2.45%;
+	width:95.09%;
+}
+.about-author-content {
+	width:100%;
+}
+.about-author img {
+	margin-right:2.58%;
+	width:12.38%;
+}
+.related-posts{
+	padding:15px 2.45%;
+	width:95.09%;
+}
+.related-posts ul{
+	width:100%;
+}
+.related-posts ul li{
+	margin-right:2.58%;
+	width:17.93%;
+}
+.related-posts ul li a{
+	display:block;
+	width:100%;
+}
+/*======Comments List=========*/
+#comments {
+    padding:15px 2.45%;
+}
+.comments-list, .comments-list .depth-1, .comment-wrap {
+	width:100%;
+}
+.comment-wrap .avatar {
+    margin-right: 1.93%;
+}
+.comment-wrap .comment-body {
+    margin-left: 6.8%;	
+}
+.comment .children{
+	margin-left:6.8%;
+}
+/*======Comment Form=========*/
+#respond, #comments-form {
+	width:100%;
+}
+.comment-right {
+	width:35.48%;
+}
+.comment-left {
+	width:61.54%;
+}
+.comment-right .input-block, .comment-left .input-block {
+	width:100%;
+}
+#comment-name, #comment-email, #comment-url{
+	padding:6px 0 0 1.81%;	
+	width:97.45%;
+}
+.comment-left .textarea-block #comment-message{
+	width:99.58%;
+}
+.comment-button {
+	width:100%;
+}
+#submit-comment{
+    width: 25.8%;
+}
+/* =========================================================
+	Contact page
+============================================================ */
+
+.page-content {
+    padding: 2.45%;
+	width:95.09%;
+}
+.textwidget {
+	padding:7.04%;
+}
+/* =========================================================
+	Elements page
+============================================================ */
+.element-title{
+	padding:1.29%;
+}
+.tab-container {
+	padding:3.87%;
+}
+.page-content .one-forth, .page-content .elements-list {
+	width:100%;
+}
+.kp-error, .kp-success, .kp-info, .kp-notice {
+    padding: 10px 2.58%;
+}
+/*-----list style--------------*/
+.elements-list .default-list ,.elements-list .circle-list,
+.elements-list .check-list,.elements-list .arrow-list,.elements-list .star-list{
+	width:30%;
+	float:left;
+	margin-bottom:20px;
+}
+/*-------button-----------*/
+.green-button, 
+.blue-button,
+.orange-button,
+.red-button,
+.pink-button,
+.grey-button,
+.black-button {
+    padding:10px 3.87%;
+}
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 939px) {
+	
+	/* =========================================================
+	Columns
+============================================================ */
+.home-page .primary {
+	width:48%;
+}
+.home-page .secondary {
+	width:51.7%;
+}
+.sidebar {
+	width:100%;
+	margin-right:0;
+}
+
+.wrapper {
+	width:94%;
+}
+.home-page #main-content{
+	background:url(../images/background/separator.png) 48% 0 repeat-y;
+}
+.home-page #main-content:after{
+	background:url(../images/background/separator.png) 74% 0 repeat-y;
+}
+.sub-1sidebar #main-content{
+	background:url(../images/background/separator.png) 74% 0 repeat-y;
+}
+.sub-1sidebar .primary {
+	width:74%;
+}
+.sub-1sidebar .secondary {
+	width:25.8%;
+}
+/* =========================================================
+	Header
+============================================================ */
+
+/*-- Header bottom ------------------------------------------------*/
+#headline {
+	width:58%;
+}
+.horizontal_scroller {
+    width: 64%;
+}
+
+#search-social {
+	width:37%;
+}
+/*-- Social Links ------------------------------------------------*/
+.social-links {
+	width:42%;
+}
+/*-- Search ------------------------------------------------*/
+.search-box {
+	width:58%;
+}
+.search-box .search-form {
+	width:100%;
+}
+.search-box .search-text {
+	width:90%;
+}
+#top-nav {
+	width:50%;
+}
+#top-nav #top-menu {
+	display:none;
+}
+#top-responsive-menu {
+    display: block;
+    width: 100%;
+}
+#responsive-menu {
+    display: block;
+    width: 100%;
+}
+#main-nav{
+	display:none;
+}
+/*-- Home page slider ------------------------------------------------*/
+
+.nivoSlider {
+    background: url("../images/icons/loading.gif") no-repeat scroll 50% 25% #FFFFFF;
+}
+
+/* =========================================================
+	Main Content
+============================================================ */
+.home-page #main-content:after {
+	background:none;
+}
+.entry-header {
+	width:99.42%;
+}
+.entry-header .header-inner {
+	padding:9px 2.65%;
+}
+.entry-header .header-inner a {
+	margin-right:8%;
+}
+.home-page .entry-item {
+	padding:3.77%;
+	width:92.38%;
+}
+.entry-item {
+	padding:2.77%;
+	width:94.38%;
+}
+.home-page .entry-item img{
+	margin-right:4.08%;
+	width:49.79%;
+}
+
+.entry-item img{
+	margin-right:2.77%;
+	width:49.79%;
+}
+.primary .entry-item .video-thumb{
+	margin-right:4.08%;
+	width:49.79%;
+}
+.primary .entry-item .video-thumb img{
+	width:100%;
+}
+/*======Pagination=========*/
+.pagination {
+	padding:3.77%;
+	width:92.41%;
+}
+/* =========================================================
+	Top Sidebar
+============================================================ */
+#top-sidebar, .feature-widget {
+	width:100%;
+}
+.feature-widget header {
+	width:99.84%;
+}
+.feature-widget .feature-title {
+	padding:3px 1.76% 4px 1.76%;
+	width:96.48%;
+}
+/*-- carouFredSel --*/
+
+.feature-item .play-icon {
+	width:100%;
+}
+
+/* =========================================================
+	Sidebar
+============================================================ */
+.sidebar .widget .entry-header {
+	width:99.15%;
+}
+.home-page .sidebar .widget .entry-header {
+	width:99.57%;
+}
+.sidebar .widget .entry-header .widget-title {
+	padding:5px 3.54%;
+}
+.sidebar .widget .entry-box {
+	margin: 20px 7.04% 0 7.04%;
+}
+.home-page .sidebar .widget .entry-box {
+	margin: 20px 3.54% 0 3.54%;
+}
+.home-page .sidebar .widget .entry-box img {
+	width:50%;
+	float:left;
+	margin-bottom:0;
+	margin-right:3.54%;
+}
+.sidebar .widget .entry-box img {
+	width:100%;
+}
+.sidebar .widget .older-posts {
+	width:100%;
+}
+.home-page .sidebar .widget .older-posts li {
+	margin:5px 3.54%;
+}
+.sidebar .widget .older-posts li {
+	margin:5px 7.04%;
+}
+/*-- Accordion --*/
+.sidebar .widget .acc-wrapper {
+	width:100%;
+}
+.sidebar .widget .accordion-title {
+	width:99.57%;
+}
+.sidebar .widget .accordion-title h6 {
+	width:100%;
+}
+.sidebar .widget .accordion-title h6 a {
+	padding:5px 3.54%;
+}
+.accordion-container {
+	padding:20px 3.54% 0 3.54%;
+}
+.sidebar .widget .accordion-container ul, .sidebar .widget .accordion-container ul li, .sidebar .widget .accordion-container ul li article {
+	width:100%;
+}
+.sidebar .widget .accordion-container ul li img {
+	margin-right:4.09%;
+	width:25.4%;
+}
+/*-- Newsletter --*/
+.sidebar .widget .newsletter {
+	width:100%;
+}
+.sidebar .widget .newsletter .your-email {
+	width:74.18%;
+}
+.sidebar .widget .newsletter .your-email .wpcf7-email{
+    width:47.63%;
+}
+.sidebar .widget .newsletter .wpcf7-submit {
+	padding:7px 5px 8px;
+}
+/******Contact form 7************/
+.home-page .sidebar .widget .wpcf7 {
+    padding:15px 3.54%;
+	width:92.9%;
+}
+.sidebar .widget .wpcf7 {
+    padding:15px 7.04%;
+	width:85.91%;
+}
+.sidebar .widget .newsletter .wpcf7-form, .sidebar .widget .newsletter .wpcf7-form p, .sidebar .widget .wpcf7 .wpcf7-form, .sidebar .widget .wpcf7 .wpcf7-form p {
+	width:100%;
+}
+.sidebar .widget .your-name .wpcf7-text, #sidebar .widget .your-email .wpcf7-email{
+    width:47.63%;
+}
+/*--- ADV 125x125 ---*/
+.sidebar .widget .adv-125-125 {
+	width:100%;
+}
+.sidebar .widget .adv-125-125 a {
+	margin-left:7.04%;
+	width:39.51%;
+}
+.home-page .sidebar .widget .adv-125-125 a {
+	margin-left:3.54%;
+	width:20.71%;
+}
+.sidebar .widget .adv-125-125 a img {
+	width:100%;
+}
+#footer-aside, #footer-aside .widget, #footer-aside .adv-footer {
+	width:100%;
+}
+#footer-aside .adv-footer .banner-bottom-left {
+	width:66.18%;
+	display:inline-block;
+}
+#footer-aside .adv-footer .banner-bottom-right {
+	width:20.2%;
+	display:inline-block;
+}
+#footer-aside .adv-footer .banner-bottom-right img {
+	margin-left:4.34%;
+}
+
+/* =========================================================
+Footer
+============================================================ */
+footer #copyrights {
+	margin-left:1.81%;
+}
+footer #scroll-to-top {
+	margin-right:1.81%;
+}
+
+/* =========================================================
+	single page
+============================================================ */
+.sub-1sidebar .secondary .sidebar {
+	width:100%;
+}
+.sub-1sidebar .entry-header .header-inner {
+    padding: 9px 2.65%;
+}
+.sub-1sidebar .entry-item .feature-img{
+	margin-right:2.58%;
+}
+/*======Social Share=========*/
+.social-share {
+    padding: 15px 2.45%;
+}
+.social-share h6 {
+	font-size:13px;
+}
+.about-author {	
+	padding:15px 2.45%;
+	width:95.09%;
+}
+.about-author-content {
+	width:100%;
+}
+.about-author img {
+	margin-right:2.58%;
+	width:12.38%;
+}
+.related-posts{
+	padding:15px 2.45%;
+	width:95.09%;
+}
+.related-posts ul{
+	width:100%;
+}
+.related-posts ul li{
+	margin-right:2.58%;
+	width:17.93%;
+}
+.related-posts ul li a{
+	display:block;
+	width:100%;
+}
+/*======Comments List=========*/
+#comments {
+    padding:15px 2.45%;
+}
+.comments-list, .comments-list .depth-1, .comment-wrap {
+	width:100%;
+}
+.comment-wrap .avatar {
+    margin-right: 1.93%;
+}
+.comment-wrap .comment-body {
+    margin-left: 9%;	
+}
+.comment .children{
+	margin-left:9%;
+}
+/*======Comment Form=========*/
+#respond, #comments-form {
+	width:100%;
+}
+.comment-right {
+	width:35.48%;
+}
+.comment-left {
+	width:61.54%;
+}
+.comment-right .input-block, .comment-left .input-block {
+	width:100%;
+}
+#comment-name, #comment-email, #comment-url{
+	padding:6px 0 0 1.81%;	
+	width:97.45%;
+}
+.comment-left .textarea-block #comment-message{
+	width:99.58%;
+}
+.comment-button {
+	width:100%;
+}
+#submit-comment{
+    width: 25.8%;
+}
+/* =========================================================
+	Contact page
+============================================================ */
+
+.page-content {
+    padding: 2.45%;
+	width:95.09%;
+}
+.textwidget {
+	padding:7.04%;
+}
+/* =========================================================
+	Elements page
+============================================================ */
+.element-title{
+	padding:1.29%;
+}
+.tab-container {
+	padding:3.87%;
+}
+.page-content .one-forth, .page-content .elements-list {
+	width:100%;
+}
+.kp-error, .kp-success, .kp-info, .kp-notice {
+    padding: 10px 2.58%;
+}
+/*-----list style--------------*/
+.elements-list .default-list ,.elements-list .circle-list,
+.elements-list .check-list,.elements-list .arrow-list,.elements-list .star-list{
+	width:30%;
+	float:left;
+	margin-bottom:20px;
+}
+/*-------button-----------*/
+.green-button, 
+.blue-button,
+.orange-button,
+.red-button,
+.pink-button,
+.grey-button,
+.black-button {
+    padding:10px 3.87%;
+}
+
+}
+
+@media only screen and (max-width: 767px) {
+	
+	/* =========================================================
+	Columns
+============================================================ */
+.home-page .primary {
+	width:100%;
+	float:none;
+	margin:0;
+}
+.home-page .secondary {
+	width:100%;
+	float:none;
+}
+.sidebar {
+	width:100%;
+	margin-right:0 !important;
+}
+
+.wrapper {
+	width:94%;
+}
+.sub-1sidebar #main-content{
+	background:none;
+}
+.sub-1sidebar .primary {
+	width:100%;
+	margin:0;
+	float:none;
+}
+.sub-1sidebar .secondary {
+	width:100%;
+	float:none;
+}
+/* =========================================================
+	Header
+============================================================ */
+
+/*-- Header bottom ------------------------------------------------*/
+#headline {
+	display:none;
+	float:none;
+	margin-right:0;
+}
+.breadcrumb{
+	display:none
+}
+.sub-nosidebar #header-bottom{
+	display:none;
+}
+.sub-nosidebar #navigation, .sub-1sidebar #navigation{
+	border-bottom:none;
+	margin-bottom:0;
+}
+#search-social {
+	width:100%;
+}
+.home-page #search-social {
+	width:100%;
+	float:none;
+}
+/*-- Social Links ------------------------------------------------*/
+.social-links {
+	display:none;
+	float:none;
+}
+/*-- Search ------------------------------------------------*/
+.search-box {
+	width:100%;
+	float:none;
+}
+.search-box .search-form {
+	width:100%;
+}
+.search-box .search-text {
+	width:100%;
+	right:0;
+	position:inherit;
+	padding:3px 0;
+}
+#top-nav {
+	width:50%;
+}
+#top-nav #top-menu {
+	display:none;
+}
+#top-responsive-menu {
+    display: block;
+    width: 100%;
+}
+#secondary-menu #main-nav {
+	display:none;
+}
+#responsive-menu {
+    display: block;
+    width: 100%;
+}
+/*-- Home page slider ------------------------------------------------*/
+
+.nivoSlider {
+    background: url("../images/icons/loading.gif") no-repeat scroll 50% 25% #FFFFFF;
+}
+
+/* =========================================================
+	Main Content
+============================================================ */
+.home-page #main-content {
+	background:none;
+	margin-top:2px;
+}
+.home-page #main-content:after {
+	background:none;
+}
+.entry-header {
+	width:99.41%;
+}
+.entry-header .header-inner {
+	padding:9px 2.65%;
+}
+.entry-header .header-inner a {
+	margin-right:8%;
+}
+.entry-item {
+	padding:3.77%;
+	width:92.41%;
+}
+.entry-item img{
+	margin-right:4.08%;
+	width:49.79%;
+}
+.primary .entry-item .video-thumb{
+	margin-right:4.08%;
+	width:49.79%;
+}
+.primary .entry-item .video-thumb img{
+	width:100%;
+}
+/*======Pagination=========*/
+.pagination {
+	padding:3.77%;
+	width:92.41%;	
+}
+/* =========================================================
+	Top Sidebar
+============================================================ */
+#top-sidebar {
+	border-top:1px solid #cfcfcf;
+}
+#top-sidebar, .feature-widget {
+	width:100%;	
+}
+.feature-widget header {
+	width:99.84%;
+}
+.feature-widget .feature-title {
+	padding:3px 1.76% 4px 1.76%;
+	width:96.48%;
+}
+/*-- carouFredSel --*/
+
+.feature-item .play-icon {
+	width:100%;
+}
+
+/* =========================================================
+	Sidebar
+============================================================ */
+.sidebar .widget .entry-header {
+	width:99.4%;
+}
+.sidebar .widget .entry-header .widget-title {
+	padding:5px 3.54%;
+}
+.sidebar .widget .entry-box {
+	margin: 20px 3.54% 0 3.54%;
+}
+.sidebar .widget .entry-box img {
+	width:50%;
+	float:left;
+	margin-bottom:0;
+	margin-right:3.54%;
+}
+.sidebar .widget .older-posts {
+	width:100%;
+}
+.sidebar .widget .older-posts li {
+	margin:5px 3.54%;
+}
+.sidebar .widget .older-posts li {
+	background-position: left 0;
+}
+/*-- Accordion --*/
+.sidebar .widget .acc-wrapper {
+	width:100%;
+}
+.sidebar .widget .accordion-title {
+	width:99.27%;
+}
+.sidebar .widget .accordion-title h6 {
+	width:100%;
+}
+.sidebar .widget .accordion-title h6 a {
+	padding:5px 3.54%;
+}
+.accordion-container {
+	padding:20px 3.54% 0 3.54%;
+}
+.sidebar .widget .accordion-container ul, .sidebar .widget .accordion-container ul li, .sidebar .widget .accordion-container ul li article {
+	width:100%;
+}
+.sidebar .widget .accordion-container ul li img {
+	margin-right:4.09%;
+	width:25.4%;
+}
+/*-- Newsletter --*/
+.sidebar .widget .newsletter {
+	width:100%;
+}
+.sidebar .widget .newsletter .your-email {
+	width:74.18%;
+}
+.sidebar .widget .newsletter .your-email .wpcf7-email{
+    width:67.51%;
+}
+/******Contact form 7************/
+.sidebar .widget .wpcf7 {
+    padding:15px 3.54%;
+	width:92.9%;
+}
+.sidebar .widget .newsletter .wpcf7-form, .sidebar .widget .newsletter .wpcf7-form p, .sidebar .widget .wpcf7 .wpcf7-form, .sidebar .widget .wpcf7 .wpcf7-form p {
+	width:100%;
+}
+.sidebar .widget .your-name .wpcf7-text, #sidebar .widget .your-email .wpcf7-email{
+    width:67.51%;
+}
+/*--- ADV 125x125 ---*/
+.sidebar .widget .adv-125-125 {
+	width:100%;
+}
+.sidebar .widget .adv-125-125 a {
+	margin-left:3.54%;
+	width:20.61%;
+}
+.sidebar .widget .adv-125-125 a img {
+	width:100%;
+}
+#footer-aside, #footer-aside .widget, #footer-aside .adv-footer {
+	width:100%;
+}
+#footer-aside .adv-footer .banner-bottom-left {
+	width:66.18%;
+	display:inline-block;
+}
+#footer-aside .adv-footer .banner-bottom-right {
+	width:20.2%;
+	display:inline-block;
+}
+#footer-aside .adv-footer .banner-bottom-right img {
+	margin-left:4.34%;
+}
+
+/* =========================================================
+Footer
+============================================================ */
+footer #copyrights {
+	margin-left:1.81%;
+}
+footer #scroll-to-top {
+	margin-right:1.81%;
+}
+
+/* =========================================================
+	single page
+============================================================ */
+.sub-1sidebar .secondary .sidebar {
+	width:100%;
+}
+.sub-1sidebar .entry-header .header-inner {
+    background-color: #fff;
+    margin-bottom: 0;
+    padding: 9px 2.65%;
+}
+.sub-1sidebar .entry-item .feature-img{
+	margin-right:2.58%;
+}
+/*======Social Share=========*/
+.social-share {
+    padding: 15px 3.54%;
+}
+.social-share h6 {
+	font-size:12px;
+}
+.about-author {	
+	padding:15px 3.54%;
+	width:92.92%;
+}
+.about-author-content {
+	width:100%;
+}
+.about-author img {
+	margin-right:2.58%;
+	width:12.38%;
+}
+.related-posts{
+	padding:15px 3.54%;
+	width:92.92%;
+}
+.related-posts ul{
+	width:100%;
+}
+.related-posts ul li{
+	margin-right:2.58%;
+	width:17.93%;
+}
+.related-posts ul li a{
+	display:block;
+	width:100%;
+}
+/*======Comments List=========*/
+#comments {
+    padding:15px 3.54%;
+}
+.comments-list, .comments-list .depth-1, .comment-wrap {
+	width:100%;
+}
+.comment-wrap .avatar {
+    margin-right: 1.93%;
+}
+.comment-wrap .comment-body {
+    margin-left: 14%;	
+}
+.comment .children{
+	margin-left:0;
+}
+/*======Comment Form=========*/
+#respond, #comments-form {
+	width:100%;
+}
+.comment-right {
+	width:35.48%;
+}
+.comment-left {
+	width:61.54%;
+}
+.comment-right .input-block, .comment-left .input-block {
+	width:100%;
+}
+#comment-name, #comment-email, #comment-url{
+	padding:6px 0 0 1.81%;	
+	width:97.45%;
+}
+.comment-left .textarea-block #comment-message{
+	width:99.58%;
+}
+.comment-button {
+	width:100%;
+}
+#submit-comment{
+    width: 25.8%;
+}
+/* =========================================================
+	Contact page
+============================================================ */
+
+.page-content {
+    padding: 2.45%;
+	width:95.09%;
+}
+.textwidget {
+	padding:2.34%;
+}
+/* =========================================================
+	Elements page
+============================================================ */
+.element-title{
+	padding:1.29%;
+}
+.tab-container {
+	padding:3.87%;
+}
+.page-content .one-forth, .page-content .elements-list {
+	width:100%;
+}
+.kp-error, .kp-success, .kp-info, .kp-notice {
+    padding: 10px 2.58%;
+}
+/*-----list style--------------*/
+.elements-list .default-list ,.elements-list .circle-list,
+.elements-list .check-list,.elements-list .arrow-list,.elements-list .star-list{
+	width:100%;
+	float:none;
+	margin-bottom:20px;
+}
+/*-------button-----------*/
+.green-button, 
+.blue-button,
+.orange-button,
+.red-button,
+.pink-button,
+.grey-button,
+.black-button {
+    padding:10px 3.87%;
+}
+.error-404 .left-col p {
+	font-size:70px;
+}
+
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.home-page .sidebar {
+	width:49.85%;
+	margin-right:0;
+}
+.home-page #sidebar-b {
+	margin-left:-1px;
+	border-left:1px solid #cfcfcf;
+}
+.home-page #sidebar-a {
+	border-right:1px solid #cfcfcf;
+}
+.sidebar .widget .newsletter .your-email .wpcf7-email {
+	width:54.39%;
+}
+.sidebar .widget .your-name .wpcf7-text, #sidebar .widget .your-email .wpcf7-email{
+    width:54.39%;
+}
+.elements-list .default-list ,.elements-list .circle-list,
+.elements-list .check-list,.elements-list .arrow-list,.elements-list .star-list{
+	width:30%;
+	float:left;
+	margin-bottom:20px;
+	margin-right:3%;
+}
+#search-social {
+    float: right;
+    width: 30%;
+}
+
+}
+

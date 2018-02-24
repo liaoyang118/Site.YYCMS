@@ -1,0 +1,232 @@
+﻿@{
+    ViewBag.Title = "ModuleEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using SiteFrame.Model;
+@{
+    List<SystemGroup> gList = ViewData["gList"] as List<SystemGroup>;
+    SystemModual info = ViewData["info"] as SystemModual;
+}
+@section head{
+    
+    <script type="text/javascript">
+
+        $(function () {
+            $("#btnSubmit").button({
+                icons: {
+                    primary: "ui-icon-check "
+                }
+            });
+            $("#btnCancle").button({
+                icons: {
+                    primary: "ui-icon-closethick "
+                }
+            });
+
+            $("#moduleGrade").change(function () {
+                showPartGrade();
+            });
+            var isSearch = "@info.m_gid" == "" ? false : true;
+            if (isSearch) {
+                searchModule('@info.m_g_gid', '@info.m_parent');
+            }
+
+        });
+
+        //显示二级元素从属选择框
+        function showPartGrade() {
+            var gid = $("#moduleGroup option:selected").val();
+            if (gid != -1) {
+                //一级元素
+                if ($("#moduleGrade option:selected").val() == 0) {
+                    //隐藏
+                    $("#modulePartof").hide();
+                    $("#controller").hide();
+                    $("#action").hide();
+                }
+                    //二级元素
+                else if ($("#moduleGrade option:selected").val() == 1) {
+                    //显示
+                    $("#modulePartof").show();
+                    $("#controller").show();
+                    $("#action").show();
+
+                    searchModule(gid, "");
+                }
+            }
+        }
+
+        //查询对应模块组下的一级元素
+        function searchModule(g_gid, m_id) {
+            $.ajax({
+                url: "/System/ModuleSearch",
+                type: "get",
+                dataType: "json",
+                cache: false,
+                data: { g_gid: g_gid, m_parent: 0 },
+                success: function (json) {
+                    $("#modulePart option:gt(0)").remove();
+                    var option;
+                    for (var i = 0; i < json.length; i++) {
+                        if (m_id == json[i].m_id)
+                            option = $('<option selected="selected" value="' + json[i].m_id + '-' + json[i].m_gid + '">' + json[i].m_name + '</option>');
+                        else
+                            option = $('<option value="' + json[i].m_id + '-' + json[i].m_gid + '">' + json[i].m_name + '</option>');
+                        $("#modulePart").append(option);
+                    }
+                },
+                error: function (xhr, xhrText, error) {
+
+                }
+            });
+        }
+
+        function btnSubmitClick() {
+            if ($("#m_name").val().length <= 0) {
+                parent.mDialogUI.message("模块名称不能为空", "提示", 180, 50, 2);
+                return false;
+            }
+            if ($("#moduleGroup option:selected").val() == -1) {
+                parent.mDialogUI.message("必须选择模块组", "提示", 180, 50, 2);
+                return false;
+            }
+
+            if ($("#moduleGrade option:selected").val() == 1) {
+
+                if ($("#modulePart option:selected").val() == -1) {
+                    parent.mDialogUI.message("必须选择从属选项", "提示", 180, 50, 2);
+                    return false;
+                }
+                if ($("#m_controller").val() == "") {
+                    parent.mDialogUI.message("Controller不能为空", "提示", 200, 50, 2);
+                    return false;
+                }
+                if ($("#m_action").val() == "") {
+                    parent.mDialogUI.message("Action不能为空", "提示", 200, 50, 2);
+                    return false;
+                }
+
+            }
+            else if ($("#moduleGrade option:selected").val() == 0) {
+                $("#m_controller").val("");
+                $("#m_action").val("");
+            }
+            var data = {
+                m_name: $("#m_name").val(),
+                moduleGroup: $("#moduleGroup option:selected").val(),
+                moduleGrade: $("#moduleGrade option:selected").val(),
+                m_controller: $("#m_controller").val(),
+                m_action: $("#m_action").val(),
+                modulePart: $("#modulePart option:selected").val(),
+                m_gid: $("#m_gid").val(),
+                m_path: $("#m_path").val()
+            };
+
+            $.ajax({
+                url: "/System/ModuleEdit",
+                type: "post",
+                dataType: "json",
+                cache: false,
+                data: data,
+                success: function (json) {
+                    if (json.success) {
+                        parent.mDialogUI.successMessage(json.errors.text, "成功", 180, 70, 2);
+                        parent.LoadList(parent.querys.page);
+                        parent.mDialogUI.closeWindow('@ViewData["window"]');
+                    }
+                    else {
+                        parent.mDialogUI.errorMessage(json.errors.text, "失败", 180, 70, 2);
+                    }
+                },
+                error: function (xhr, xhrText, error) {
+                    parent.mDialogUI.errorMessage(error, "错误", 200, 70);
+                }
+            });
+        }
+    </script>
+}
+
+<div class="container-10">
+    <table class="editTable">
+        <tr>
+            <td><span class="red">*</span>模块名称：</td>
+            <td>
+                <input name="m_name" id="m_name" type="text" style="width: 240px;" value="@info.m_name" /></td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>模块路径：</td>
+            <td>
+                <input name="m_path" id="m_path" type="text" style="width: 240px;" value="@info.m_path" /></td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>模块组：</td>
+            <td>
+                <select id="moduleGroup">
+                    <option value="-1">--请选择--</option>
+                    @{
+                        foreach (SystemGroup g in gList)
+                        {
+                            if (info.m_g_gid == g.g_gid)
+                            { 
+                        <option selected="selected" value="@g.g_gid">@g.g_name</option>
+                            }
+                            else
+                            { 
+                        <option value="@g.g_gid">@g.g_name</option>
+                            }
+                        }    
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>模块等级：</td>
+            <td>
+                <select id="moduleGrade">
+                    @if (!string.IsNullOrEmpty(info.m_g_gid))
+                    {
+                        if (info.m_parent == 0)
+                        { 
+                        <option value="0" selected="selected">一级元素</option>
+                        <option value="1">二级元素</option>
+                        }
+                        else
+                        { 
+                        <option value="0">一级元素</option>
+                        <option value="1" selected="selected">二级元素</option>
+                        }
+                    }
+                    else
+                    { 
+                        <option value="-1">请选择</option>
+                        <option value="0">一级元素</option>
+                        <option value="1">二级元素</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr id="modulePartof">
+            <td><span class="red">*</span>从属模块：</td>
+            <td>
+                <select id="modulePart">
+                    <option value="-1">请选择</option>
+                </select>
+            </td>
+        </tr>
+        <tr id="controller">
+            <td><span class="red">*</span>Controller：</td>
+            <td>
+                <input name="m_controller" id="m_controller" type="text" style="width: 240px;" value="@info.m_Controller" /></td>
+        </tr>
+        <tr id="action">
+            <td><span class="red">*</span>Action：</td>
+            <td>
+                <input name="m_action" id="m_action" type="text" style="width: 240px;" value="@info.m_Action" /></td>
+        </tr>
+    </table>
+    <div style="float: right; margin-top: 10px;">
+        <input type="hidden" name="m_gid" id="m_gid" value="@info.m_gid" />
+        <button id="btnSubmit" onclick="btnSubmitClick();">确定</button>
+        <button id="btnCancle" onclick="parent.mDialogUI.closeWindow('@ViewData["window"]');">取消</button>
+    </div>
+</div>

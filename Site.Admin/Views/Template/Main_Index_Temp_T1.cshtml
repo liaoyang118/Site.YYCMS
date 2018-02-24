@@ -1,0 +1,350 @@
+﻿@@{
+    ViewBag.Title = "宇扬网_首页";
+    ViewBag.keywords = "宇扬网，有你想要的";
+    ViewBag.description = "宇扬网，综合门户网站，自由发布平台，有你想要的，看你想看的";
+
+    Layout = "~/Views/Shared/_Layout_T1.cshtml";
+}
+@using Site.Service.SiteService.SiteServices;
+@using Site.Admin.Common;
+@using Site.Common;
+@{
+    Dictionary<string, List<Site_CMSItem>> dic = ViewBag.dataList;
+}
+@if (dic.Count > 0)
+{
+    <div id="main-content">
+        <div class="primary">
+            <div class="slider-box-hover">
+                <div class="slider-wrapper">
+
+                    <div id="slider" class="nivoSlider">
+                        @{
+                            int sort = 1;
+                            foreach (Site_CMSItem item in dic["10"].GetLengthObject<Site_CMSItem>(5))
+                            {
+                                <a href="@SiteUntility.GetRelationDetailUrl(item.i_c_gid)" target="_blank" title="@item.i_title">
+                                    <img src="@item.i_c_img_src" alt="" title="#slide-caption-@sort" />
+                                </a>
+                                sort++;
+                            }
+                        }
+                    </div>
+                    @{
+                        int content_sort = 1;
+                        foreach (Site_CMSItem item in dic["10"].GetLengthObject<Site_CMSItem>(5))
+                        {
+                            <div id="slide-caption-@content_sort" class="nivo-html-caption">
+                                <header>
+                                    <h1><a href="@SiteUntility.GetRelationDetailUrl(item.i_c_gid)" target="_blank" title="@item.i_title">@item.i_title</a></h1>
+                                </header>
+                                <p>@item.i_intro</p>
+                            </div>
+                            content_sort++;
+                        }
+                    }
+                </div><!--end:slider-wrapper-->
+            </div><!--box-hover-->
+            <section id="main-section">
+                <header class="entry-header">
+                    <div class="header-inner">
+                        <a href="javascript:void(0)">最近文章</a>
+                    </div><!--header-inner-->
+                </header>
+                <!--左侧最新图文 244*117 -->
+                @foreach (Site_CMSItem item in dic["12"].GetLengthObject<Site_CMSItem>(6))
+                {
+                    <div class="article-wrap">
+                        <article class="entry-item box-hover clearfix">
+                            <a href="@SiteUntility.GetRelationDetailUrl(item.i_c_gid)" target="_blank" title="@item.i_title">
+                                <img width="244" height="117" class="hover-effect responsive-img" src="@item.i_c_img_src" alt="">
+                            </a>
+                            <div class="entry-content">
+                                <h3 class="entry-title"><a href="#">@item.i_title</a></h3>
+                                <p>@item.i_intro.SubOmitString(80)</p>
+                            </div><!--end:entry-content-->
+                        </article><!--end:entry-item-->
+                    </div><!--article-wrap-->
+                }
+            </section>
+        </div><!--end:primary-->
+        <div class="secondary">
+            <div id="top-sidebar">
+                <section class="feature-widget">
+                    <header>
+                        <h6 class="feature-title">关注推荐</h6>
+                    </header>
+                    <div class="list-carousel responsive">
+                        <div class="caroufredsel_wrapper" style="display: block; text-align: start; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; width: 567px; height: 238px; margin: 0px; overflow: hidden;">
+                            <ul class="feature-news clearfix" style="text-align: left; float: none; position: absolute; top: 0px; left: 0px; margin: 0px; width: 2079px; height: 238px;">
+                                <!--右侧滑动热点 168*106-->
+                                @foreach (Site_CMSItem item in dic["13"].GetLengthObject<Site_CMSItem>(6))
+                                {
+                                    <li style="width: 190px;">
+                                        <article>
+                                            <div class="feature-item clearfix">
+                                                <a href="@SiteUntility.GetRelationDetailUrl(item.i_c_gid)" target="_blank" title="@item.i_title">
+                                                    <img width="168" height="106" class="hover-effect responsive-img" alt="" src="@item.i_c_img_src">
+                                                </a>
+                                                <div class="entry-content">
+                                                    <h4 class="entry-title"><a href="@SiteUntility.GetRelationDetailUrl(item.i_c_gid)" target="_blank" title="@item.i_title">@item.i_title</a></h4>
+                                                    <p>@item.i_intro.SubOmitString(60)</p>
+                                                </div><!--end:entry_content-->
+                                            </div>
+                                        </article>
+                                    </li>
+                                }
+                            </ul>
+                        </div><!--end:feature-news-->
+                        <div class="clear"></div>
+                        <div class="feature-nav">
+                            <a id="prev-1" class="prev" href="#" style="display: block;">&nbsp;</a>
+                            <a id="next-1" class="next" href="#" style="display: block;">&nbsp;</a>
+                        </div><!--feature-nav-->
+                    </div><!--end:list-carousel-->
+                </section><!--end:feature-widget-->
+            </div>
+            <!--中间块-->
+            <div class="sidebar" id="sidebar-a">
+
+                <aside class="widget box-hover" style="width: 284px;">
+                    <header class="entry-header">
+                        <a href="@SiteUntility.GetRelationCateUrl("1")" target="_blank"><h4 class="widget-title clearfix"><span>DotNet</span></h4></a>
+                    </header>
+                    @{
+                        for (int i = 0; i < dic["14"].GetLength<Site_CMSItem>(1); i++)
+                        {
+                            <!--图-->
+                            <article class="entry-box clearfix">
+                                <a href="@SiteUntility.GetRelationDetailUrl(dic["14"][i].i_c_gid)" target="_blank" title="@dic["14"][i].i_title">
+                                    <img width="244" height="117" class="hover-effect responsive-img" src="@dic["14"][i].i_c_img_src" alt="" style="opacity:1;">
+                                </a>
+                                <div class="entry-content">
+                                    <h3 class="entry-title"><a href="@SiteUntility.GetRelationDetailUrl(dic["14"][i].i_c_gid)" target="_blank" title="@dic["14"][i].i_title">@dic["14"][i].i_title</a></h3>
+                                    <p>@dic["14"][i].i_intro</p>
+                                </div>
+                            </article>
+                        }
+                    }
+                    <!--文-->
+                    <ul class="older-posts">
+                        @{
+                            for (int i = 1; i < dic["14"].GetLength<Site_CMSItem>(2); i++)
+                            {
+                                <li><a href="@SiteUntility.GetRelationDetailUrl(dic["14"][i].i_c_gid)" target="_blank" title="@dic["14"][i].i_title">@dic["14"][i].i_title</a></li>
+                            }
+                        }
+                    </ul>
+                </aside>
+
+                <aside class="widget box-hover" style="width: 284px;">
+                    <header class="entry-header">
+                        <a href="@SiteUntility.GetRelationCateUrl("23")" target="_blank"><h4 class="widget-title clearfix"><span>PCB</span></h4></a>
+                    </header>
+                    @{
+                        for (int i = 0; i < dic["15"].GetLength<Site_CMSItem>(1); i++)
+                        {
+                            <!--图-->
+                            <article class="entry-box clearfix">
+                                <a href="@SiteUntility.GetRelationDetailUrl(dic["15"][i].i_c_gid)" target="_blank" title="@dic["15"][i].i_title">
+                                    <img width="244" height="117" class="hover-effect responsive-img" src="@dic["15"][i].i_c_img_src" alt="" style="opacity:1;">
+                                </a>
+                                <div class="entry-content">
+                                    <h3 class="entry-title"><a href="@SiteUntility.GetRelationDetailUrl(dic["15"][i].i_c_gid)" target="_blank" title="@dic["15"][i].i_title">@dic["15"][i].i_title</a></h3>
+                                    <p>@dic["15"][i].i_intro</p>
+                                </div>
+                            </article>
+                        }
+                    }
+                    <!--文-->
+                    <ul class="older-posts">
+                        @{
+                            for (int i = 1; i < dic["15"].GetLength<Site_CMSItem>(3); i++)
+                            {
+                                <li><a href="@SiteUntility.GetRelationDetailUrl(dic["15"][i].i_c_gid)" target="_blank" title="@dic["15"][i].i_title">@dic["15"][i].i_title</a></li>
+                            }
+                        }
+                    </ul>
+                </aside>
+
+                <div id="undefined-sticky-wrapper" class="sticky-wrapper" style="height: 350px;">
+                    <aside class="widget box-hover a-last-widget" style="width: 284px;">
+                        <div class="acc-wrapper">
+                            <div class="accordion-title active">
+                                <h6><a href="@SiteUntility.GetRelationCateUrl("7")" target="_blank">美女</a></h6>
+                            </div>
+                            <div class="accordion-container" style="display: block;">
+                                <ul>
+                                    @{
+                                        for (int i = 0; i < dic["16"].GetLength<Site_CMSItem>(3); i++)
+                                        {
+                                            <!--图 62*46-->
+                                            <li>
+                                                <article class="clearfix">
+                                                    <a href="@SiteUntility.GetRelationDetailUrl(dic["16"][i].i_c_gid)" target="_blank" title="@dic["16"][i].i_title">
+                                                        <img width="62" height="46" class="hover-effect responsive-img" src="@dic["16"][i].i_c_img_src" alt="">
+                                                    </a>
+                                                    <a href="@SiteUntility.GetRelationDetailUrl(dic["16"][i].i_c_gid)" target="_blank" title="@dic["16"][i].i_title">@dic["16"][i].i_title</a>
+                                                </article>
+                                            </li>
+
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                            <div class="accordion-title">
+                                <h6><a href="@SiteUntility.GetRelationCateUrl("8")" target="_blank">社会</a></h6>
+                            </div>
+                            <div class="accordion-container" style="display: none;">
+                                <ul>
+                                    @{
+                                        for (int i = 0; i < dic["17"].GetLength<Site_CMSItem>(3); i++)
+                                        {
+                                            <!--图 62*46-->
+                                            <li>
+                                                <article class="clearfix">
+                                                    <a href="@SiteUntility.GetRelationDetailUrl(dic["17"][i].i_c_gid)" target="_blank" title="@dic["17"][i].i_title">
+                                                        <img width="62" height="46" class="hover-effect responsive-img" src="@dic["17"][i].i_c_img_src" alt="">
+                                                    </a>
+                                                    <a href="@SiteUntility.GetRelationDetailUrl(dic["17"][i].i_c_gid)" target="_blank" title="@dic["17"][i].i_title">@dic["17"][i].i_title</a>
+                                                </article>
+                                            </li>
+
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                            <div class="accordion-title">
+                                <h6><a href="@SiteUntility.GetRelationCateUrl("9")" target="_blank">汽车</a></h6>
+                            </div>
+                            <div class="accordion-container" style="display: none;">
+                                <ul>
+                                    @{
+                                        for (int i = 0; i < dic["18"].GetLength<Site_CMSItem>(3); i++)
+                                        {
+                                            <!--图 62*46-->
+                                            <li>
+                                                <article class="clearfix">
+                                                    <a href="@SiteUntility.GetRelationDetailUrl(dic["18"][i].i_c_gid)" target="_blank" title="@dic["18"][i].i_title">
+                                                        <img width="62" height="46" class="hover-effect responsive-img" src="@dic["18"][i].i_c_img_src" alt="">
+                                                    </a>
+                                                    <a href="@SiteUntility.GetRelationDetailUrl(dic["18"][i].i_c_gid)" target="_blank" title="@dic["18"][i].i_title">@dic["18"][i].i_title</a>
+                                                </article>
+                                            </li>
+
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div><!--end:acc-wrapper-->
+                    </aside>
+                </div><!--end:widget-->
+                <div class="clear"></div>
+            </div>
+            <!--右侧块-->
+            <div id="sidebar-b" class="sidebar">
+                <aside class="widget box-hover" style="width: 284px;">
+                    <header class="entry-header">
+                        <a href="@SiteUntility.GetRelationCateUrl("13")" target="_blank"><h4 class="widget-title clearfix"><span>TOOLS</span></h4></a>
+                    </header>
+                    @{
+                        for (int i = 0; i < dic["19"].GetLength<Site_CMSItem>(1); i++)
+                        {
+                            <!--图 244*117-->
+                            <article class="entry-box clearfix">
+                                <a href="@SiteUntility.GetRelationDetailUrl(dic["19"][i].i_c_gid)" target="_blank" title="@dic["19"][i].i_title">
+                                    <img width="244" height="117" class="hover-effect responsive-img" src="@dic["19"][i].i_c_img_src" alt="" style="opacity:1;">
+                                </a>
+                                <div class="entry-content">
+                                    <h3 class="entry-title"><a href="@SiteUntility.GetRelationDetailUrl(dic["19"][i].i_c_gid)" target="_blank" title="@dic["19"][i].i_title">@dic["19"][i].i_title</a></h3>
+                                    <p>@dic["19"][i].i_intro</p>
+                                </div>
+                            </article>
+                        }
+                    }
+                    <!--文-->
+                    <ul class="older-posts">
+                        @{
+                            for (int i = 1; i < dic["19"].GetLength<Site_CMSItem>(2); i++)
+                            {
+                                <li><a href="@SiteUntility.GetRelationDetailUrl(dic["19"][i].i_c_gid)" target="_blank" title="@dic["19"][i].i_title">@dic["19"][i].i_title</a></li>
+                            }
+                        }
+                    </ul>
+                </aside>
+
+                <!--广告位-->
+                <aside class="widget box-hover" style="width: 284px;">
+                    <header class="entry-header">
+                        <h4 class="widget-title">招商</h4>
+                    </header>
+                </aside>
+                <aside class="widget box-hover" style="width: 284px;">
+                    <div class="adv-125-125 clearfix">
+                        <a href="#"><img class="hover-effect responsive-img" alt="" src="~/Content/Bootstrap/placeholders/125x125/sample-ad-1.jpg"></a>
+                        <a href="#"><img class="hover-effect responsive-img" alt="" src="~/Content/Bootstrap/placeholders/125x125/sample-ad-1.jpg"></a>
+                        <a href="#"><img class="hover-effect responsive-img" alt="" src="~/Content/Bootstrap/placeholders/125x125/sample-ad-1.jpg"></a>
+                        <a href="#"><img class="hover-effect responsive-img" alt="" src="~/Content/Bootstrap/placeholders/125x125/sample-ad-1.jpg"></a>
+                    </div>
+                </aside>
+
+                <div id="undefined-sticky-wrapper" class="sticky-wrapper" style="height: 430px;">
+                    <aside class="widget box-hover b-last-widget" style="width: 284px;">
+                        <header class="entry-header">
+                            <a href="@SiteUntility.GetRelationCateUrl("21")" target="_blank"><h4 class="widget-title clearfix"><span>小说</span></h4></a>
+                        </header>
+                        @{
+                            for (int i = 0; i < dic["20"].GetLength<Site_CMSItem>(1); i++)
+                            {
+                                <!--图 244*117-->
+                                <article class="entry-box clearfix">
+                                    <a href="@SiteUntility.GenerateIntroUrl(dic["20"][i].i_c_gid.ToInt32())" target="_blank" title="@dic["20"][i].i_title">
+                                        <img width="244" height="117" class="hover-effect responsive-img" src="@dic["20"][i].i_c_img_src" alt="" style="opacity:1;">
+                                    </a>
+                                    <div class="entry-content">
+                                        <h3 class="entry-title"><a href="@SiteUntility.GenerateIntroUrl(dic["20"][i].i_c_gid.ToInt32())" target="_blank" title="@dic["20"][i].i_title">@dic["20"][i].i_title</a></h3>
+                                        <p>@dic["20"][i].i_intro</p>
+                                    </div>
+                                </article>
+                            }
+                        }
+                        <!--文-->
+                        <ul class="older-posts">
+                            @{
+                                for (int i = 1; i < dic["20"].GetLength<Site_CMSItem>(3); i++)
+                                {
+                                    <li><a href="@SiteUntility.GenerateIntroUrl(dic["20"][i].i_c_gid.ToInt32())" target="_blank" title="@dic["20"][i].i_title">@dic["20"][i].i_title</a></li>
+                                }
+                            }
+                        </ul>
+
+                    </aside>
+                </div><!--end:widget-->
+                <div class="clear"></div>
+            </div><!--end:sidebar-->
+            <div class="clear"></div>
+        </div><!--end:secondary-->
+        <div class="clear"></div>
+
+        <!--首页底部广告-->
+        <div id="footer-aside" class="box-hover">
+            <div class="friendNav">
+                <span>友情链接</span>
+            </div>
+            <aside class="widget">
+                <div class="adv-footer" style="text-align:left;">
+                    @*<a class="banner-bottom-left" href="#"><img class="hover-effect responsive-img" src="~/Content/Bootstrap/placeholders/728x90-banner.jpg" alt="" style="opacity: 1;"></a>*@
+                    <a class="banner-bottom-left" title="神读阁" target="_blank" href="http://www.shenduge.com"><img class="hover-effect responsive-img ml-10" src="~/Content/FriendLinks/shenduge2.png" alt="" style="opacity: 1;"></a>
+                    <a class="banner-bottom-left" title="宇扬小说网" target="_blank" href="http://xs.jsonyang.com"><img class="hover-effect responsive-img ml-10" src="~/Content/FriendLinks/yuyangxiaoshuo.png" alt="" style="opacity: 1;"></a>
+                </div><!--end:adv-footer-->
+                <div class="clear"></div>
+            </aside>
+        </div>
+
+        <!--底部-->
+        @{
+            Html.RenderPartial("~/Views/Template/Main_Foot_Temp_T1.cshtml");
+        }
+
+    </div>
+}

@@ -1,0 +1,158 @@
+﻿@{
+    ViewBag.Title = "ModualList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using SiteFrame.Model;
+
+
+
+@section head{
+    <script src="/Dialog/jquery.artDialog.source.js"></script>
+    <script src="/Dialog/plugins/iframeTools.source.js"></script>
+    <link href="/Dialog/skins/blue.css" rel="stylesheet" />
+    <script src="/JS/mDialogV2.js"></script>
+
+    <script type="text/javascript">
+        var querys = { page: 1, pagesize: 15 };
+        $(function () {
+
+            $("#btn_search").button({
+                icons: {
+                    primary: "ui-icon-search"
+                }
+            });
+            $("#btn_search_all").button({
+                icons: {
+                    primary: "ui-icon-search"
+                }
+            });
+            $("#btn_add").button({
+                icons: {
+                    primary: "ui-icon-plus"
+                }
+            });
+            LoadList(1);
+        });
+
+        function LoadList(page) {
+            mDialogUI.loading("加载数据中");
+            querys.page = page;
+            $.ajax({
+                url: "/System/ModuleListView",
+                type: "get",
+                dataType: "html",
+                cache: false,
+                data: querys,
+                success: function (html) {
+                    mDialogUI.closeLoading();
+                    $("#div_list").html(html);
+                },
+                error: function (xhr, xhrText, error) {
+                    mDialogUI.closeLoading();
+                    mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                }
+            });
+        }
+
+        function EditModule(type, m_gid) {
+            var title;
+            if (type) {
+                title = "新增模块";
+            }
+            else {
+                title = "修改模块";
+            }
+            mDialogUI.openWindow("/system/ModuleEditView?m_gid=" + m_gid, title, 400, 250, true);
+        }
+
+        function ModuleDelete(m_gid) {
+            mDialogUI.confirm("删除", "确定要删除该条数据吗？", function () {
+                mDialogUI.loading("加载数据中");
+                $.ajax({
+                    url: "/system/ModuleDelete",
+                    type: "post",
+                    dataType: "json",
+                    data: { m_gid: m_gid },
+                    cache: false,
+                    success: function (json) {
+                        if (json.success) {
+                            mDialogUI.closeLoading();
+                            mDialogUI.successMessage(json.errors.text, "成功", 180, 50, 2);
+                            LoadList(querys.page);
+                        }
+                        else {
+                            mDialogUI.errorMessage(json.errors.text, "失败", 180, 50);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                    }
+                });
+            });
+        }
+
+        function btn_searchClick(type) {
+            if (type) {
+                $("#moduleGroup").val(0);
+                $("#m_name").val("");
+            }
+            querys.m_g_gid = "";
+            querys.m_parent = "";
+
+            var searchOption = $("#moduleGroup").val();
+            if ((/[a-z]+/g).test(searchOption)) {
+                querys.m_g_gid = searchOption;
+            }
+            else {
+                querys.m_parent = searchOption;
+            }
+
+            querys.m_name = $("#m_name").val();
+
+            LoadList(1);
+        }
+
+        function ShowPermission(m_gid)
+        {
+            mDialogUI.openWindow("/system/PermissionListView?m_gid=" + m_gid, "权限列表", 500, 400, true);
+        }
+    </script>
+}
+
+
+
+<div class="container">
+    <div class="headDiv">
+        <div>
+            <span>模块：</span>
+            <select id="moduleGroup" style="font-size: 14px;">
+                <option value="0">--请选择--</option>
+                @{
+                    var list = ViewData["groupList"] as List<SystemGroup>;
+                    var moduleList = ViewData["moduleList"] as List<SystemModual>;
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                    <option value="@list[i].g_gid">@list[i].g_name</option>
+                        foreach (var t in moduleList.Where(m => m.m_g_gid == list[i].g_gid && m.m_parent == 0))
+                        {
+                    <option value="@t.m_id">&nbsp;&nbsp;&nbsp;&nbsp;@t.m_name</option>
+                        }
+                    }
+                }
+            </select>
+            模块名称：<input type="text" name="m_name" id="m_name" value="" onkeydown="if(event.keyCode=='13'){$('#btn_search').click();}" />
+
+            <button id="btn_search" onclick="btn_searchClick()">确定</button>
+            <button id="btn_search_all" onclick="btn_searchClick('all')">全部</button>
+            <div style="float: right;">
+                <button id="btn_add" onclick="EditModule(true,'');">增加</button>
+            </div>
+        </div>
+
+    </div>
+    <div id="div_list">
+        正在加载中....
+    </div>
+
+</div>
+

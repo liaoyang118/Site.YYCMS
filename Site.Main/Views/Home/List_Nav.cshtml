@@ -1,0 +1,81 @@
+﻿
+@{
+    string pageParam = Request.RequestContext.RouteData.Values["pageParam"]==null?"":Request.RequestContext.RouteData.Values["pageParam"].ToString();
+    string[] arr = pageParam.Split(new string[] { "_" }, StringSplitOptions.RemoveEmptyEntries);
+    string cateId="";
+    if(arr.Length>0)
+    {
+        cateId=arr[0];
+    }
+    else
+    {
+        cateId=ViewBag.cateId.ToString();
+    }
+}
+<header id="header">
+    <div id="header-top">
+        <div class="wrapper clearfix">
+            <div id="welcome">
+                Welcome to yu yang web !
+            </div>
+            <!--导航-->
+            <nav id="top-nav">
+                <ul id="top-menu" class="clearfix">
+                            <li @(cateId=="-" ?"class=current-menu-item":"")>
+                                <a href="/" title="首页">首页</a>
+                            </li>
+                            <li @(cateId=="11" ?"class=current-menu-item":"")>
+                                <a href="/list/11.html" title=".NET">.NET</a>
+                            </li>
+                            <li @(cateId=="12" ?"class=current-menu-item":"")>
+                                <a href="/list/12.html" title="PCB">PCB</a>
+                            </li>
+                            <li @(cateId=="13" ?"class=current-menu-item":"")>
+                                <a href="/list/13.html" title="生活">生活</a>
+                            </li>
+                </ul>
+            </nav><!--end:top-nav-->
+        </div><!--wrapper-->
+    </div><!--header-logo-->
+    <div id="header-middle">
+        <div class="wrapper clearfix">
+            <div id="logo-image"><a href="/"><img src="/Content/Bootstrap/placeholders/logo.png" alt="logo"></a></div>
+        </div><!--wrapper-->
+    </div>
+    <!--子导航-->
+    <div id="navigation">
+        <nav id="secondary-menu" class="wrapper clearfix">
+            <ul class="clearfix" id="main-nav">
+                        <li @(cateId=="-" ?"class=current-menu-item":"")>
+                            <a href="/" title="首页">首页</a>
+                        </li>
+                        <li @(cateId=="11" ?"class=current-menu-item":"")>
+                            <a href="/list/11.html" title=".NET">.NET</a>
+                        </li>
+                        <li @(cateId=="12" ?"class=current-menu-item":"")>
+                            <a href="/list/12.html" title="PCB">PCB</a>
+                        </li>
+                        <li @(cateId=="13" ?"class=current-menu-item":"")>
+                            <a href="/list/13.html" title="生活">生活</a>
+                        </li>
+            </ul><!--end:main-nav-->
+
+        </nav><!--end:secondary-menu-->
+    </div><!--navigation-->
+    <div id="header-bottom">
+        <div class="wrapper clearfix">
+            <div class="breadcrumb clearfix">
+                <a href="/">宇扬网</a>&nbsp;&raquo;&nbsp;<a href="#" class="current-page">@ViewBag.CateName</a>
+            </div><!--end:breadcrumb-->
+            <div class="sub-search-box clearfix">
+                <form action="#" class="search-form" method="get" />
+                <input type="text" onblur="if(this.value=='')this.value=this.defaultValue;" onfocus="if(this.value==this.defaultValue)this.value='';" value="Search" name="s" class="search-text" />
+                <input type="submit" value="" name="submit" class="search-submit" />
+                </form><!-- search-form -->
+            </div><!--end:search-box-->
+        </div><!--end:wrapper-->
+    </div>
+</header>
+
+
+

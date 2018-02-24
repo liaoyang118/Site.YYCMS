@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "CatesEditView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Site.Service.SiteService.SiteServices;
+@using Site.Admin.Common;
+@using Site.Common;
+@{
+    Site_Cates info = ViewData["info"] as Site_Cates;
+    string tableId = ViewData["tableId"].ToString();
+}
+@section head{
+
+    <script type="text/javascript">
+
+        $(function () {
+            $("#btnSubmit").button({
+                icons: {
+                    primary: "ui-icon-check "
+                }
+            });
+            $("#btnCancle").button({
+                icons: {
+                    primary: "ui-icon-closethick "
+                }
+            });
+
+            $("#moduleGrade").change(function () {
+                showPartGrade();
+            });
+        });
+
+        function btnSubmitClick() {
+            if ($("#c_name").val().length <= 0) {
+                parent.mDialogUI.message("分类名称不能为空", "提示", 180, 50, 2);
+                return false;
+            }
+            if ($("#catesType option:selected").val() == "") {
+                parent.mDialogUI.message("必须选择分类类型", "提示", 180, 50, 2);
+                return false;
+            }
+
+            var data = {
+                c_name: $("#c_name").val(),
+                catesType: $("#catesType option:selected").val(),
+                c_gid: $("#c_gid").val(),
+                c_path: $("#c_path").val(),
+                tableId: '@tableId'
+            };
+
+            $.ajax({
+                url: "/Site/CatesEdit",
+                type: "post",
+                dataType: "json",
+                cache: false,
+                data: data,
+                success: function (json) {
+                    if (json.success) {
+                        parent.mDialogUI.successMessage(json.errors.text, "成功", 180, 70, 2);
+                        parent.LoadList(parent.querys.page);
+                        parent.mDialogUI.closeWindow('@ViewData["window"]');
+                    }
+                    else {
+                        parent.mDialogUI.errorMessage(json.errors.text, "失败", 180, 70, 2);
+                    }
+                },
+                error: function (xhr, xhrText, error) {
+                    parent.mDialogUI.errorMessage(error, "错误", 200, 70);
+                }
+            });
+        }
+    </script>
+}
+
+<div class="container-10">
+    <div class="hint">分类路径：子分类以父分类开头，如 11，1101，1102</div>
+    <table class="editTable">
+        <tr>
+            <td><span class="red">*</span>分类名称：</td>
+            <td>
+                <input name="c_name" id="c_name" type="text" style="width: 240px;" value="@info.c_name" />
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>分类路径：</td>
+            <td>
+                @{
+                    int length = 2;
+                    if (!string.IsNullOrEmpty(tableId))
+                    {
+                        length = 4;
+                    }
+                }
+                <input name="c_path" id="c_path" maxlength="@length" type="text" style="width: 240px;" value="@info.c_path" />
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>分类类型：</td>
+            <td>
+                @{
+                    string[] arr = Enum.GetNames(typeof(SiteEnum.SiteCatesType));
+                }
+                <select id="catesType">
+                    <option value="">-请选择-</option>
+                    @foreach (string item in arr)
+                    {
+                        <option @{if (item == info.c_type) { <text> selected="selected" </text>    }} value="@item">@item</option>
+                    }
+
+                </select>
+            </td>
+        </tr>
+    </table>
+    <div style="float: right; margin-top: 10px;">
+        <input type="hidden" name="c_gid" id="c_gid" value="@info.c_gid" />
+        <button id="btnSubmit" onclick="btnSubmitClick();">确定</button>
+        <button id="btnCancle" onclick="parent.mDialogUI.closeWindow('@ViewData["window"]');">取消</button>
+    </div>
+</div>

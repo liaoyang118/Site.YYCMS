@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Site.SiteModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Site.SiteModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Site_Cates">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="c_createTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="c_createUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_gid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_id" type="xs:int" />
+      <xs:element minOccurs="0" name="c_isMainCate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="c_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_path" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_tableId" type="xs:int" />
+      <xs:element minOccurs="0" name="c_type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Site_Cates" nillable="true" type="tns:Site_Cates" />
+  <xs:complexType name="ArrayOfSite_Cates">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Site_Cates" nillable="true" type="tns:Site_Cates" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSite_Cates" nillable="true" type="tns:ArrayOfSite_Cates" />
+  <xs:complexType name="Site_CMSPage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="p_createTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="p_createUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="p_filePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="p_gid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="p_id" type="xs:int" />
+      <xs:element minOccurs="0" name="p_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="p_pageDuty" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="p_path" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="p_siteName" type="xs:int" />
+      <xs:element minOccurs="0" name="p_tempPath" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Site_CMSPage" nillable="true" type="tns:Site_CMSPage" />
+  <xs:complexType name="ArrayOfSite_CMSPage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Site_CMSPage" nillable="true" type="tns:Site_CMSPage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSite_CMSPage" nillable="true" type="tns:ArrayOfSite_CMSPage" />
+  <xs:complexType name="Site_CMSBlock">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="b_createTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="b_createUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="b_gid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="b_id" type="xs:int" />
+      <xs:element minOccurs="0" name="b_img_size" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="b_name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="b_p_gid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="b_path" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Site_CMSBlock" nillable="true" type="tns:Site_CMSBlock" />
+  <xs:complexType name="ArrayOfSite_CMSBlock">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Site_CMSBlock" nillable="true" type="tns:Site_CMSBlock" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSite_CMSBlock" nillable="true" type="tns:ArrayOfSite_CMSBlock" />
+  <xs:complexType name="Site_CMSItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="i_b_gid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="i_c_gid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="i_c_img_src" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="i_c_type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="i_createTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="i_createUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="i_gid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="i_id" type="xs:int" />
+      <xs:element minOccurs="0" name="i_intro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="i_p_gid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="i_sort" type="xs:int" />
+      <xs:element minOccurs="0" name="i_status" type="xs:int" />
+      <xs:element minOccurs="0" name="i_subTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="i_title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Site_CMSItem" nillable="true" type="tns:Site_CMSItem" />
+  <xs:complexType name="ArrayOfSite_CMSItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Site_CMSItem" nillable="true" type="tns:Site_CMSItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSite_CMSItem" nillable="true" type="tns:ArrayOfSite_CMSItem" />
+  <xs:complexType name="Site_Content">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="c_c_gid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_content" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_createTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="c_createUserId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_createUserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_createUserNickName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_gid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_id" type="xs:int" />
+      <xs:element minOccurs="0" name="c_img_src" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_intro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_keywords" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_state" type="xs:boolean" />
+      <xs:element minOccurs="0" name="c_status" type="xs:int" />
+      <xs:element minOccurs="0" name="c_sub_title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_updateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Site_Content" nillable="true" type="tns:Site_Content" />
+  <xs:complexType name="ArrayOfSite_Content">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Site_Content" nillable="true" type="tns:Site_Content" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSite_Content" nillable="true" type="tns:ArrayOfSite_Content" />
+</xs:schema>

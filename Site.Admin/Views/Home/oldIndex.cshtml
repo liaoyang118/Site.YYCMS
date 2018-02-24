@@ -1,0 +1,156 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <script src="~/JS/common.js"></script>
+    <script src="~/JS/EasyUI/jquery.easyui.min.js"></script>
+    <script src="~/JS/EasyUI/locale/easyui-lang-zh_CN.js"></script>
+    <link href="~/JS/EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/JS/EasyUI/themes/icon.css" rel="stylesheet" />
+
+
+    <title>CMS系统</title>
+    <script type="text/javascript">
+
+        var iframeMaskId;
+
+        $(function () {
+            //创建Tab条
+            $("#contentTab").tabs({
+                border: false,
+                width: "100%",
+                height: "inherit"
+            });
+            SetHW();
+            //获取当前用户的权限
+            $.ajax({
+                data: {},
+                type: "post",
+                dataType: "json",
+                cache: false,
+                url: "/Home/GetModual",
+                success: function (json) {
+                    //显示出菜单栏
+                    $("#menu").tree({
+                        data: json,
+                        //onclick事件
+                        onClick: function (node) {
+                            var controller = node.attributes.controller;
+                            var action = node.attributes.action;
+                            if (controller != "" && action != "") {
+                                //1.先判断是否存在该tab
+                                if (tabExists(node.text)) {
+                                    //2.存在就将当钱的tab选中
+                                    selectTab(node.text);
+                                }
+                                else {
+                                    CreateTab("contentTab", controller + "/" + action, node.text, node.id);
+                                }
+                            }
+                            SetHW();
+                            //显示遮罩
+                            ShowIframeMask(node.id);
+                            iframeMaskId = node.id;
+                        }
+                    });
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        })
+
+        //窗口变化时，改变遮罩的大小
+        $(window).resize(function () {
+            setTimeout(function () {
+                ResizeMask(iframeMaskId);
+            }, 200);
+        });
+
+        //登出
+        function loginOut() {
+            $.post("/Home/LoginOut", "", function (json) {
+                if (json.success) {
+                    alert(json.errors.text);
+                    location.href = "/home/login";
+                }
+                else {
+                    alert(json.errors.text);
+                }
+            }, "json");
+        }
+
+        //创建Tab
+        function CreateTab(tabContains, url, title, id) {
+            $("#" + tabContains).tabs('add', {
+                title: title,
+                content: newContent(url, id),
+                closable: true,
+                tools: [{
+                    iconCls: 'icon-mini-refresh',
+                    handler: function () {
+                        alert('refresh');
+                    }
+                }]
+            });
+        }
+
+        //判断当前tab是否存在
+        function tabExists(title) {
+            return $("#contentTab").tabs("exists", title);
+        }
+
+        //选中tab
+        function selectTab(title) {
+            $("#contentTab").tabs("select", title);
+        }
+
+        //创建iframe
+        function newContent(url, id) {
+            return "<iframe id='ifr_" + id + "'  src='/" + url + "' style='border:0px solid #0094ff;overflow-y:scroll;width:100%;height:98%;'></iframe>";
+        }
+
+        
+    </script>
+    <style type="text/css">
+        .topleft {
+            float: left;
+            font-size: 40px;
+            font-weight: bolder;
+            line-height: 70px;
+            margin-left: 15px;
+            color: #808080;
+            width: 50%;
+        }
+
+        .topRight {
+            float: right;
+            text-align: right;
+            margin-right: 15px;
+            font-size: 20px;
+            height: 20px;
+            color: #000000;
+            width: 40%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'north',title:'后台管理系统'" style="height: 100px;">
+        <div class="topleft">CMS系统</div>
+        <div class="topRight">@ViewData["name"]，欢迎登陆CMS系统,<a href="javascript:void(0);" onclick="loginOut();">退出</a></div>
+    </div>
+    <div data-options="region:'west',title:'菜单栏',split:true" style="width: 200px;">
+        <ul id="menu"></ul>
+    </div>
+    <div id="main" data-options="region:'center',title:''" style="padding: 5px; background: #eee;">
+        <div id="contentTab">
+        </div>
+    </div>
+</body>
+</html>

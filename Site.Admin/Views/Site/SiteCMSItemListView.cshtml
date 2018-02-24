@@ -1,0 +1,158 @@
+﻿@using Site.Service.SiteService.SiteServices;
+@using Site.Common;
+@{
+    List<Site_CMSItem> list = ViewData["list"] as List<Site_CMSItem>;
+    string b_gid = ViewBag.b_gid;
+    string p_gid = ViewBag.p_gid;
+
+    int page = (int)ViewData["page"];
+    int pageSize = (int)ViewData["pageSize"];
+    int rowCount = (int)ViewData["rowCount"];
+}
+
+<div style="float: right;margin-bottom:10px;">
+    @if (!string.IsNullOrEmpty(b_gid))
+    {
+        <button id="btn_addItem" onclick="btnEditItem(true, '','@b_gid','@p_gid');">信息项</button>
+        <button id="btn_btachCheck" onclick="btachCheck('@b_gid');">批量审核</button>
+        <button id="btn_btachDelete" onclick="btachDelete();">批量删除</button>
+    }
+    <button id="btn_i_publish" onclick="btnPublish();">发布</button>
+    
+</div>
+
+<table class="tableClass">
+    <tr>
+        <th style="text-align: center">
+            <input class="chk chk_correct" type="checkbox" id="chkall" name="chkall" value="" />
+        </th>
+        <th style="text-align: center">序号</th>
+        <th style="text-align: center">封面</th>
+        <th style="text-align: left">标题</th>
+        <th style="text-align: center;width:300px;">内容简介</th>
+        <th style="text-align: center">状态</th>
+        <th style="text-align: center">创建时间</th>
+        <th style="text-align: center">排序</th>
+        <th style="text-align: left">操作</th>
+    </tr>
+    @if (list.Count > 0)
+    {
+        int i = 1;
+        foreach (Site_CMSItem item in list)
+        {
+            <tr>
+                <td style="text-align: center">
+                    <input class="chk" type="checkbox" id="chk_@i" name="chk_@i" value="@item.i_gid" />
+                </td>
+                <td style="text-align: center">@i</td>
+                <td style="text-align: center">
+                    <img src="@item.i_c_img_src" width="30" height="30" alt="" sort="img_@i" />
+                </td>
+                <td style="text-align: left">@item.i_title</td>
+                <td style="text-align: left">@item.i_intro.SubOmitString(100)</td>
+                <td style="text-align: center">
+                    @{
+            string className = Entity.GetDescription<SiteEnum.SiteItemStatus>(item.i_status);
+            <span class="@className">@Enum.GetName(typeof(SiteEnum.SiteItemStatus), item.i_status)</span>
+                    }
+                </td>
+                <td style="text-align: center">@item.i_createTime.ToString("yyyy-MM-dd")<br/>@item.i_createTime.ToString("HH:mm:ss")</td>
+                <td style="text-align: center">@item.i_sort</td>
+                <td style="text-align: left">
+                    <a href="javascript:void(0);" class="op" onclick="btnEditItem(false,'@item.i_gid','@b_gid','@p_gid')">改</a>
+                    <a href="javascript:void(0);" class="op" onclick="btnCheckItem('@item.i_gid','@b_gid')">审核</a>
+                    <a href="javascript:void(0);" class="op" onclick="btnDeleteItem('@item.i_gid')">删</a>
+                </td>
+            </tr>
+            i++;
+        }
+    }
+    else
+    {
+        <tr>
+            <td style="text-align: center" colspan="9">暂无任何数据</td>
+        </tr>
+    }
+</table>
+<div id="itemPageBar" class="page"></div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btn_addItem").button({
+            icons: {
+                primary: "ui-icon-plus"
+            }
+        });
+        $("#btn_i_publish").button({
+            icons: {
+                primary: "ui-icon-transferthick-e-w"
+            }
+        });
+
+        $("#btn_btachCheck").button({
+            icons: {
+                primary: "ui-icon-check"
+            }
+        });
+
+        $("#btn_btachDelete").button({
+            icons: {
+                primary: "ui-icon-trash"
+            }
+        });
+
+
+        //封面
+        $("img[sort^='img_']").hover(function () {
+            var winH = $(document).height();
+            $("#div_list_item").append("<img src='" + $(this).attr("src") + "' id='pic' />");
+            $("img[sort^='img_']").mousemove(function (e) {
+                var top = e.pageY;
+                var imgH = $("#pic").height();
+                if (imgH > 200) {
+                    imgH = 200;
+                }
+                if ((e.pageY + imgH) > winH) {
+                    top = e.pageY - 10 - imgH;
+                }
+                $("#pic").css({
+                    "top": (top + 10) + "px",
+                    "left": (e.pageX + 20) + "px",
+                    "position": "absolute",
+                    "border": "solid 5px #037dc5",
+                    "border-radius": "5px",
+                    "max-width": "300px",
+                    "max-height": "200px"
+                }).fadeIn("fast");
+            });
+        }, function () {
+            $("#pic").remove();
+        });
+
+
+        $("#chkall").click(function () {
+            var isChk = $(this).is(":checked");
+            if (isChk) {
+                $("input[name^='chk_']").prop("checked", "checked");
+            }
+            else {
+                $("input[name^='chk_']").removeProp("checked");
+            }
+        });
+
+        //页码条
+        UserPage.MakePageBar("itemPageBar", '@rowCount', '@page', '@pageSize', function () {
+            LoadListItem(UserPage.currentPage);
+        });
+
+        //数据表样式
+        $(".tableClass tr:gt(0)").mouseenter(function () {
+            $(this).addClass("mouseOver");
+        }).mouseleave(function () {
+            $(this).removeClass("mouseOver");
+        }).click(function () {
+            $(this).addClass("mouseClick").siblings().removeClass("mouseClick");
+        });
+    });
+
+</script>

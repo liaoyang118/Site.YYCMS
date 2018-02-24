@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "CatesEditView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Site.Service.SiteService.SiteServices;
+@using Site.Admin.Common;
+@using Site.Common;
+@{
+    Site_CMSItem info = ViewData["info"] as Site_CMSItem;
+    string b_gid = ViewBag.b_gid;
+    string p_gid = ViewBag.p_gid;
+}
+@section head{
+
+    <script type="text/javascript">
+
+    $(function () {
+        $("#btnSubmit").button({
+            icons: {
+                primary: "ui-icon-check "
+            }
+        });
+        $("#btnCancle").button({
+            icons: {
+                primary: "ui-icon-closethick "
+            }
+        });
+
+    });
+
+    function btnSubmitClick() {
+        if ($("#i_title").val().length <= 0) {
+            parent.mDialogUI.message("标题不能为空", "提示", 180, 50, 2);
+            return false;
+        }
+        if ($("#i_subTitle").val().length <= 0) {
+            parent.mDialogUI.message("短标题不能为空", "提示", 180, 50, 2);
+            return false;
+        }
+        if ($("#i_content").val().length <= 0) {
+            parent.mDialogUI.message("内容简介不能为空", "提示", 180, 50, 2);
+            return false;
+        }
+
+        var data = {
+            i_title: $("#i_title").val(),
+            i_subTitle: $("#i_subTitle").val(),
+            i_content: $("#i_content").val(),
+            i_sort: $("#i_sort").val(),
+            i_gid: $("#i_gid").val(),
+            b_gid: '@b_gid',
+            p_gid:'@p_gid'
+
+        };
+
+        $.ajax({
+            url: "/Site/SiteCMSItemEdit",
+            type: "post",
+            dataType: "json",
+            cache: false,
+            data: data,
+            success: function (json) {
+                if (json.success) {
+                    parent.mDialogUI.successMessage(json.errors.text, "成功", 180, 70, 2);
+                    parent.LoadListItem(parent.querysItem.page);
+                    parent.mDialogUI.closeWindow('@ViewData["window"]');
+                }
+                else {
+                    parent.mDialogUI.errorMessage(json.errors.text, "失败", 180, 70, 2);
+                }
+            },
+            error: function (xhr, xhrText, error) {
+                parent.mDialogUI.errorMessage(error, "错误", 200, 70);
+            }
+        });
+    }
+    </script>
+}
+
+<div class="container-10">
+    <table class="editTable">
+        <tr>
+            <td><span class="red">*</span>标题：</td>
+            <td>
+                <input name="i_title" id="i_title" type="text" style="width: 240px;" value="@info.i_title" />
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>短标题：</td>
+            <td>
+                <input name="i_subTitle" id="i_subTitle" type="text" style="width: 240px;" value="@info.i_subTitle" />
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>内容简介：</td>
+            <td>
+                <textarea rows="8" cols="32" name="i_content" id="i_content">@info.i_intro</textarea>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="red">*</span>排序：</td>
+            <td>
+                <input name="i_sort" id="i_sort" type="text" style="width: 240px;" value="@info.i_sort" />
+            </td>
+        </tr>
+    </table>
+    <div style="float: right; margin-top: 10px;">
+        <input type="hidden" name="i_gid" id="i_gid" value="@info.i_gid" />
+        <button id="btnSubmit" onclick="btnSubmitClick();">确定</button>
+        <button id="btnCancle" onclick="parent.mDialogUI.closeWindow('@ViewData["window"]');">取消</button>
+    </div>
+</div>

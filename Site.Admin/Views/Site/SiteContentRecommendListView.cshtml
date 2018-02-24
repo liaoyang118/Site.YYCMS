@@ -1,0 +1,54 @@
+﻿@using Site.Service.SiteService.SiteServices;
+@{
+    List<Site_CMSBlock> list = ViewData["list"] as List<Site_CMSBlock>;
+    int page = (int)ViewData["page"];
+    int pageSize = (int)ViewData["pageSize"];
+    int rowCount = (int)ViewData["rowCount"];
+
+    string p_gid = ViewBag.p_gid;
+}
+<table class="tableClass">
+    <tr>
+        <th style="text-align: left">区块名称</th>
+        <th style="text-align: left">操作</th>
+    </tr>
+    @if (list.Count > 0)
+    {
+        foreach (Site_CMSBlock item in list)
+        {
+            <tr>
+                <td style="text-align: left">
+                    @item.b_name<span style="color:red;">&nbsp;&nbsp; @item.b_img_size</span>
+                </td>
+                <td style="text-align: left">
+                    @{
+                        <a href="javascript:void(0);" class="op" onclick="btnRecommendEdit('@item.b_gid','@p_gid')">确定</a>
+                    }
+                </td>
+            </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td style="text-align: center" colspan="2">暂无任何数据</td>
+                            </tr>
+                        }
+</table>
+<div id="pageBar" class="page"></div>
+
+<script type="text/javascript">
+    $(function () {
+        //页码条
+        UserPage.MakePageBar("pageBar", '@rowCount', '@page','@pageSize', function () {
+            LoadList(UserPage.currentPage);
+        });
+        $(".tableClass tr:gt(0)").mouseenter(function () {
+            $(this).addClass("mouseOver");
+        }).mouseleave(function () {
+            $(this).removeClass("mouseOver");
+        }).click(function () {
+            $(this).addClass("mouseClick").siblings().removeClass("mouseClick");
+        });
+    });
+</script>

@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head{
+    
+
+    <script type="text/javascript">
+        var querys = { page: 1, pagesize: 3 };
+        $(function () {
+
+            $("#btn_search").button({
+                icons: {
+                    primary: "ui-icon-search"
+                }
+            });
+            $("#btn_search_all").button({
+                icons: {
+                    primary: "ui-icon-search"
+                }
+            });
+            $("#btn_add").button({
+                icons: {
+                    primary: "ui-icon-plus"
+                }
+            });
+            LoadList(1);
+        });
+
+        function LoadList(page) {
+            mDialogUI.loading("加载数据中");
+            querys.page = page;
+            $.ajax({
+                url: "/System/UserListView",
+                type: "get",
+                dataType: "html",
+                cache: false,
+                data: querys,
+                success: function (html) {
+                    mDialogUI.closeLoading();
+                    $("#div_list").html(html);
+                },
+                error: function (xhr, xhrText, error) {
+                    mDialogUI.closeLoading();
+                    mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                }
+            });
+        }
+
+        function EditUser(type, m_gid) {
+            var title;
+            if (type) {
+                title = "新增用户";
+            }
+            else {
+                title = "修改用户";
+            }
+            mDialogUI.openWindow("/system/UserEditView?gid=" + m_gid, title, 400, 150, true);
+        }
+
+        function EditPwd(u_gid)
+        {
+            mDialogUI.openWindow("/system/UserEditPwdView?u_gid=" + u_gid, "重新设置密码", 350, 150, true);
+        }
+
+
+        function UserDelete(u_gid) {
+            mDialogUI.confirm("删除", "确定要删除该条数据吗？", function () {
+                mDialogUI.loading("加载数据中");
+                $.ajax({
+                    url: "/system/UserDelete",
+                    type: "post",
+                    dataType: "json",
+                    data: { u_gid: u_gid },
+                    cache: false,
+                    success: function (json) {
+                        if (json.success) {
+                            mDialogUI.closeLoading();
+                            mDialogUI.successMessage(json.errors.text, "成功", 180, 50, 2);
+                            LoadList(querys.page);
+                        }
+                        else {
+                            mDialogUI.errorMessage(json.errors.text, "失败", 180, 50);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        mDialogUI.errorMessage("错误：" + error, "错误", 200, 70);
+                    }
+                });
+            });
+        }
+
+        function btn_searchClick(type) {
+            if (type) {
+                $("#u_name").val("");
+            }
+            querys.u_name = $("#u_name").val();
+
+            LoadList(1);
+        }
+
+        function ShowRoleList(u_gid) {
+            mDialogUI.openWindow("/system/UserRoleList?u_gid=" + u_gid, "角色列表", 300, 500, true);
+        }
+    </script>
+}
+
+<div class="container">
+    <div class="headDiv">
+        <div>
+            <span>用户名：</span>
+            <input type="text" name="u_name" id="u_name" value="" onkeydown="if(event.keyCode=='13'){$('#btn_search').click();}" />
+            
+
+            <button id="btn_search" onclick="btn_searchClick()">确定</button>
+            <button id="btn_search_all" onclick="btn_searchClick('all')">全部</button>
+            <div style="float: right;">
+                <button id="btn_add" onclick="EditUser(true, '');">增加</button>
+            </div>
+        </div>
+    </div>
+    <div id="div_list">
+        正在加载中....
+    </div>
+
+</div>

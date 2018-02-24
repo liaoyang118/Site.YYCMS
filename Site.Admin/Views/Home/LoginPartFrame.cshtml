@@ -1,0 +1,65 @@
+﻿@{
+    Html.RenderPartial("LoginPart");
+}
+<script type="text/javascript">
+    var type = '@ViewData["type"].ToString()';
+    var iframeName = '@ViewData["iframeName"].ToString()';
+    $(function () {
+        $("#btn_login").click(function () {
+            if ($("#name").val() == "") {
+                alert("用户名为空");
+                return false;
+            }
+            if ($("#pwd").val() == "") {
+                alert("密码为空");
+                return false;
+            }
+            var data = {
+                u_username: $("#name").val(),
+                u_password: $("#pwd").val(),
+                remenber: $("#remenber").prop("checked") == true ? "1" : "0"
+            };
+            $("#btn_login").html("登录中......").css({
+                background: "orange"
+            });
+            $.ajax({
+                url: "/home/login",
+                type: "post",
+                data: data,
+                dataType: "json",
+                cache: false,
+                success: function (json) {
+                    if (json.success) {
+                        $("#btn_login").html("登录成功");
+                        if (type == "") {
+                            //刷新页面
+                            window.location.href = "/home/index";
+                        }
+                        else if (type == "ajax") {
+                            //隐藏弹框
+                            $("#loginDialog").hide();
+                            //清空内容
+                            $("#loginFrame").empty();
+                            if (iframeName != "") {
+                                window.frames[iframeName].location.reload();
+                            }
+                        }
+                    }
+                    else {
+                        alert(json.errors.text);
+                        $("#btn_login").html("登录").css({
+                            background: "green"
+                        });
+                    }
+                },
+                error: function (xhr, xhrText, error) {
+                    alert("登陆错误:" + error);
+                    $("#btn_login").html("登录").css({
+                        background: "green"
+                    });
+                }
+            });
+
+        });
+    })
+</script>

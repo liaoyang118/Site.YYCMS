@@ -1,0 +1,210 @@
+﻿@{
+    Layout = null;
+}
+@using SiteFrame.Model;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CMS后台管理</title>
+
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="/JqueryUI/js/jquery-ui-1.10.4.custom.js"></script>
+    <link href="/JqueryUI/css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+
+    <script src="/JS/Jquery_Pagination.js"></script>
+
+    <link href="/Css/Common.css" rel="stylesheet" />
+
+    <link href="/Css/Jquery_Layout.css" rel="stylesheet" />
+    <script src="/JS/jquery_mLayout.js"></script>
+    @{
+        string name = ViewData["name"] == null ? "" : ViewData["name"].ToString();
+    }
+    <script type="text/javascript">
+        $(function () {
+            //根据页面计算布局宽高
+            ReSetSize();
+            //绑定窗口变化时，重新计算
+            $(window).resize(function () {
+                setTimeout(function () {
+                    ReSetSize();
+                }, 200);
+            });
+            var isLogin = "@name" == "" ? false : true;
+            if (!isLogin) {
+                showLoginDialog("");
+            }
+        })
+
+        //重新计算宽高
+        function ReSetSize() {
+            var winWidth = $(window).width();
+            var winHeight = $(window).height();
+
+            //设置左侧列表高度
+            var leftMainH = winHeight - 110 - 10 - 2;
+            $("#leftMain").css({ "max-height": leftMainH + "px" });
+            $("#menuList").css({ "max-height": (leftMainH - 28 - 10) + "px" });
+
+
+
+            //设置主体内容框宽高
+            var _mHeight = winHeight - offsetTop - 10; //10 --距离底部的高度
+            var _mWidth = winWidth - offsetLeft - 10; //10 --距离底部的宽度
+            if (_mHeight < minH) {
+                _mHeight = minH + 6;//6 --边框线
+            }
+            $("#rightMain").css({ "height": _mHeight + "px", "width": _mWidth + "px" });
+
+
+            //设置 背景 高度
+            var scrollH = document.body.scrollHeight; //屏幕的滚动高度
+            var rMainOffSetH = $("#rightMain").offset().top;//主体框距离顶部的距离
+            var rMainBottomOffSetH = rMainOffSetH + _mHeight + 10;//主体框 底部 距离顶部的距离
+
+            if (scrollH >= rMainBottomOffSetH) {
+                $("#bk_div").css({ "height": rMainBottomOffSetH + "px" });
+            }
+            else {
+                $("#bk_div").css({ "height": scrollH + "px" });
+            }
+
+            //设置主体内容框的 两边和底边 边框宽度
+            var contentH = $("#rightMain").height() - $("#tab_head").height() - 3;//margin 3px
+            var contentW = $("#rightMain").width() - 5 - 5;
+            $("#content").css({
+                "height": (contentH - 5) + "px",
+                "width": (contentW) + "px"
+            });
+
+            //设置遮罩的位置
+            //主体内容框的宽高
+            var curH = $("#content").height();
+            var curW = $("#content").width();
+            //遮罩
+            $("div[id^='mask_']").css({
+                width: curW + "px",
+                height: curH + "pc"
+            });
+            //遮罩中的Loading图片位置
+            $("div[id^='mask_']").find("img").css({
+                "margin-top": ((curH - loadingH) / 2) + "px",
+                "margin-left": ((curW - loadingW) / 2) + "px"
+            });
+        }
+
+        //登出
+        function loginOut() {
+            $.post("/Home/LoginOut", "", function (json) {
+                if (json.success) {
+                    location.href = "/home/login";
+                }
+                else {
+                    alert(json.errors.text);
+                }
+            }, "json");
+        }
+
+        //显示子菜单栏
+        function ShowMenuList(obj, g_gid) {
+            var src = $(obj).find("img").attr("src");
+            var title = $(obj).find("span").html();
+
+            $("#leftMain").find("img").attr("src", src);
+            $("#leftMain #menu_title").html(title);
+            $("#leftMain").show();
+
+            getMenuItem("menuList", g_gid);
+
+        }
+
+        //得到菜单项显示
+        function getMenuItem(id, g_gid) {
+            $("#menuList").empty().append('<li>加载中...</li>');
+            $.ajax({
+                url: "/system/menuList",
+                data: { g_gid: g_gid },
+                dataType: "html",
+                type: "get",
+                cache: false,
+                success: function (html) {
+                    $("#" + id).html(html);
+                }
+            });
+        }
+
+        //关闭子菜单
+        function closeMenuList() {
+            $("#leftMain").slideUp("fast");
+        }
+
+        //显示登录框
+        //type:是主页调用还是ajax调用
+        //""或"ajax"
+        function showLoginDialog(type, iframeName) {
+            $("#loginDialog").show();
+            var top = ($(window).height() - 300) / 2;
+            $("#loginFrame").css({
+                "margin": top + "px auto"
+            });
+            $.ajax({
+                url: "/home/LoginPartFrame",
+                data: { type: type, iframeName: iframeName },
+                dataType: "html",
+                type: "get",
+                cache: false,
+                success: function (html) {
+                    $("#loginFrame").html(html);
+                }
+            });
+        }
+
+    </script>
+</head>
+<body class="index bk">
+    @{
+        List<SystemGroup> list = ViewData["list"] == null ? new List<SystemGroup>() : ViewData["list"] as List<SystemGroup>;
+    }
+    <!--<div class="bk" id="bk_div"></div>-->
+    <div class="head-r">@name ,欢迎登陆CMS管理系统，<a href="javascript:void(0);" onclick="loginOut()">退出</a></div>
+    <div class="logo"></div>
+    <div class="main-menu">
+        @{
+            foreach (SystemGroup t in list)
+            {
+            <div class="div_main_menu" onclick="ShowMenuList(this,'@t.g_gid')">
+                <img src="@t.g_picCover" width="60" height="60" />
+                <div class="title"><span>@t.g_name</span></div>
+            </div>
+            }
+        }
+    </div>
+    <div id="leftMain" class="leftMenu">
+        <h2 class="leftMenu-title" style="border-bottom: 1px solid #808080;">
+            <span>
+                <img src="//" style="width: 20px; height: 20px;" /><span id="menu_title"></span>
+            </span>
+            <a href="javascript:void(0);" onclick="closeMenuList();"></a>
+        </h2>
+        <ul id="menuList" class="menuList">
+            <li>加载中...</li>
+        </ul>
+    </div>
+    <div id="rightMain" class="main">
+        <div id="tab_head" class="tab">
+            <ul id="tab" class="tablist">
+            </ul>
+        </div>
+        <div id="content" class="con_main">
+        </div>
+    </div>
+    <div id="loginDialog" style="width: 100%; height: 100%; position: fixed; z-index: 1988; top: 0px; left: 0px; overflow: hidden; display: none; background: rgba(0, 0, 0, 0.41);">
+        <div id="loginFrame" style="width: 510px; height: 310px;">
+        </div>
+    </div>
+</body>
+</html>
+
+
