@@ -54,7 +54,7 @@
                             @{
                                 list = dic["07"];
 
-                                for (int i = 0; i <list.GetLength<Site_CMSItem>(2); i++)
+                                for (int i = 0; i < list.GetLength<Site_CMSItem>(2); i++)
                                 {
                                     <td>
                                         《<a href="@SiteUntility.GenerateIntroUrl(list[i].i_c_gid.ToInt32(0))" title="@list[i].i_title" target="_blank" class="hot_title">@list[i].i_title</a>》
@@ -145,6 +145,22 @@
             </div>
         </div>
     </div>
+
+    <div class="ad_pc_block hidden-xs">
+        <script type="text/javascript">
+            /*首页横幅1*/
+            var cpro_id = "u3211160";
+        </script>
+        <script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/c.js"></script>
+    </div>
+    <div class="ad_wap_block hidden-sm hidden-md hidden-lg">
+        <script type="text/javascript">
+            /*移动版首页横幅 20:3*/
+            var cpro_id = "u3211170";
+        </script>
+        <script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/cm.js"></script>
+    </div>
+
     <!--分类-->
     <div class="row">
         <div class="col-sm-4">
@@ -640,8 +656,24 @@
             </div>
         </div><!-- /.col-sm-4 -->
     </div>
+
 }
 <!--最近更新列表-->
 @@{
     Html.RenderAction("LastUpdate");
   }
+
+<div class="ad_pc_block hidden-xs">
+    <script type="text/javascript">
+        /*首页底部横幅*/
+        var cpro_id = "u3211183";
+    </script>
+    <script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/c.js"></script>
+</div>
+<div class="ad_wap_block hidden-sm hidden-md hidden-lg">
+    <script type="text/javascript">
+        /*移动版首页底部横幅横幅 20:3*/
+        var cpro_id = "u3211192";
+    </script>
+    <script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/cm.js"></script>
+</div>
