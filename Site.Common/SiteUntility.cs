@@ -182,7 +182,7 @@ namespace Site.Common
         /// <param name="fId"></param>
         /// <param name="chapterId"></param>
         /// <returns></returns>
-        public static string GenerateDetailUrl(int fId, int chapterId)
+        public static string GenerateDetailUrl(int fId, string chapterId)
         {
             return string.Format("http://{0}/Detail/{1}/{2}.html", ConfigurationManager.AppSettings["XSDomain"], fId, chapterId);
         }

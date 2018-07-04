@@ -41,7 +41,7 @@ namespace Site.Service.YuYangService.YuYangServices {
         private string IntroField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int LastChapterIdField;
+        private string LastChapterIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LastUpdateChapterField;
@@ -141,12 +141,12 @@ namespace Site.Service.YuYangService.YuYangServices {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int LastChapterId {
+        public string LastChapterId {
             get {
                 return this.LastChapterIdField;
             }
             set {
-                if ((this.LastChapterIdField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.LastChapterIdField, value) != true)) {
                     this.LastChapterIdField = value;
                     this.RaisePropertyChanged("LastChapterId");
                 }

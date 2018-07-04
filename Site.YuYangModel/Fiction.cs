@@ -148,8 +148,8 @@ namespace Site.YuYangModel
         #endregion
 
         #region LastChapterId
-        private int _LastChapterId;
-        public int LastChapterId
+        private string _LastChapterId;
+        public string LastChapterId
         {
             get
             {

@@ -78,6 +78,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) E:\yang.liao\个人项目文件\YYCMS\YYCMSGit\Site.Admin\UEdit\net\Bin</PostBuildEvent>
+    <PostBuildEvent>copy $(TargetPath) E:\liaoyang\Project\CMS\Site.Admin\UEdit\net\Bin</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -8,7 +8,7 @@
       <xs:element minOccurs="0" name="CoverImage" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Intro" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="LastChapterId" type="xs:int" />
+      <xs:element minOccurs="0" name="LastChapterId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LastUpdateChapter" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LastUpdateTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />

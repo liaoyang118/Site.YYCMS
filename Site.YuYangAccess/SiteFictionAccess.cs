@@ -80,7 +80,7 @@ namespace Site.YuYangAccess
             db.AddInParameter(dbCmd, "@LastUpdateChapter", DbType.String, obj.LastUpdateChapter);
             db.AddInParameter(dbCmd, "@LastUpdateTime", DbType.String, obj.LastUpdateTime);
             db.AddInParameter(dbCmd, "@CompleteState", DbType.Int32, obj.CompleteState);
-            db.AddInParameter(dbCmd, "@LastChapterId", DbType.Int32, obj.LastChapterId);
+            db.AddInParameter(dbCmd, "@LastChapterId", DbType.String, obj.LastChapterId);
             try
             {
                 int returnValue = db.ExecuteNonQuery(dbCmd);
@@ -124,7 +124,7 @@ namespace Site.YuYangAccess
             db.AddInParameter(dbCmd, "@LastUpdateChapter", DbType.String, obj.LastUpdateChapter);
             db.AddInParameter(dbCmd, "@LastUpdateTime", DbType.String, obj.LastUpdateTime);
             db.AddInParameter(dbCmd, "@CompleteState", DbType.Int32, obj.CompleteState);
-            db.AddInParameter(dbCmd, "@LastChapterId", DbType.Int32, obj.LastChapterId);
+            db.AddInParameter(dbCmd, "@LastChapterId", DbType.String, obj.LastChapterId);
             try
             {
                 int returnValue = db.ExecuteNonQuery(dbCmd);
