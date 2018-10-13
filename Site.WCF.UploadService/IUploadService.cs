@@ -16,6 +16,9 @@ namespace UploadService
         [OperationContract]
         List<string> UploadImg(byte[] imgDatas, string configName, List<string> sizeConfig, string imgExt, string thumbModel);
 
+        [OperationContract]
+        List<string> UploadVideo(byte[] videoDatas, string configName, List<string> sizeConfig, string videoExt, string thumbModel);
+
     }
 
 }

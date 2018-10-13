@@ -37,6 +37,29 @@ namespace UploadService
             return urlList;
         }
 
+        /// <summary>
+        /// 上传视频
+        /// </summary>
+        /// <param name="videoDatas">二进制数据</param>
+        /// <param name="configName">文件保存路径配置名称</param>
+        /// <param name="sizeConfig">缩略尺寸设置：尺寸设置 200*120*1 缩略为200*120 使用1号水印图片</param>
+        /// <param name="videoExt">扩展名</param>
+        /// <param name="thumbModel">"s",整图缩放;"c",裁剪;默认为裁剪</param>
+        /// <returns>原图地址(0)和缩略图地址(1)</returns>
+        public List<string> UploadVideo(byte[] videoDatas, string configName, List<string> sizeConfig, string videoExt, string thumbModel)
+        {
+            string url = string.Empty;
+            List<string> list = GetConfig(configName);
+            string guid = Guid.NewGuid().ToString().Substring(0, 16);
+
+            List<string> urlList = SaveVideo(videoDatas, guid, videoExt, list[1], list[0], list[2], sizeConfig, thumbModel);
+
+
+            return urlList;
+        }
+
+
+
         #region 1.0 获取配置信息，并创建目录  返回值：【index】0,domain;1,path(物理路径);2,pathFormat - List<string> GetConfig
         /// <summary>
         /// 获取配置信息，并创建目录  返回值：【index】0,domain;1,path(物理路径);2,pathFormat
@@ -367,6 +390,85 @@ namespace UploadService
             }
             return img;
         }
+        #endregion
+
+        #region 2.1 保存视频 + List<string> SaveVideo
+
+        private List<string> SaveVideo(byte[] videoDatas, string fileName, string videoExt, string physicalPath, string domain, string pathFormat, List<string> sizeConfig, string thumbModel)
+        {
+            if (videoExt.ToLower() != "mp4" || videoExt.ToLower() != ".mp4")
+            {
+                videoExt = "mp4";
+            }
+
+            try
+            {
+                List<string> urlList = new List<string>();
+                string savePath = physicalPath + pathFormat + "\\" + fileName + (videoExt.Contains(".") ? videoExt : "." + videoExt);
+
+
+                Stream ms = new MemoryStream(videoDatas);
+                Image img = new Bitmap(ms);
+
+                int sourceW = img.Width;
+                int sourceH = img.Height;
+
+                string[] sizeArr = null;
+                string watermark = string.Empty;
+                List<int> realSize = null;
+                string zoomImgFullName = physicalPath + pathFormat + "\\" + fileName + "_" + "{0}" + "." + videoExt;
+                string dimainImgFullName = domain + pathFormat + "\\" + fileName + "_" + "{0}" + "." + videoExt;
+                string physicalFullName = string.Empty;//物理全路径
+                string httpFullName = string.Empty;//网络http全路径
+
+                //保存原视频
+                using (FileStream fs = new FileStream(savePath, FileMode.Create))
+                {
+                    fs.Write(videoDatas, 0, videoDatas.Length);
+                    //添加原视频地址
+                    urlList.Add((domain + pathFormat + "\\" + fileName + "." + videoExt).Replace("\\", "/"));
+                }
+
+                //TODO:根据配置文件生成截图(mmpeg组件实现)
+                //foreach (string item in sizeConfig)
+                //{
+                //    //缩略图的物理全路径
+                //    physicalFullName = string.Format(zoomImgFullName, item).Replace("*", "x");
+
+                //    sizeArr = item.Split(new string[] { "*" }, StringSplitOptions.RemoveEmptyEntries);
+                //    if (sizeArr.Length >= 3)
+                //    {
+                //        //获取水印文件编号
+                //        watermark = sizeArr[2];
+                //    }
+
+                //    //计算缩略尺寸
+                //    realSize = CalcSize(sourceW, sourceH, Convert.ToInt32(sizeArr[0]), Convert.ToInt32(sizeArr[1]), thumbModel);
+
+                //    //如果是gif格式，取第一帧
+                //    if (img.RawFormat == ImageFormat.Gif)
+                //    {
+                //        Guid guids = img.FrameDimensionsList[0];
+                //        FrameDimension fd = new FrameDimension(guids);
+                //        img.SelectActiveFrame(fd, 0);
+                //    }
+
+                //    //保存缩略图
+                //    SaveZoomImg(Convert.ToInt32(sizeArr[0]), Convert.ToInt32(sizeArr[1]), realSize, physicalFullName, img, watermark, thumbModel);
+
+                //    httpFullName = string.Format(dimainImgFullName, item).Replace("*", "x").Replace("\\", "/");
+                //    //添加缩略图地址
+                //    urlList.Add(httpFullName);
+                //}
+
+                return urlList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         #endregion
 
     }

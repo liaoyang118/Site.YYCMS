@@ -19,4 +19,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UploadVideo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="videoDatas" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="configName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="sizeConfig" nillable="true" type="q3:ArrayOfstring" />
+        <xs:element minOccurs="0" name="videoExt" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="thumbModel" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadVideoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UploadVideoResult" nillable="true" type="q4:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

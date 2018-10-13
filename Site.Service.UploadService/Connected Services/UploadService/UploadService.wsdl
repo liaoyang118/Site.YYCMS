@@ -20,10 +20,20 @@
   <wsdl:message name="IUploadService_UploadImg_OutputMessage">
     <wsdl:part name="parameters" element="tns:UploadImgResponse" />
   </wsdl:message>
+  <wsdl:message name="IUploadService_UploadVideo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadVideo" />
+  </wsdl:message>
+  <wsdl:message name="IUploadService_UploadVideo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadVideoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUploadService">
     <wsdl:operation name="UploadImg">
       <wsdl:input wsaw:Action="http://service.jsonyang.com/IUploadService/UploadImg" message="tns:IUploadService_UploadImg_InputMessage" />
       <wsdl:output wsaw:Action="http://service.jsonyang.com/IUploadService/UploadImgResponse" message="tns:IUploadService_UploadImg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadVideo">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IUploadService/UploadVideo" message="tns:IUploadService_UploadVideo_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IUploadService/UploadVideoResponse" message="tns:IUploadService_UploadVideo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="UploadService_IUploadService" type="tns:IUploadService">
@@ -31,6 +41,15 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="UploadImg">
       <soap12:operation soapAction="http://service.jsonyang.com/IUploadService/UploadImg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadVideo">
+      <soap12:operation soapAction="http://service.jsonyang.com/IUploadService/UploadVideo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
