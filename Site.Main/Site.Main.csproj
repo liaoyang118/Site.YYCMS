@@ -277,12 +277,20 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Site.Common\Site.Common.csproj">
-      <Project>{d3ac3e16-d643-4f46-8acc-8f29beb4a02b}</Project>
+      <Project>{ec12e90c-3833-4811-a196-db853ebb8d36}</Project>
       <Name>Site.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Site.Service.SiteService\Site.Service.SiteService.csproj">
       <Project>{1dafd112-e7b1-44ee-a2ee-97c3407233a6}</Project>
       <Name>Site.Service.SiteService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Site.Service.UploadService\Site.Service.UploadService.csproj">
+      <Project>{b43a1680-7b46-4853-98e1-971900d2a09d}</Project>
+      <Name>Site.Service.UploadService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Site.Service.YuYangService\Site.Service.YuYangService.csproj">
+      <Project>{4be70f7f-f682-4953-93e7-ac42b7a12359}</Project>
+      <Name>Site.Service.YuYangService</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

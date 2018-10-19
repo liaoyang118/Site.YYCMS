@@ -54,12 +54,6 @@
     <Compile Include="YuYangServiceClass.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Site.Common\Site.Common.csproj">
-      <Project>{d3ac3e16-d643-4f46-8acc-8f29beb4a02b}</Project>
-      <Name>Site.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +104,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Site.Common\Site.Common.csproj">
+      <Project>{ec12e90c-3833-4811-a196-db853ebb8d36}</Project>
+      <Name>Site.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -808,7 +808,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Site.Common\Site.Common.csproj">
-      <Project>{d3ac3e16-d643-4f46-8acc-8f29beb4a02b}</Project>
+      <Project>{ec12e90c-3833-4811-a196-db853ebb8d36}</Project>
       <Name>Site.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Site.GenerateHtml\Site.GenerateHtml.csproj">
@@ -820,7 +820,7 @@
       <Name>Site.Service.SiteService</Name>
     </ProjectReference>
     <ProjectReference Include="..\Site.Service.UploadService\Site.Service.UploadService.csproj">
-      <Project>{a4526ebe-f146-432d-b8c3-430dfe349560}</Project>
+      <Project>{b43a1680-7b46-4853-98e1-971900d2a09d}</Project>
       <Name>Site.Service.UploadService</Name>
     </ProjectReference>
     <ProjectReference Include="..\Site.Service.YuYangService\Site.Service.YuYangService.csproj">
