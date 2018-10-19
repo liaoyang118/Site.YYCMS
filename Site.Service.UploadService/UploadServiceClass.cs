@@ -46,7 +46,7 @@ namespace Site.Service.UploadService
         {
             IUploadService channel = Entity.CreateChannel<IUploadService>(SiteEnum.SiteService.UploadService);
             var result = channel.UploadVideo(videoDatas, configName, sizeConfig, videoExt, thumbModel);
-            (channel as IDisposable).Dispose();
+            (channel as IDisposable).Dispose(); 
             return result;
         }
 

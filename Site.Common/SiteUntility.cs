@@ -207,7 +207,7 @@ namespace Site.Common
         /// <summary>
         /// 远程抓取图片
         /// </summary>
-        /// <param name="imageHttpUrl"></param>
+        /// <param name="imageHttpUrl"></param> 
         /// <returns></returns>
         public static byte[] GetRemoteImage(string imageHttpUrl, out string error)
         {
