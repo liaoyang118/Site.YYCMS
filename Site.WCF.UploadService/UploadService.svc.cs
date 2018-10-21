@@ -408,10 +408,10 @@ namespace UploadService
 
 
                 Stream ms = new MemoryStream(videoDatas);
-                Image img = new Bitmap(ms);
+                //Image img = new Bitmap(ms);
 
-                int sourceW = img.Width;
-                int sourceH = img.Height;
+                //int sourceW = img.Width;
+                //int sourceH = img.Height;
 
                 string[] sizeArr = null;
                 string watermark = string.Empty;

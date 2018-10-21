@@ -58,6 +58,27 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="UploadService_IUploadService1" type="tns:IUploadService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadImg">
+      <soap:operation soapAction="http://service.jsonyang.com/IUploadService/UploadImg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadVideo">
+      <soap:operation soapAction="http://service.jsonyang.com/IUploadService/UploadVideo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="UploadService">
     <wsdl:port name="UploadService_IUploadService" binding="tns:UploadService_IUploadService">
       <soap12:address location="http://localhost:54655/UploadService.svc" />
@@ -67,6 +88,9 @@
           <Dns>localhost</Dns>
         </Identity>
       </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="UploadService_IUploadService1" binding="tns:UploadService_IUploadService1">
+      <soap:address location="http://localhost:54655/UploadService.svc/Stream" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
