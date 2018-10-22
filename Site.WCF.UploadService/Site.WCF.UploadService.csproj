@@ -62,6 +62,15 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ffmpeg\ffmpeg.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ffmpeg\ffplay.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ffmpeg\ffprobe.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="UploadService.svc" />
     <Content Include="WaterMark\WaterMark_1.png" />
     <Content Include="Web.config" />
@@ -90,6 +99,10 @@
     <ProjectReference Include="..\Site.CustomException\Site.CustomException.csproj">
       <Project>{33b7a0a7-0c68-4ac4-ae4d-07702403fbbd}</Project>
       <Name>Site.CustomException</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Site.FFmpeg\Site.FFmpeg.csproj">
+      <Project>{24a2b4cc-7574-4dc7-8a79-78dca5f93d00}</Project>
+      <Name>Site.FFmpeg</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -10,6 +10,7 @@ using CustomException;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+using Site.FFmpeg;
 
 namespace UploadService
 {
@@ -406,18 +407,13 @@ namespace UploadService
                 List<string> urlList = new List<string>();
                 string savePath = physicalPath + pathFormat + "\\" + fileName + (videoExt.Contains(".") ? videoExt : "." + videoExt);
 
-
                 Stream ms = new MemoryStream(videoDatas);
-                //Image img = new Bitmap(ms);
-
-                //int sourceW = img.Width;
-                //int sourceH = img.Height;
 
                 string[] sizeArr = null;
                 string watermark = string.Empty;
                 List<int> realSize = null;
                 string zoomImgFullName = physicalPath + pathFormat + "\\" + fileName + "_" + "{0}" + "." + videoExt;
-                string dimainImgFullName = domain + pathFormat + "\\" + fileName + "_" + "{0}" + "." + videoExt;
+                string dimainImgFullName = domain + pathFormat + "\\{0}";
                 string physicalFullName = string.Empty;//物理全路径
                 string httpFullName = string.Empty;//网络http全路径
 
@@ -430,36 +426,33 @@ namespace UploadService
                 }
 
                 //TODO:根据配置文件生成截图(mmpeg组件实现)
-                //foreach (string item in sizeConfig)
-                //{
-                //    //缩略图的物理全路径
-                //    physicalFullName = string.Format(zoomImgFullName, item).Replace("*", "x");
+                FFmpegTool ffmpeg = new FFmpegTool();
+                string imgPhysicalPath = string.Empty;
+                int lastIndex = 0;
 
-                //    sizeArr = item.Split(new string[] { "*" }, StringSplitOptions.RemoveEmptyEntries);
-                //    if (sizeArr.Length >= 3)
-                //    {
-                //        //获取水印文件编号
-                //        watermark = sizeArr[2];
-                //    }
+                foreach (string item in sizeConfig)
+                {
+                    //缩略图的物理全路径
+                    physicalFullName = string.Format(zoomImgFullName, item).Replace("*", "x");
 
-                //    //计算缩略尺寸
-                //    realSize = CalcSize(sourceW, sourceH, Convert.ToInt32(sizeArr[0]), Convert.ToInt32(sizeArr[1]), thumbModel);
+                    sizeArr = item.Split(new string[] { "*" }, StringSplitOptions.RemoveEmptyEntries);
+                    if (sizeArr.Length >= 3)
+                    {
+                        //获取水印文件编号
+                        watermark = sizeArr[2];
+                    }
 
-                //    //如果是gif格式，取第一帧
-                //    if (img.RawFormat == ImageFormat.Gif)
-                //    {
-                //        Guid guids = img.FrameDimensionsList[0];
-                //        FrameDimension fd = new FrameDimension(guids);
-                //        img.SelectActiveFrame(fd, 0);
-                //    }
+                    imgPhysicalPath = ffmpeg.CatchImg(savePath, videoExt.Contains(".") ? videoExt : "." + videoExt, item);
 
-                //    //保存缩略图
-                //    SaveZoomImg(Convert.ToInt32(sizeArr[0]), Convert.ToInt32(sizeArr[1]), realSize, physicalFullName, img, watermark, thumbModel);
+                    lastIndex = imgPhysicalPath.LastIndexOf("\\");
+                    if (lastIndex > 0)
+                    {
 
-                //    httpFullName = string.Format(dimainImgFullName, item).Replace("*", "x").Replace("\\", "/");
-                //    //添加缩略图地址
-                //    urlList.Add(httpFullName);
-                //}
+                        httpFullName = string.Format(dimainImgFullName, imgPhysicalPath.Substring(lastIndex)).Replace("*", "x").Replace("\\", "/");
+                        //添加缩略图地址
+                        urlList.Add(httpFullName);
+                    }
+                }
 
                 return urlList;
             }

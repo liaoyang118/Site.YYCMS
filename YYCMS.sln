@@ -70,6 +70,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.Service.UploadService"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.Common", "Site.Common\Site.Common.csproj", "{EC12E90C-3833-4811-A196-DB853EBB8D36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site.FFmpeg", "Site.FFmpeg\Site.FFmpeg.csproj", "{24A2B4CC-7574-4DC7-8A79-78DCA5F93D00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -172,6 +174,10 @@ Global
 		{EC12E90C-3833-4811-A196-DB853EBB8D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC12E90C-3833-4811-A196-DB853EBB8D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC12E90C-3833-4811-A196-DB853EBB8D36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24A2B4CC-7574-4DC7-8A79-78DCA5F93D00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24A2B4CC-7574-4DC7-8A79-78DCA5F93D00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24A2B4CC-7574-4DC7-8A79-78DCA5F93D00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24A2B4CC-7574-4DC7-8A79-78DCA5F93D00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -201,9 +207,10 @@ Global
 		{4BE70F7F-F682-4953-93E7-AC42B7A12359} = {7009A3FF-12D8-4D7F-A045-9F04BA9D3C8D}
 		{B43A1680-7B46-4853-98E1-971900D2A09D} = {7009A3FF-12D8-4D7F-A045-9F04BA9D3C8D}
 		{EC12E90C-3833-4811-A196-DB853EBB8D36} = {C48E807A-8883-465E-9A9E-B8BCA3112342}
+		{24A2B4CC-7574-4DC7-8A79-78DCA5F93D00} = {C48E807A-8883-465E-9A9E-B8BCA3112342}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C3173AE3-6D75-47DD-B806-23FF93DD4269}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
+		SolutionGuid = {C3173AE3-6D75-47DD-B806-23FF93DD4269}
 	EndGlobalSection
 EndGlobal
