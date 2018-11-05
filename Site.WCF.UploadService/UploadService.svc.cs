@@ -47,13 +47,13 @@ namespace UploadService
         /// <param name="videoExt">扩展名</param>
         /// <param name="thumbModel">"s",整图缩放;"c",裁剪;默认为裁剪</param>
         /// <returns>原图地址(0)和缩略图地址(1)</returns>
-        public List<string> UploadVideo(byte[] videoDatas, string configName, List<string> sizeConfig, string videoExt, string thumbModel)
+        public List<string> UploadVideo(byte[] videoDatas, string configName, List<string> sizeConfig, string videoExt, string thumbModel, int totalSecond)
         {
             string url = string.Empty;
             List<string> list = GetConfig(configName);
             string guid = Guid.NewGuid().ToString().Substring(0, 16);
 
-            List<string> urlList = SaveVideo(videoDatas, guid, videoExt, list[1], list[0], list[2], sizeConfig, thumbModel);
+            List<string> urlList = SaveVideo(videoDatas, guid, videoExt, list[1], list[0], list[2], sizeConfig, thumbModel, totalSecond);
 
 
             return urlList;
@@ -395,7 +395,7 @@ namespace UploadService
 
         #region 2.1 保存视频 + List<string> SaveVideo
 
-        private List<string> SaveVideo(byte[] videoDatas, string fileName, string videoExt, string physicalPath, string domain, string pathFormat, List<string> sizeConfig, string thumbModel)
+        private List<string> SaveVideo(byte[] videoDatas, string fileName, string videoExt, string physicalPath, string domain, string pathFormat, List<string> sizeConfig, string thumbModel, int totalSecond)
         {
             if (videoExt.ToLower() != "mp4" || videoExt.ToLower() != ".mp4")
             {
@@ -442,7 +442,7 @@ namespace UploadService
                         watermark = sizeArr[2];
                     }
 
-                    imgPhysicalPath = ffmpeg.CatchImg(savePath, videoExt.Contains(".") ? videoExt : "." + videoExt, item);
+                    imgPhysicalPath = ffmpeg.CatchImg(savePath, videoExt.Contains(".") ? videoExt : "." + videoExt, item, totalSecond);
 
                     lastIndex = imgPhysicalPath.LastIndexOf("\\");
                     if (lastIndex > 0)

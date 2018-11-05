@@ -41,12 +41,13 @@ namespace Site.Service.UploadService
         /// <param name="sizeConfig">缩略尺寸设置：尺寸设置 200*120*1 缩略为200*120 使用1号水印图片</param>
         /// <param name="imgExt">扩展名</param>
         /// <param name="thumbModel">"s",整图缩放;"c",裁剪; 默认为裁剪</param>
+        /// <param name="totalSecond">视频总长度，默认剪切2min</param>
         /// <returns>原图地址(0)和缩略图地址(1)</returns>
-        public static List<string> UploadVideo(byte[] videoDatas, string configName, List<string> sizeConfig, string videoExt, string thumbModel = "c")
+        public static List<string> UploadVideo(byte[] videoDatas, string configName, List<string> sizeConfig, string videoExt, int totalSecond, string thumbModel = "c")
         {
             IUploadService channel = Entity.CreateChannel<IUploadService>(SiteEnum.SiteService.UploadService);
-            var result = channel.UploadVideo(videoDatas, configName, sizeConfig, videoExt, thumbModel);
-            (channel as IDisposable).Dispose(); 
+            var result = channel.UploadVideo(videoDatas, configName, sizeConfig, videoExt, thumbModel, totalSecond);
+            (channel as IDisposable).Dispose();
             return result;
         }
 

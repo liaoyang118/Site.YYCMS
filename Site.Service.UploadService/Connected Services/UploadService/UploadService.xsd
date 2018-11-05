@@ -27,6 +27,7 @@
         <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="sizeConfig" nillable="true" type="q3:ArrayOfstring" />
         <xs:element minOccurs="0" name="videoExt" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="thumbModel" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="totalSecond" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

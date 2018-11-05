@@ -1,26 +1,25 @@
-﻿using System;
+﻿using Site.Admin.Filter;
+using Site.Service.VideosService;
+using Site.Service.VideosService.VideosService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Site.Admin.Common;
-using Site.Admin.Filter;
 using Site.Common;
-using Site.Service.SiteService;
 using Site.Service.SiteService.Search;
+using Site.Service.SiteService;
 using Site.Service.SiteService.SiteServices;
+using Site.Admin.Common;
 using Site.Service.UploadService;
-using Site.Service.YuYangService;
-using Site.Service.YuYangService.Search;
-using Site.Service.YuYangService.YuYangServices;
 
 namespace Site.Admin.Controllers
 {
     [Authorizase]
-    public class FictionController : Controller
+    public class VideoController : Controller
     {
         /// <summary>
-        /// 小说
+        /// 视频
         /// </summary>
         /// <returns></returns>
         [ValidatePermission]
@@ -36,8 +35,8 @@ namespace Site.Admin.Controllers
 
             int rowCount;
             //查询所有的分类
-            ContentCateSearchInfo search = new ContentCateSearchInfo();
-            List<ContentCate> list = YuYangServiceClass.ContentCate_SelectPage(search, page, pageSize, out rowCount);
+            VideoCateSearchInfo search = new VideoCateSearchInfo();
+            List<VideoCate> list = VideoService.VideoCate_SelectPage(search, page, pageSize, out rowCount);
             ViewData["list"] = list;
 
             return PartialView();
@@ -51,11 +50,11 @@ namespace Site.Admin.Controllers
 
             int rowCount;
             //查询该分类下的小说内容
-            FictionSearchInfo search = new FictionSearchInfo();
-            search.C_C_ID = cateId;
-            search.Title = f_title;
+            VideoSearchInfo search = new VideoSearchInfo();
+            search.v_c_id = cateId;
+            search.v_titile = f_title;
 
-            List<Fiction> list = YuYangServiceClass.Fiction_SelectPage(search, page, pageSize, out rowCount);
+            List<VideoInfo> list = VideoService.VideoInfo_SelectPage(search, page, pageSize, out rowCount);
             ViewData["list"] = list;
 
             ViewData["page"] = page;
@@ -69,14 +68,14 @@ namespace Site.Admin.Controllers
             string c_id = Request["c_id"] ?? string.Empty;
             string fid = Request["fid"] ?? string.Empty;
 
-            Fiction info = null;
+            VideoInfo info = null;
             if (string.IsNullOrEmpty(fid))
             {
-                info = new Fiction();
+                info = new VideoInfo();
             }
             else
             {
-                info = YuYangServiceClass.Fiction_SelectById(fid.ToInt32(0));
+                info = VideoService.VideoInfo_SelectById(fid.ToInt32(0));
             }
             ViewData["window"] = Request["window"] ?? string.Empty;
             ViewData["info"] = info;
@@ -98,32 +97,28 @@ namespace Site.Admin.Controllers
             string fid = Request["fid"] ?? string.Empty;
             string c_id = Request["c_id"] ?? string.Empty;//分类Id
 
-            Fiction info = null;
+            VideoInfo info = null;
             if (string.IsNullOrEmpty(fid))
             {
-                info = new Fiction();
-                info.CoverImage = string.Empty;
+                info = new VideoInfo();
+                info.v_coverImgSrc = string.Empty;
+                info.v_playSrc = string.Empty;
             }
             else
             {
-                info = YuYangServiceClass.Fiction_SelectById(fid.ToInt32());
+                info = VideoService.VideoInfo_SelectById(fid.ToInt32());
             }
 
-            //info.c_status = (int)SiteEnum.SiteItemStatus.待审核;
-            info.LastUpdateTime = DateTime.Now;
-            info.Title = c_title;
-            info.C_C_ID = c_id.ToInt32();
-            info.Author = c_subTitle;
-            info.Intro = c_intro;
-            info.LastUpdateChapter = string.Empty;
+            info.v_titile = c_title;
+            info.v_c_id = c_id.ToInt32();
+            info.v_c_name = string.Empty;
+            info.v_intro = c_intro;
+            info.v_timeLength = string.Empty;
 
-            //TODO:新增时 小说封面设置
-
-
-
+            //TODO:新增时
             if (string.IsNullOrEmpty(fid))
             {
-                int result = YuYangServiceClass.Fiction_Insert(info);
+                int result = VideoService.VideoInfo_Insert(info);
                 if (result > 0)
                 {
                     return Json(new { success = true, errors = new { text = "新增成功" } });
@@ -135,7 +130,7 @@ namespace Site.Admin.Controllers
             }
             else
             {
-                int result = YuYangServiceClass.Fiction_UpdateById(info);
+                int result = VideoService.VideoInfo_UpdateById(info);
                 if (result > 0)
                 {
                     return Json(new { success = true, errors = new { text = "修改成功" } });
@@ -156,13 +151,13 @@ namespace Site.Admin.Controllers
             int successCount = 0;
             int failCount = 0;
             int result = 0;
-            Fiction info = null;
+            VideoInfo info = null;
             string[] c_idArr = c_id.Split(new string[] { ",", "，" }, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < c_idArr.Length; i++)
             {
-                info = YuYangServiceClass.Fiction_SelectById(c_idArr[i].ToInt32());
-                //info.c_status = status;
-                result = YuYangServiceClass.Fiction_UpdateById(info);
+                info = VideoService.VideoInfo_SelectById(c_idArr[i].ToInt32());
+                info.v_status = status;
+                result = VideoService.VideoInfo_UpdateById(info);
                 if (result > 0)
                 {
                     successCount++;
@@ -188,7 +183,7 @@ namespace Site.Admin.Controllers
         {
             string c_id = Request["c_id"] ?? string.Empty;
 
-            int result = YuYangServiceClass.Fiction_DeleteById(c_id.ToInt32());
+            int result = VideoService.VideoInfo_DeleteById(c_id.ToInt32());
             if (result > 0)
             {
                 return Json(new { success = true, errors = new { text = "删除成功" } });
@@ -206,7 +201,7 @@ namespace Site.Admin.Controllers
 
             int rowCount;
             Site_CMSPagesSearchInfo search = new Site_CMSPagesSearchInfo();
-            //search.p_siteName = 2;//查询小说页面
+            search.p_siteName = 3;//查询视频站点页面
 
             List<Site_CMSPage> list = SiteServiceClass.Site_CMSPage_SelectPage(search, 1, 1000, out rowCount);
 
@@ -249,7 +244,7 @@ namespace Site.Admin.Controllers
             //区块页面ID
             string p_gid = Request["p_gid"] ?? string.Empty;
 
-            Fiction fInfo = null;
+            VideoInfo fInfo = null;
             Site_CMSItem item = null;
             int existCount = 0;
             int successCount = 0;
@@ -260,7 +255,7 @@ namespace Site.Admin.Controllers
             string[] c_idArr = c_id.Split(new string[] { ",", "，" }, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < c_idArr.Length; i++)
             {
-                fInfo = YuYangServiceClass.Fiction_SelectById(c_idArr[i].ToInt32());
+                fInfo = VideoService.VideoInfo_SelectById(c_idArr[i].ToInt32());
                 item = SiteServiceClass.Site_CMSItem_SelectByc_gidAndb_gid(c_idArr[i], b_gid);
                 if (item != null)
                 {
@@ -270,25 +265,24 @@ namespace Site.Admin.Controllers
 
                 item = new Site_CMSItem();
                 item.i_b_gid = b_gid;
-                item.i_intro = fInfo.Intro;//
+                item.i_intro = fInfo.v_intro;//
                 item.i_createTime = DateTime.Now;
                 item.i_createUser = SiteHelp.CurrentUserName;
-                item.i_c_gid = fInfo.Id.ToString();//此处存放小说的唯一Id
+                item.i_c_gid = fInfo.Id.ToString();//唯一Id
                 item.i_c_type = string.Empty;
                 item.i_gid = Guid.NewGuid().ToString().Substring(0, 8);
                 item.i_p_gid = p_gid;
                 item.i_status = (int)SiteEnum.SiteItemStatus.待审核;
-                item.i_subTitle = fInfo.Author;//作者
-                item.i_title = fInfo.Title;
+                item.i_subTitle = fInfo.v_timeLength;//时长
+                item.i_title = fInfo.v_titile;
                 item.i_c_img_src = string.Empty;
 
                 //图片需要根据该区块设置的图片尺寸，缩放该图片,使用原图来进行缩放
                 if (!string.IsNullOrEmpty(b_info.b_img_size.Trim()))
                 {
-                    if (!string.IsNullOrEmpty(fInfo.CoverImage))
+                    if (!string.IsNullOrEmpty(fInfo.v_coverImgSrc))
                     {
-                        int index = fInfo.CoverImage.LastIndexOf('_');
-                        string sourceSrc = fInfo.CoverImage.Substring(0, index) + ".jpg";
+                        string sourceSrc = fInfo.v_coverImgSrc;
 
                         string error;
                         byte[] imgData = SiteUntility.GetRemoteImage(sourceSrc, out error);
@@ -327,48 +321,5 @@ namespace Site.Admin.Controllers
 
             }
         }
-
-        #region 浏览日志
-        [ValidatePermission]
-        public ActionResult VisitsLog()
-        {
-            return View();
-        }
-
-
-        public ActionResult VisitsLogListView()
-        {
-            int page = Request["page"].ToString().ToInt32(1);
-            int pageSize = Request["pagesize"].ToString().ToInt32(15);
-            string ip = Request["ip"] ?? string.Empty;
-
-            int rowCount;
-            ChapterVisitsSearchInfo search = new ChapterVisitsSearchInfo();
-            search.IP = ip;
-
-            List<ChapterVisits> list = YuYangServiceClass.ChapterVisits_SelectPage(search, page, pageSize, out rowCount);
-            ViewData["list"] = list;
-
-            ViewData["page"] = page;
-            ViewData["pageSize"] = pageSize;
-            ViewData["rowCount"] = rowCount;
-
-            return PartialView();
-        }
-
-
-        public ActionResult VisitsLogDelete(int id)
-        {
-            int result = YuYangServiceClass.ChapterVisits_DeleteById(id);
-            if (result > 0)
-            {
-                return Json(new { success = true, errors = new { text = "删除成功" } });
-            }
-            else
-            {
-                return Json(new { success = false, errors = new { text = "删除失败" } });
-            }
-        } 
-        #endregion
     }
 }

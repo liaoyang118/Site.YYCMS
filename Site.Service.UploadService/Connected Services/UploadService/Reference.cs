@@ -22,10 +22,10 @@ namespace Site.Service.UploadService.UploadService {
         System.Threading.Tasks.Task<System.Collections.Generic.List<string>> UploadImgAsync(byte[] imgDatas, string configName, System.Collections.Generic.List<string> sizeConfig, string imgExt, string thumbModel);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IUploadService/UploadVideo", ReplyAction="http://service.jsonyang.com/IUploadService/UploadVideoResponse")]
-        System.Collections.Generic.List<string> UploadVideo(byte[] videoDatas, string configName, System.Collections.Generic.List<string> sizeConfig, string videoExt, string thumbModel);
+        System.Collections.Generic.List<string> UploadVideo(byte[] videoDatas, string configName, System.Collections.Generic.List<string> sizeConfig, string videoExt, string thumbModel, int totalSecond);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IUploadService/UploadVideo", ReplyAction="http://service.jsonyang.com/IUploadService/UploadVideoResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<string>> UploadVideoAsync(byte[] videoDatas, string configName, System.Collections.Generic.List<string> sizeConfig, string videoExt, string thumbModel);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<string>> UploadVideoAsync(byte[] videoDatas, string configName, System.Collections.Generic.List<string> sizeConfig, string videoExt, string thumbModel, int totalSecond);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -63,12 +63,12 @@ namespace Site.Service.UploadService.UploadService {
             return base.Channel.UploadImgAsync(imgDatas, configName, sizeConfig, imgExt, thumbModel);
         }
         
-        public System.Collections.Generic.List<string> UploadVideo(byte[] videoDatas, string configName, System.Collections.Generic.List<string> sizeConfig, string videoExt, string thumbModel) {
-            return base.Channel.UploadVideo(videoDatas, configName, sizeConfig, videoExt, thumbModel);
+        public System.Collections.Generic.List<string> UploadVideo(byte[] videoDatas, string configName, System.Collections.Generic.List<string> sizeConfig, string videoExt, string thumbModel, int totalSecond) {
+            return base.Channel.UploadVideo(videoDatas, configName, sizeConfig, videoExt, thumbModel, totalSecond);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<string>> UploadVideoAsync(byte[] videoDatas, string configName, System.Collections.Generic.List<string> sizeConfig, string videoExt, string thumbModel) {
-            return base.Channel.UploadVideoAsync(videoDatas, configName, sizeConfig, videoExt, thumbModel);
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<string>> UploadVideoAsync(byte[] videoDatas, string configName, System.Collections.Generic.List<string> sizeConfig, string videoExt, string thumbModel, int totalSecond) {
+            return base.Channel.UploadVideoAsync(videoDatas, configName, sizeConfig, videoExt, thumbModel, totalSecond);
         }
     }
 }

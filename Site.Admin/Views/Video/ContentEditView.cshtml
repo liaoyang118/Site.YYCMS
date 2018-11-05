@@ -1,0 +1,153 @@
+﻿@{
+    ViewBag.Title = "ContentEditView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Site.Service.VideosService.VideosService;
+@using Site.Admin.Common;
+@using Site.Common;
+@{
+    VideoInfo info = ViewData["info"] as VideoInfo;
+    string c_id = ViewBag.c_id;
+    string fid = ViewBag.fid;
+}
+@section head{
+
+    <script src="~/UEdit/ueditor.config.js"></script>
+    <script src="~/UEdit/ueditor.all.js"></script>
+    <script src="~/UEdit/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript">
+        //var ue;
+        $(function () {
+            $("#btnSubmit").button({
+                icons: {
+                    primary: "ui-icon-check "
+                }
+            });
+            $("#btnCancle").button({
+                icons: {
+                    primary: "ui-icon-closethick "
+                }
+            });
+
+            $("#tabs").tabs();
+
+            //ue = UE.getEditor('editor', {
+            //    elementPathEnabled: false
+            //});
+        });
+
+        function btnSubmitClick() {
+            if ($("#i_title").val().length <= 0) {
+                parent.mDialogUI.message("标题不能为空", "提示", 180, 50, 2);
+                return false;
+            }
+            if ($("#i_subTitle").val().length <= 0) {
+                parent.mDialogUI.message("作者不能为空", "提示", 180, 50, 2);
+                return false;
+            }
+
+            if ($("#c_keywords").val().length <= 0) {
+                parent.mDialogUI.message("关键词不能为空", "提示", 180, 50, 2);
+                return false;
+            }
+
+            if ($("#c_intro").val().length <= 0) {
+                parent.mDialogUI.message("内容简介不能为空", "提示", 180, 50, 2);
+                return false;
+            }
+
+            //var _content = ue.getContent();
+            //if (_content.length <= 0) {
+            //    parent.mDialogUI.message("详细不能为空", "提示", 180, 50, 2);
+            //    return false;
+            //}
+
+            var data = {
+                c_title: $("#i_title").val(),
+                c_keywords: $("#c_keywords").val(),
+                c_subTitle: $("#i_subTitle").val(),
+                //c_content: _content,
+                c_intro: $("#c_intro").val(),
+                fid: '@fid',
+                c_id: '@c_id'
+
+            };
+
+            $.ajax({
+                url: "/Video/SiteContentEdit",
+                type: "post",
+                dataType: "json",
+                cache: false,
+                data: data,
+                success: function (json) {
+                    if (json.success) {
+                        parent.mDialogUI.successMessage(json.errors.text, "成功", 180, 70, 2);
+                        parent.SearchListByCateId(parent.querys.cateId, parent.querys.page);
+                        parent.mDialogUI.closeWindow('@ViewData["window"]');
+                    }
+                    else {
+                        parent.mDialogUI.errorMessage(json.errors.text, "失败", 180, 70, 2);
+                    }
+                },
+                error: function (xhr, xhrText, error) {
+                    parent.mDialogUI.errorMessage(error, "错误", 200, 70);
+                }
+            });
+        }
+    </script>
+
+
+}
+
+<div class="container-10">
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">基本信息</a></li>
+            <li><a href="#tabs-2">详细内容</a></li>
+            <li><a href="#tabs-3">注意事项</a></li>
+        </ul>
+        <div id="tabs-1">
+            <table class="editTable">
+                <tr>
+                    <td><span class="red">*</span>标题：</td>
+                    <td>
+                        <input name="i_title" id="i_title" type="text" style="width: 240px;" value="@info.v_titile" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="red">*</span>作者：</td>
+                    <td>
+                        <input name="i_subTitle" id="i_subTitle" type="text" style="width: 240px;" value="@info.v_timeLength" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="red">*</span>关键词：</td>
+                    <td>
+                        <input name="c_keywords" id="c_keywords" type="text" style="width: 240px;" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="red">*</span>内容简介：</td>
+                    <td>
+                        <textarea rows="5" name="c_intro" id="c_intro" type="text" style="width: 240px;">@info.v_intro</textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="tabs-2">
+            @*<script id="editor" type="text/plain" style="width:100%;height:100%;">
+                @Html.Raw(info.c_content)
+            </script>*@
+        </div>
+        <div id="tabs-3">
+            <h3>1.所有粘贴、默认按钮上传的图片，统一最大 宽*高为<span class="red">【680*700】</span>，小于该尺寸不缩放，大于该尺寸的进行中部裁剪。</h3>
+            <h3>2.如果要上传长图，或是自定义图片宽高，请使用特殊上传按钮。</h3>
+            <h3>3.内容要统一文字风格，默认使用<span class="red">【微软雅黑】</span>，切勿杂乱</h3>
+        </div>
+
+        <div style="float: right; margin-top: 10px;">
+            <button id="btnSubmit" onclick="btnSubmitClick();">确定</button>
+            <button id="btnCancle" onclick="parent.mDialogUI.closeWindow('@ViewData["window"]');">取消</button>
+        </div>
+    </div>
+</div>

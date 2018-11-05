@@ -44,6 +44,12 @@ namespace Site.Common
             /// </summary>
             PublishXiaoShuoPageService = 6,
 
+            /// <summary>
+            /// 视频站点服务
+            /// </summary>
+            VideoService = 7
+
+
         }
 
         /// <summary>
@@ -83,7 +89,7 @@ namespace Site.Common
             [Description("green")]
             正常 = 2,
             [Description("gray")]
-            关闭 = 3, 
+            关闭 = 3,
             [Description("blue")]
             已发布 = 4
         }
