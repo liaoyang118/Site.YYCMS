@@ -794,10 +794,14 @@
     <Content Include="Views\Video\SiteContentListView.cshtml" />
     <Content Include="Views\Video\SiteContentRecommendList.cshtml" />
     <Content Include="Views\Video\SiteContentRecommendListView.cshtml" />
+    <Content Include="Views\Template\Video\Video_Index_Foot_Temp.cshtml" />
+    <Content Include="Views\Template\Video\Video_Index_Nav_Temp.cshtml" />
+    <Content Include="Views\Template\Video\Video_Index_Sidebar_Temp.cshtml" />
+    <Content Include="Views\Template\Video\Video_Index_Temp.cshtml" />
+    <Content Include="Views\Template\Video\Video_Index_Scroll_Temp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Template\Video\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

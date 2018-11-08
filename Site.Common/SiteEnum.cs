@@ -47,7 +47,12 @@ namespace Site.Common
             /// <summary>
             /// 视频站点服务
             /// </summary>
-            VideoService = 7
+            VideoService = 7,
+
+            /// <summary>
+            /// 发布页面服务（591站点）
+            /// </summary>
+            PublishVideoPageService = 8,
 
 
         }
@@ -76,7 +81,8 @@ namespace Site.Common
         public enum SiteName
         {
             MainSite = 1,//主站点
-            XiaoShuoSite = 2 //小说站
+            XiaoShuoSite = 2, //小说站
+            VideoSite = 3, //591站点
         }
 
         /// <summary>

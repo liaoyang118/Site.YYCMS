@@ -1,0 +1,32 @@
+﻿@using Site.Service.SiteService.SiteServices;
+@using Site.Common;
+@{
+    Dictionary<string, List<Site_CMSItem>> dic = ViewBag.dataList;
+}
+@@{
+        string controller = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+        string action = ViewContext.RouteData.Values["action"].ToString().ToLower();
+  }
+@if (dic.Count > 0)
+{
+        <div class="header-slide">
+            <div id="owl-demo" class="owl-carousel">
+                @for (int i = 0; i < dic["10"].GetLength<Site_CMSItem>(8); i++)
+                {
+                    <div class="item">
+                        <div class="zoom-container">
+                            <div class="zoom-caption">
+                                <span>@dic["10"][i].i_subTitle</span>
+                                <a href="single.html">
+                                    <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                </a>
+                                <p>@dic["10"][i].i_title.SubOmitString(20)</p>
+                            </div>
+                            <img src="@dic["10"][i].i_c_img_src" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+}
+

@@ -1,0 +1,23 @@
+@using Site.Service.SiteService.SiteServices;
+@using Site.Common;
+@{
+    Dictionary<string, List<Site_CMSItem>> dic = ViewBag.dataList;
+}
+<footer>
+    <div class="top-footer">
+        <ul class="footer-social list-inline">
+            @if (dic.Count > 0)
+            {
+                foreach (Site_CMSItem item in dic["10"])
+                {
+                    <li>
+                        <a href="javascript:return false;">
+                            <i class="fa fa-volume-up"></i>
+                            <span>@item.i_title:@item.i_intro</span>
+                        </a>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</footer>

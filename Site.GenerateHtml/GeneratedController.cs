@@ -42,6 +42,9 @@ namespace GenerateHtml
                 case SiteEnum.SiteName.XiaoShuoSite:
                     serviceName = SiteEnum.SiteService.PublishXiaoShuoPageService;
                     break;
+                case SiteEnum.SiteName.VideoSite:
+                    serviceName = SiteEnum.SiteService.PublishVideoPageService;
+                    break;
                 default:
                     serviceName = SiteEnum.SiteService.PublishPageService;
                     break;

@@ -1,0 +1,337 @@
+﻿@using Site.Service.SiteService.SiteServices;
+@using Site.Admin.Common;
+@using Site.Common;
+@{
+    /**/
+
+    Dictionary<string, List<Site_CMSItem>> dic = ViewBag.dataList;
+}
+@@{
+        string controller = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+        string action = ViewContext.RouteData.Values["action"].ToString().ToLower();
+  }
+@if (dic.Count > 0)
+{
+    <div id="page-content" class="index-page">
+        <div class="container">
+            <div class="row">
+                <div class="featured">
+                    <div class="main-vid">
+                        <div class="col-md-6">
+                            @for (int i = 0; i < dic["11"].GetLength<Site_CMSItem>(1); i++)
+                            {
+                                <div class="zoom-container">
+                                    <div class="zoom-caption">
+                                        <span>@dic["11"][i].i_subTitle</span>
+                                        <a href="single.html">
+                                            <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                        </a>
+                                        <p>@dic["11"][i].i_title.SubOmitString(8)</p>
+                                    </div>
+                                    <img src="@dic["11"][i].i_c_img_src" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="sub-vid">
+                        <div class="col-md-3">
+                            @for (int i = 0; i < dic["12"].GetLength<Site_CMSItem>(2); i++)
+                            {
+                                <div class="zoom-container">
+                                    <div class="zoom-caption">
+                                        <span>@dic["12"][i].i_subTitle</span>
+                                        <a href="single.html">
+                                            <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                        </a>
+                                        <p>@dic["12"][i].i_title.SubOmitString(25)</p>
+                                    </div>
+                                    <img src="@dic["12"][i].i_c_img_src" />
+                                </div>
+                            }
+                            </div>
+                        <div class="col-md-3">
+                            @for (int i = 2; i < dic["12"].GetLength<Site_CMSItem>(4); i++)
+                            {
+                                <div class="zoom-container">
+                                    <div class="zoom-caption">
+                                        <span>@dic["12"][i].i_subTitle</span>
+                                        <a href="single.html">
+                                            <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                        </a>
+                                        <p>@dic["12"][i].i_title.SubOmitString(15)</p>
+                                    </div>
+                                    <img src="@dic["12"][i].i_c_img_src" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="main-content" class="col-md-8">
+                    <div class="box">
+                        <div class="box-header">
+                            <h2><i class="fa fa-globe"></i> 最近更新</h2>
+                        </div>
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @for (int i = 0; i < dic["13"].GetLength<Site_CMSItem>(2); i++)
+                                    {
+                                        <div class="wrap-vid">
+                                            <div class="zoom-container">
+                                                <div class="zoom-caption">
+                                                    <span>@dic["13"][i].i_subTitle</span>
+                                                    <a href="single.html">
+                                                        <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                                    </a>
+                                                    <p>@dic["13"][i].i_title.SubOmitString(25)</p>
+                                                </div>
+                                                <img src="@dic["13"][i].i_c_img_src" />
+                                            </div>
+                                        </div>
+                                    }
+                                    <div class="line"></div>
+                                    @for (int i = 2; i < dic["13"].GetLength<Site_CMSItem>(5); i++)
+                                    {
+                                        <div class="post wrap-vid">
+                                            <div class="zoom-container">
+                                                <div class="zoom-caption">
+                                                    <span>@dic["13"][i].i_subTitle</span>
+                                                    <a href="single.html">
+                                                        <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                                    </a>
+                                                    <p>@dic["13"][i].i_title.SubOmitString(15)</p>
+                                                </div>
+                                                <img src="@dic["13"][i].i_c_img_src" />
+                                            </div>
+                                            <div class="wrapper">
+                                                <h5 class="vid-name"><a href="#">@dic["13"][i].i_title.SubOmitString(15)</a></h5>
+                                                <div class="info">
+                                                    <h6>By <a href="#">Kelvin</a></h6>
+                                                    <span><i class="fa fa-calendar"></i>@dic["13"][i].i_createTime.ToStringFullDate()</span>
+                                                    <span><i class="fa fa-heart"></i>1,200</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="col-md-6">
+                                    @for (int i = 0; i < dic["14"].GetLength<Site_CMSItem>(2); i++)
+                                    {
+                                        <div class="wrap-vid">
+                                            <div class="zoom-container">
+                                                <div class="zoom-caption">
+                                                    <span>@dic["14"][i].i_subTitle</span>
+                                                    <a href="single.html">
+                                                        <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                                    </a>
+                                                    <p>@dic["14"][i].i_title.SubOmitString(25)</p>
+                                                </div>
+                                                <img src="@dic["14"][i].i_c_img_src" />
+                                            </div>
+                                        </div>
+                                    }
+                                    <div class="line"></div>
+                                    @for (int i = 2; i < dic["14"].GetLength<Site_CMSItem>(5); i++)
+                                    {
+                                        <div class="post wrap-vid">
+                                            <div class="zoom-container">
+                                                <div class="zoom-caption">
+                                                    <span>@dic["14"][i].i_subTitle</span>
+                                                    <a href="single.html">
+                                                        <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                                    </a>
+                                                    <p>@dic["14"][i].i_title.SubOmitString(15)</p>
+                                                </div>
+                                                <img src="@dic["14"][i].i_c_img_src" />
+                                            </div>
+                                            <div class="wrapper">
+                                                <h5 class="vid-name"><a href="#">@dic["14"][i].i_title.SubOmitString(15)</a></h5>
+                                                <div class="info">
+                                                    <h6>By <a href="#">Kelvin</a></h6>
+                                                    <span><i class="fa fa-calendar"></i>@dic["14"][i].i_createTime.ToStringFullDate()</span>
+                                                    <span><i class="fa fa-heart"></i>1,200</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="box">
+                        <div class="box-header">
+                            <h2><i class="fa fa-play-circle-o"></i> 高清无码</h2>
+                        </div>
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    @for (int i = 0; i < dic["15"].GetLength<Site_CMSItem>(2); i++)
+                                    {
+                                        <div class="wrap-vid">
+                                            <div class="zoom-container">
+                                                <div class="zoom-caption">
+                                                    <span>@dic["15"][i].i_subTitle</span>
+                                                    <a href="single.html">
+                                                        <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                                    </a>
+                                                    <p>@dic["15"][i].i_title.SubOmitString(15)</p>
+                                                </div>
+                                                <img src="@dic["15"][i].i_c_img_src" />
+                                            </div>
+                                            <h3 class="vid-name"><a href="#">@dic["15"][i].i_title.SubOmitString(15)</a></h3>
+                                            <div class="info">
+                                                <span><i class="fa fa-calendar"></i>@dic["15"][i].i_createTime.ToStringFullDate()</span>
+                                                <span><i class="fa fa-heart"></i>1,200</span>
+                                            </div>
+                                        </div>
+                                    }                                   
+                                </div>
+                                <div class="col-md-4">
+                                    @for (int i = 2; i < dic["15"].GetLength<Site_CMSItem>(4); i++)
+                                    {
+                                        <div class="wrap-vid">
+                                            <div class="zoom-container">
+                                                <div class="zoom-caption">
+                                                    <span>@dic["15"][i].i_subTitle</span>
+                                                    <a href="single.html">
+                                                        <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                                    </a>
+                                                    <p>@dic["15"][i].i_title.SubOmitString(15)</p>
+                                                </div>
+                                                <img src="@dic["15"][i].i_c_img_src" />
+                                            </div>
+                                            <h3 class="vid-name"><a href="#">@dic["15"][i].i_title.SubOmitString(15)</a></h3>
+                                            <div class="info">
+                                                <span><i class="fa fa-calendar"></i>@dic["15"][i].i_createTime.ToStringFullDate()</span>
+                                                <span><i class="fa fa-heart"></i>1,200</span>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="col-md-4">
+                                    @for (int i = 4; i < dic["15"].GetLength<Site_CMSItem>(6); i++)
+                                    {
+                                        <div class="wrap-vid">
+                                            <div class="zoom-container">
+                                                <div class="zoom-caption">
+                                                    <span>@dic["15"][i].i_subTitle</span>
+                                                    <a href="single.html">
+                                                        <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                                    </a>
+                                                    <p>@dic["15"][i].i_title.SubOmitString(15)</p>
+                                                </div>
+                                                <img src="@dic["15"][i].i_c_img_src" />
+                                            </div>
+                                            <h3 class="vid-name"><a href="#">@dic["15"][i].i_title.SubOmitString(15)</a></h3>
+                                            <div class="info">
+                                                <span><i class="fa fa-calendar"></i>@dic["15"][i].i_createTime.ToStringFullDate()</span>
+                                                <span><i class="fa fa-heart"></i>1,200</span>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="box">
+                        <div class="box-header">
+                            <h2><i class="fa fa-globe"></i> 热门推荐</h2>
+                        </div>
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @for (int i = 0; i < dic["16"].GetLength<Site_CMSItem>(2); i++)
+                                    {
+                                        <div class="wrap-vid">
+                                            <div class="zoom-container">
+                                                <div class="zoom-caption">
+                                                    <span>@dic["16"][i].i_subTitle</span>
+                                                    <a href="single.html">
+                                                        <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                                    </a>
+                                                    <p>@dic["16"][i].i_title.SubOmitString(25)</p>
+                                                </div>
+                                                <img src="@dic["15"][i].i_c_img_src" />
+                                            </div>
+                                            <h3 class="vid-name"><a href="#">@dic["16"][i].i_title.SubOmitString(25)</a></h3>
+                                            <div class="info">
+                                                <span><i class="fa fa-calendar"></i>@dic["16"][i].i_createTime.ToStringFullDate()</span>
+                                                <span><i class="fa fa-heart"></i>1,200</span>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="col-md-6">
+                                    @for (int i = 2; i < dic["16"].GetLength<Site_CMSItem>(6); i++)
+                                    {
+                                        <div class="post wrap-vid">
+                                            <div class="zoom-container">
+                                                <div class="zoom-caption">
+                                                    <span>@dic["16"][i].i_subTitle</span>
+                                                    <a href="single.html">
+                                                        <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                                    </a>
+                                                    <p>@dic["16"][i].i_title.SubOmitString(15)</p>
+                                                </div>
+                                                <img src="@dic["16"][i].i_c_img_src" />
+                                            </div>
+                                            <div class="wrapper">
+                                                <h5 class="vid-name"><a href="#">@dic["16"][i].i_title.SubOmitString(15)</a></h5>
+                                                <div class="info">
+                                                    <span><i class="fa fa-calendar"></i>@dic["16"][i].i_createTime.ToStringFullDate()</span>
+                                                    <span><i class="fa fa-heart"></i>1,200</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="box">
+                        <div class="box-header">
+                            <h2><i class="fa fa-vimeo-square"></i> V友推荐</h2>
+                        </div>
+                        <div class="box-content">
+                            <div class="row">
+                                @for (int i = 0; i < dic["17"].GetLength<Site_CMSItem>(3); i++)
+                                {
+
+                                    <div class="col-md-4">
+                                        <div class="wrap-vid">
+                                            <div class="zoom-container">
+                                                <div class="zoom-caption">
+                                                    <span>@dic["17"][i].i_subTitle</span>
+                                                    <a href="single.html">
+                                                        <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                                    </a>
+                                                    <p>@dic["17"][i].i_title.SubOmitString(15)</p>
+                                                </div>
+                                                <img src="@dic["17"][i].i_c_img_src" />
+                                            </div>
+                                            <h3 class="vid-name"><a href="#">@dic["17"][i].i_title.SubOmitString(15)</a></h3>
+                                            <div class="info">
+                                                <span><i class="fa fa-calendar"></i>@dic["17"][i].i_createTime.ToStringFullDate()</span>
+                                                <span><i class="fa fa-heart"></i>1,200</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @@{
+                    Html.RenderPartial("../Sidebar/Video_Index_Sidebar");
+                }
+            </div>
+        </div>
+    </div>
+}
+

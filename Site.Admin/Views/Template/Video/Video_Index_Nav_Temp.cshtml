@@ -1,0 +1,35 @@
+﻿@using Site.Service.SiteService.SiteServices;
+@using Site.Common;
+@{
+    Dictionary<string, List<Site_CMSItem>> dic = ViewBag.dataList;
+}
+@@{
+    string pageParam = Request.RequestContext.RouteData.Values["pageParam"]==null?"":Request.RequestContext.RouteData.Values["pageParam"].ToString();
+    string[] arr = pageParam.Split(new string[] { "_" }, StringSplitOptions.RemoveEmptyEntries);
+    string cateId="-";
+    if(arr.Length>0)
+    {
+        cateId=arr[0];
+    }
+}
+
+<nav id="menu" class="navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <span id="heading" class="visible-xs">Categories</span>
+            <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                @if (dic.Count > 0)
+                {
+                    foreach (Site_CMSItem item in dic["10"])
+                    {
+                        <li @@(cateId=="@item.i_intro" ?"class=current-menu-item":"")><a href="@(item.i_intro=="-"?"/":SiteUntility.GetRelationCateUrl(item.i_intro))" title="@item.i_title"><i class="fa fa-home"></i> @item.i_title</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</nav>
+
