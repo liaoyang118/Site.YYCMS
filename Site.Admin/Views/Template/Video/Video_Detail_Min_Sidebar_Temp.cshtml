@@ -1,0 +1,77 @@
+﻿@using Site.Service.SiteService.SiteServices;
+@using Site.Admin.Common;
+@using Site.Common;
+@{
+    Dictionary<string, List<Site_CMSItem>> dic = ViewBag.dataList;
+}
+
+@@{
+        string controller = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+        string action = ViewContext.RouteData.Values["action"].ToString().ToLower();
+    }
+
+@if (dic.Count > 0)
+{
+
+    <div id="sidebar" class="col-md-4">
+        <!---- Start Widget ---->
+        <div class="widget wid-follow">
+            <div class="heading"><h4><i class="fa fa-users"></i> Vip</h4></div>
+            <div class="content">
+                <ul class="list-inline">
+                    <li>
+                        <a href="/Vip/Index">
+                            <div class="thumbnail" style="height: 60px;">
+                                <img class="lazy" src="/images/vip3.png" width="95" height="55" alt="试用会员">
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Vip/Index">
+                            <div class="thumbnail" style="height: 60px;">
+                                <img class="lazy" src="/images/vip7.png" width="95" height="55" alt="试用会员">
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Vip/Index">
+                            <div class="thumbnail" style="height: 60px;">
+                                <img class="lazy" src="/images/vip30.png" width="95" height="55" alt="试用会员">
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!---- 热门点击 ---->
+        <div class="widget wid-news">
+            <div class="heading"><h4><i class="fa fa-clock-o"></i> 热门点击</h4></div>
+            <div class="content">
+                @{
+                    for (int i = 0; i < dic["12"].GetLength<Site_CMSItem>(3); i++)
+                    {
+                        <!--349*195-->
+                        <div class="wrap-vid">
+                            <div class="zoom-container">
+                                <div class="zoom-caption">
+                                    <span>@dic["12"][i].i_subTitle</span>
+                                    <a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["12"][i].i_c_type,dic["12"][i].i_c_gid)" target="_blank">
+                                        <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
+                                    </a>
+                                    <p>@dic["12"][i].i_title.SubOmitString(25)</p>
+                                </div>
+                                <img src="@dic["12"][i].i_c_img_src" />
+                            </div>
+                            <h3 class="vid-name"><a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["12"][i].i_c_type,dic["12"][i].i_c_gid)" target="_blank">@dic["12"][i].i_title.SubOmitString(25)</a></h3>
+                            <div class="info">
+                                <span><i class="fa fa-calendar"></i>@dic["12"][i].i_createTime.ToStringFullDate()</span>
+                                <span><i class="fa fa-heart"></i>1,200</span>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="line"></div>
+        </div>
+    </div>
+}

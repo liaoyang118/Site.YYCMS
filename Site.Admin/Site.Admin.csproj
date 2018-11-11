@@ -799,6 +799,17 @@
     <Content Include="Views\Template\Video\Video_Index_Sidebar_Temp.cshtml" />
     <Content Include="Views\Template\Video\Video_Index_Temp.cshtml" />
     <Content Include="Views\Template\Video\Video_Index_Scroll_Temp.cshtml" />
+    <Content Include="Views\Template\Video\Video_Index_Min_Foot_Temp.cshtml" />
+    <Content Include="Views\Template\Video\Video_Index_Min_Nav_Temp.cshtml" />
+    <Content Include="Views\Template\Video\Video_Index_Min_Sidebar_Temp.cshtml" />
+    <Content Include="Views\Template\Video\Video_Index_Min_Temp.cshtml" />
+    <Content Include="Views\Video\ComboInfoEditView.cshtml" />
+    <Content Include="Views\Video\ComboInfoList.cshtml" />
+    <Content Include="Views\Video\ComboInfoListView.cshtml" />
+    <Content Include="Views\Video\SendMailLog.cshtml" />
+    <Content Include="Views\Video\SendMailLogListView.cshtml" />
+    <Content Include="Views\Template\Video\Video_Detail_Min_Sidebar_Temp.cshtml" />
+    <Content Include="Views\Template\Video\Video_Detail_Sidebar_Temp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -826,6 +837,10 @@
     <ProjectReference Include="..\Site.GenerateHtml\Site.GenerateHtml.csproj">
       <Project>{ffe1ecbd-6594-4a99-af44-be79f42fc088}</Project>
       <Name>Site.GenerateHtml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Site.SentMail\Site.SentMail.csproj">
+      <Project>{ae20ddec-d876-492d-9204-c66a2af7129c}</Project>
+      <Name>Site.SentMail</Name>
     </ProjectReference>
     <ProjectReference Include="..\Site.Service.SiteService\Site.Service.SiteService.csproj">
       <Project>{1dafd112-e7b1-44ee-a2ee-97c3407233a6}</Project>

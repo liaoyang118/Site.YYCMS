@@ -129,6 +129,21 @@ namespace Site.VideoModel
         }
         #endregion
 
+        #region v_min_playSrc
+        private string _v_min_playSrc;
+        public string v_min_playSrc
+        {
+            get
+            {
+                return this._v_min_playSrc;
+            }
+            set
+            {
+                this._v_min_playSrc = value;
+            }
+        }
+        #endregion
+
         #region v_timeLength
         private string _v_timeLength;
         public string v_timeLength
@@ -189,5 +204,6 @@ namespace Site.VideoModel
         }
         #endregion
     }
+
 
 }

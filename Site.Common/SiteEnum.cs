@@ -44,17 +44,22 @@ namespace Site.Common
             /// </summary>
             PublishXiaoShuoPageService = 6,
 
+
+
             /// <summary>
             /// 视频站点服务
             /// </summary>
             VideoService = 7,
 
             /// <summary>
-            /// 发布页面服务（591站点）
+            /// 发布页面服务（视频站点）
             /// </summary>
             PublishVideoPageService = 8,
 
-
+            /// <summary>
+            /// 视频站点上传服务
+            /// </summary>
+            VideoUploadService = 9
         }
 
         /// <summary>
@@ -100,6 +105,27 @@ namespace Site.Common
             已发布 = 4
         }
 
+        /// <summary>
+        /// 基本状态 0 成功，1失败
+        /// </summary>
+        public enum BasicSuccessStatus
+        {
+            [Description("red")]
+            失败 = 0,
+            [Description("green")]
+            成功 = 1
+        }
+
+        /// <summary>
+        /// 基本状态 0无效 1有效
+        /// </summary>
+        public enum BasicStatus
+        {
+            [Description("red")]
+            无效 = 0,
+            [Description("green")]
+            有效 = 1
+        }
 
         /// <summary>
         /// WCF上传服务，文件保存路径的配置名称

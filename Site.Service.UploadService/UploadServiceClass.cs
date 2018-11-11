@@ -21,9 +21,9 @@ namespace Site.Service.UploadService
         /// <param name="imgExt">扩展名</param>
         /// <param name="thumbModel">"s",整图缩放;"c",裁剪; 默认为裁剪</param>
         /// <returns>原图地址(0)和缩略图地址(1)</returns>
-        public static List<string> UploadImg(byte[] imgDatas, string configName, List<string> sizeConfig, string imgExt, string thumbModel = "c")
+        public static List<string> UploadImg(byte[] imgDatas, string configName, List<string> sizeConfig, string imgExt, string thumbModel = "c", SiteEnum.SiteService uploadService= SiteEnum.SiteService.UploadService)
         {
-            IUploadService channel = Entity.CreateChannel<IUploadService>(SiteEnum.SiteService.UploadService);
+            IUploadService channel = Entity.CreateChannel<IUploadService>(uploadService);
             var result = channel.UploadImg(imgDatas, configName, sizeConfig, imgExt, thumbModel);
             (channel as IDisposable).Dispose();
             return result;
@@ -43,9 +43,9 @@ namespace Site.Service.UploadService
         /// <param name="thumbModel">"s",整图缩放;"c",裁剪; 默认为裁剪</param>
         /// <param name="totalSecond">视频总长度，默认剪切2min</param>
         /// <returns>原图地址(0)和缩略图地址(1)</returns>
-        public static List<string> UploadVideo(byte[] videoDatas, string configName, List<string> sizeConfig, string videoExt, int totalSecond, string thumbModel = "c")
+        public static List<string> UploadVideo(byte[] videoDatas, string configName, List<string> sizeConfig, string videoExt, int totalSecond, string thumbModel = "c", SiteEnum.SiteService uploadService = SiteEnum.SiteService.UploadService)
         {
-            IUploadService channel = Entity.CreateChannel<IUploadService>(SiteEnum.SiteService.UploadService);
+            IUploadService channel = Entity.CreateChannel<IUploadService>(uploadService);
             var result = channel.UploadVideo(videoDatas, configName, sizeConfig, videoExt, thumbModel, totalSecond);
             (channel as IDisposable).Dispose();
             return result;

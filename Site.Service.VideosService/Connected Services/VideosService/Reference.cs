@@ -44,6 +44,9 @@ namespace Site.Service.VideosService.VideosService {
         private string v_introField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string v_min_playSrcField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string v_playSrcField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -155,6 +158,19 @@ namespace Site.Service.VideosService.VideosService {
                 if ((object.ReferenceEquals(this.v_introField, value) != true)) {
                     this.v_introField = value;
                     this.RaisePropertyChanged("v_intro");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string v_min_playSrc {
+            get {
+                return this.v_min_playSrcField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.v_min_playSrcField, value) != true)) {
+                    this.v_min_playSrcField = value;
+                    this.RaisePropertyChanged("v_min_playSrc");
                 }
             }
         }
@@ -295,6 +311,304 @@ namespace Site.Service.VideosService.VideosService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SendMailLog", Namespace="http://schemas.datacontract.org/2004/07/Site.VideoModel")]
+    [System.SerializableAttribute()]
+    public partial class SendMailLog : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CreateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsSuccessField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RemarkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SendContentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime SendTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CreateTime {
+            get {
+                return this.CreateTimeField;
+            }
+            set {
+                if ((this.CreateTimeField.Equals(value) != true)) {
+                    this.CreateTimeField = value;
+                    this.RaisePropertyChanged("CreateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsSuccess {
+            get {
+                return this.IsSuccessField;
+            }
+            set {
+                if ((this.IsSuccessField.Equals(value) != true)) {
+                    this.IsSuccessField = value;
+                    this.RaisePropertyChanged("IsSuccess");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Remark {
+            get {
+                return this.RemarkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RemarkField, value) != true)) {
+                    this.RemarkField = value;
+                    this.RaisePropertyChanged("Remark");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SendContent {
+            get {
+                return this.SendContentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SendContentField, value) != true)) {
+                    this.SendContentField = value;
+                    this.RaisePropertyChanged("SendContent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime SendTime {
+            get {
+                return this.SendTimeField;
+            }
+            set {
+                if ((this.SendTimeField.Equals(value) != true)) {
+                    this.SendTimeField = value;
+                    this.RaisePropertyChanged("SendTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ComboInfo", Namespace="http://schemas.datacontract.org/2004/07/Site.VideoModel")]
+    [System.SerializableAttribute()]
+    public partial class ComboInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int c_daysField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_introField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int c_numField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int c_statusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string c_titleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int c_days {
+            get {
+                return this.c_daysField;
+            }
+            set {
+                if ((this.c_daysField.Equals(value) != true)) {
+                    this.c_daysField = value;
+                    this.RaisePropertyChanged("c_days");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_id {
+            get {
+                return this.c_idField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_idField, value) != true)) {
+                    this.c_idField = value;
+                    this.RaisePropertyChanged("c_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_intro {
+            get {
+                return this.c_introField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_introField, value) != true)) {
+                    this.c_introField = value;
+                    this.RaisePropertyChanged("c_intro");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int c_num {
+            get {
+                return this.c_numField;
+            }
+            set {
+                if ((this.c_numField.Equals(value) != true)) {
+                    this.c_numField = value;
+                    this.RaisePropertyChanged("c_num");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int c_status {
+            get {
+                return this.c_statusField;
+            }
+            set {
+                if ((this.c_statusField.Equals(value) != true)) {
+                    this.c_statusField = value;
+                    this.RaisePropertyChanged("c_status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string c_title {
+            get {
+                return this.c_titleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.c_titleField, value) != true)) {
+                    this.c_titleField = value;
+                    this.RaisePropertyChanged("c_title");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://service.jsonyang.com", ConfigurationName="VideosService.IVideosService")]
     public interface IVideosService {
@@ -360,6 +674,74 @@ namespace Site.Service.VideosService.VideosService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/VideoCate_SelectByc_id", ReplyAction="http://service.jsonyang.com/IVideosService/VideoCate_SelectByc_idResponse")]
         System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.VideoCate> VideoCate_SelectByc_idAsync(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/SendMailLog_Insert", ReplyAction="http://service.jsonyang.com/IVideosService/SendMailLog_InsertResponse")]
+        int SendMailLog_Insert(Site.Service.VideosService.VideosService.SendMailLog obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/SendMailLog_Insert", ReplyAction="http://service.jsonyang.com/IVideosService/SendMailLog_InsertResponse")]
+        System.Threading.Tasks.Task<int> SendMailLog_InsertAsync(Site.Service.VideosService.VideosService.SendMailLog obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/SendMailLog_DeleteById", ReplyAction="http://service.jsonyang.com/IVideosService/SendMailLog_DeleteByIdResponse")]
+        int SendMailLog_DeleteById(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/SendMailLog_DeleteById", ReplyAction="http://service.jsonyang.com/IVideosService/SendMailLog_DeleteByIdResponse")]
+        System.Threading.Tasks.Task<int> SendMailLog_DeleteByIdAsync(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/SendMailLog_UpdateById", ReplyAction="http://service.jsonyang.com/IVideosService/SendMailLog_UpdateByIdResponse")]
+        int SendMailLog_UpdateById(Site.Service.VideosService.VideosService.SendMailLog obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/SendMailLog_UpdateById", ReplyAction="http://service.jsonyang.com/IVideosService/SendMailLog_UpdateByIdResponse")]
+        System.Threading.Tasks.Task<int> SendMailLog_UpdateByIdAsync(Site.Service.VideosService.VideosService.SendMailLog obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/SendMailLog_SelectPage", ReplyAction="http://service.jsonyang.com/IVideosService/SendMailLog_SelectPageResponse")]
+        Site.Service.VideosService.VideosService.SendMailLog_SelectPageResponse SendMailLog_SelectPage(Site.Service.VideosService.VideosService.SendMailLog_SelectPageRequest request);
+        
+        // CODEGEN: 正在生成消息协定，应为该操作具有多个返回值。
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/SendMailLog_SelectPage", ReplyAction="http://service.jsonyang.com/IVideosService/SendMailLog_SelectPageResponse")]
+        System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.SendMailLog_SelectPageResponse> SendMailLog_SelectPageAsync(Site.Service.VideosService.VideosService.SendMailLog_SelectPageRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/SendMailLog_SelectById", ReplyAction="http://service.jsonyang.com/IVideosService/SendMailLog_SelectByIdResponse")]
+        Site.Service.VideosService.VideosService.SendMailLog SendMailLog_SelectById(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/SendMailLog_SelectById", ReplyAction="http://service.jsonyang.com/IVideosService/SendMailLog_SelectByIdResponse")]
+        System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.SendMailLog> SendMailLog_SelectByIdAsync(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/ComboInfo_Insert", ReplyAction="http://service.jsonyang.com/IVideosService/ComboInfo_InsertResponse")]
+        int ComboInfo_Insert(Site.Service.VideosService.VideosService.ComboInfo obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/ComboInfo_Insert", ReplyAction="http://service.jsonyang.com/IVideosService/ComboInfo_InsertResponse")]
+        System.Threading.Tasks.Task<int> ComboInfo_InsertAsync(Site.Service.VideosService.VideosService.ComboInfo obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/ComboInfo_DeleteById", ReplyAction="http://service.jsonyang.com/IVideosService/ComboInfo_DeleteByIdResponse")]
+        int ComboInfo_DeleteById(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/ComboInfo_DeleteById", ReplyAction="http://service.jsonyang.com/IVideosService/ComboInfo_DeleteByIdResponse")]
+        System.Threading.Tasks.Task<int> ComboInfo_DeleteByIdAsync(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/ComboInfo_UpdateById", ReplyAction="http://service.jsonyang.com/IVideosService/ComboInfo_UpdateByIdResponse")]
+        int ComboInfo_UpdateById(Site.Service.VideosService.VideosService.ComboInfo obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/ComboInfo_UpdateById", ReplyAction="http://service.jsonyang.com/IVideosService/ComboInfo_UpdateByIdResponse")]
+        System.Threading.Tasks.Task<int> ComboInfo_UpdateByIdAsync(Site.Service.VideosService.VideosService.ComboInfo obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/ComboInfo_SelectPage", ReplyAction="http://service.jsonyang.com/IVideosService/ComboInfo_SelectPageResponse")]
+        Site.Service.VideosService.VideosService.ComboInfo_SelectPageResponse ComboInfo_SelectPage(Site.Service.VideosService.VideosService.ComboInfo_SelectPageRequest request);
+        
+        // CODEGEN: 正在生成消息协定，应为该操作具有多个返回值。
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/ComboInfo_SelectPage", ReplyAction="http://service.jsonyang.com/IVideosService/ComboInfo_SelectPageResponse")]
+        System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.ComboInfo_SelectPageResponse> ComboInfo_SelectPageAsync(Site.Service.VideosService.VideosService.ComboInfo_SelectPageRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/ComboInfo_SelectById", ReplyAction="http://service.jsonyang.com/IVideosService/ComboInfo_SelectByIdResponse")]
+        Site.Service.VideosService.VideosService.ComboInfo ComboInfo_SelectById(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/ComboInfo_SelectById", ReplyAction="http://service.jsonyang.com/IVideosService/ComboInfo_SelectByIdResponse")]
+        System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.ComboInfo> ComboInfo_SelectByIdAsync(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/ComboInfo_SelectByc_id", ReplyAction="http://service.jsonyang.com/IVideosService/ComboInfo_SelectByc_idResponse")]
+        Site.Service.VideosService.VideosService.ComboInfo ComboInfo_SelectByc_id(string c_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/ComboInfo_SelectByc_id", ReplyAction="http://service.jsonyang.com/IVideosService/ComboInfo_SelectByc_idResponse")]
+        System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.ComboInfo> ComboInfo_SelectByc_idAsync(string c_id);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -462,6 +844,110 @@ namespace Site.Service.VideosService.VideosService {
         
         public VideoCate_SelectPageResponse(System.Collections.Generic.List<Site.Service.VideosService.VideosService.VideoCate> VideoCate_SelectPageResult, int rowCount) {
             this.VideoCate_SelectPageResult = VideoCate_SelectPageResult;
+            this.rowCount = rowCount;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="SendMailLog_SelectPage", WrapperNamespace="http://service.jsonyang.com", IsWrapped=true)]
+    public partial class SendMailLog_SelectPageRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=0)]
+        public string cloumns;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=1)]
+        public int pageIndex;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=2)]
+        public int pageSize;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=3)]
+        public string orderBy;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=4)]
+        public string where;
+        
+        public SendMailLog_SelectPageRequest() {
+        }
+        
+        public SendMailLog_SelectPageRequest(string cloumns, int pageIndex, int pageSize, string orderBy, string where) {
+            this.cloumns = cloumns;
+            this.pageIndex = pageIndex;
+            this.pageSize = pageSize;
+            this.orderBy = orderBy;
+            this.where = where;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="SendMailLog_SelectPageResponse", WrapperNamespace="http://service.jsonyang.com", IsWrapped=true)]
+    public partial class SendMailLog_SelectPageResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=0)]
+        public System.Collections.Generic.List<Site.Service.VideosService.VideosService.SendMailLog> SendMailLog_SelectPageResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=1)]
+        public int rowCount;
+        
+        public SendMailLog_SelectPageResponse() {
+        }
+        
+        public SendMailLog_SelectPageResponse(System.Collections.Generic.List<Site.Service.VideosService.VideosService.SendMailLog> SendMailLog_SelectPageResult, int rowCount) {
+            this.SendMailLog_SelectPageResult = SendMailLog_SelectPageResult;
+            this.rowCount = rowCount;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ComboInfo_SelectPage", WrapperNamespace="http://service.jsonyang.com", IsWrapped=true)]
+    public partial class ComboInfo_SelectPageRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=0)]
+        public string cloumns;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=1)]
+        public int pageIndex;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=2)]
+        public int pageSize;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=3)]
+        public string orderBy;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=4)]
+        public string where;
+        
+        public ComboInfo_SelectPageRequest() {
+        }
+        
+        public ComboInfo_SelectPageRequest(string cloumns, int pageIndex, int pageSize, string orderBy, string where) {
+            this.cloumns = cloumns;
+            this.pageIndex = pageIndex;
+            this.pageSize = pageSize;
+            this.orderBy = orderBy;
+            this.where = where;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ComboInfo_SelectPageResponse", WrapperNamespace="http://service.jsonyang.com", IsWrapped=true)]
+    public partial class ComboInfo_SelectPageResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=0)]
+        public System.Collections.Generic.List<Site.Service.VideosService.VideosService.ComboInfo> ComboInfo_SelectPageResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=1)]
+        public int rowCount;
+        
+        public ComboInfo_SelectPageResponse() {
+        }
+        
+        public ComboInfo_SelectPageResponse(System.Collections.Generic.List<Site.Service.VideosService.VideosService.ComboInfo> ComboInfo_SelectPageResult, int rowCount) {
+            this.ComboInfo_SelectPageResult = ComboInfo_SelectPageResult;
             this.rowCount = rowCount;
         }
     }
@@ -597,6 +1083,120 @@ namespace Site.Service.VideosService.VideosService {
         
         public System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.VideoCate> VideoCate_SelectByc_idAsync(int Id) {
             return base.Channel.VideoCate_SelectByc_idAsync(Id);
+        }
+        
+        public int SendMailLog_Insert(Site.Service.VideosService.VideosService.SendMailLog obj) {
+            return base.Channel.SendMailLog_Insert(obj);
+        }
+        
+        public System.Threading.Tasks.Task<int> SendMailLog_InsertAsync(Site.Service.VideosService.VideosService.SendMailLog obj) {
+            return base.Channel.SendMailLog_InsertAsync(obj);
+        }
+        
+        public int SendMailLog_DeleteById(int Id) {
+            return base.Channel.SendMailLog_DeleteById(Id);
+        }
+        
+        public System.Threading.Tasks.Task<int> SendMailLog_DeleteByIdAsync(int Id) {
+            return base.Channel.SendMailLog_DeleteByIdAsync(Id);
+        }
+        
+        public int SendMailLog_UpdateById(Site.Service.VideosService.VideosService.SendMailLog obj) {
+            return base.Channel.SendMailLog_UpdateById(obj);
+        }
+        
+        public System.Threading.Tasks.Task<int> SendMailLog_UpdateByIdAsync(Site.Service.VideosService.VideosService.SendMailLog obj) {
+            return base.Channel.SendMailLog_UpdateByIdAsync(obj);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Site.Service.VideosService.VideosService.SendMailLog_SelectPageResponse Site.Service.VideosService.VideosService.IVideosService.SendMailLog_SelectPage(Site.Service.VideosService.VideosService.SendMailLog_SelectPageRequest request) {
+            return base.Channel.SendMailLog_SelectPage(request);
+        }
+        
+        public System.Collections.Generic.List<Site.Service.VideosService.VideosService.SendMailLog> SendMailLog_SelectPage(string cloumns, int pageIndex, int pageSize, string orderBy, string where, out int rowCount) {
+            Site.Service.VideosService.VideosService.SendMailLog_SelectPageRequest inValue = new Site.Service.VideosService.VideosService.SendMailLog_SelectPageRequest();
+            inValue.cloumns = cloumns;
+            inValue.pageIndex = pageIndex;
+            inValue.pageSize = pageSize;
+            inValue.orderBy = orderBy;
+            inValue.where = where;
+            Site.Service.VideosService.VideosService.SendMailLog_SelectPageResponse retVal = ((Site.Service.VideosService.VideosService.IVideosService)(this)).SendMailLog_SelectPage(inValue);
+            rowCount = retVal.rowCount;
+            return retVal.SendMailLog_SelectPageResult;
+        }
+        
+        public System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.SendMailLog_SelectPageResponse> SendMailLog_SelectPageAsync(Site.Service.VideosService.VideosService.SendMailLog_SelectPageRequest request) {
+            return base.Channel.SendMailLog_SelectPageAsync(request);
+        }
+        
+        public Site.Service.VideosService.VideosService.SendMailLog SendMailLog_SelectById(int Id) {
+            return base.Channel.SendMailLog_SelectById(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.SendMailLog> SendMailLog_SelectByIdAsync(int Id) {
+            return base.Channel.SendMailLog_SelectByIdAsync(Id);
+        }
+        
+        public int ComboInfo_Insert(Site.Service.VideosService.VideosService.ComboInfo obj) {
+            return base.Channel.ComboInfo_Insert(obj);
+        }
+        
+        public System.Threading.Tasks.Task<int> ComboInfo_InsertAsync(Site.Service.VideosService.VideosService.ComboInfo obj) {
+            return base.Channel.ComboInfo_InsertAsync(obj);
+        }
+        
+        public int ComboInfo_DeleteById(int Id) {
+            return base.Channel.ComboInfo_DeleteById(Id);
+        }
+        
+        public System.Threading.Tasks.Task<int> ComboInfo_DeleteByIdAsync(int Id) {
+            return base.Channel.ComboInfo_DeleteByIdAsync(Id);
+        }
+        
+        public int ComboInfo_UpdateById(Site.Service.VideosService.VideosService.ComboInfo obj) {
+            return base.Channel.ComboInfo_UpdateById(obj);
+        }
+        
+        public System.Threading.Tasks.Task<int> ComboInfo_UpdateByIdAsync(Site.Service.VideosService.VideosService.ComboInfo obj) {
+            return base.Channel.ComboInfo_UpdateByIdAsync(obj);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Site.Service.VideosService.VideosService.ComboInfo_SelectPageResponse Site.Service.VideosService.VideosService.IVideosService.ComboInfo_SelectPage(Site.Service.VideosService.VideosService.ComboInfo_SelectPageRequest request) {
+            return base.Channel.ComboInfo_SelectPage(request);
+        }
+        
+        public System.Collections.Generic.List<Site.Service.VideosService.VideosService.ComboInfo> ComboInfo_SelectPage(string cloumns, int pageIndex, int pageSize, string orderBy, string where, out int rowCount) {
+            Site.Service.VideosService.VideosService.ComboInfo_SelectPageRequest inValue = new Site.Service.VideosService.VideosService.ComboInfo_SelectPageRequest();
+            inValue.cloumns = cloumns;
+            inValue.pageIndex = pageIndex;
+            inValue.pageSize = pageSize;
+            inValue.orderBy = orderBy;
+            inValue.where = where;
+            Site.Service.VideosService.VideosService.ComboInfo_SelectPageResponse retVal = ((Site.Service.VideosService.VideosService.IVideosService)(this)).ComboInfo_SelectPage(inValue);
+            rowCount = retVal.rowCount;
+            return retVal.ComboInfo_SelectPageResult;
+        }
+        
+        public System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.ComboInfo_SelectPageResponse> ComboInfo_SelectPageAsync(Site.Service.VideosService.VideosService.ComboInfo_SelectPageRequest request) {
+            return base.Channel.ComboInfo_SelectPageAsync(request);
+        }
+        
+        public Site.Service.VideosService.VideosService.ComboInfo ComboInfo_SelectById(int Id) {
+            return base.Channel.ComboInfo_SelectById(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.ComboInfo> ComboInfo_SelectByIdAsync(int Id) {
+            return base.Channel.ComboInfo_SelectByIdAsync(Id);
+        }
+        
+        public Site.Service.VideosService.VideosService.ComboInfo ComboInfo_SelectByc_id(string c_id) {
+            return base.Channel.ComboInfo_SelectByc_id(c_id);
+        }
+        
+        public System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.ComboInfo> ComboInfo_SelectByc_idAsync(string c_id) {
+            return base.Channel.ComboInfo_SelectByc_idAsync(c_id);
         }
     }
 }

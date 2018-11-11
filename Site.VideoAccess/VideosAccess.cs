@@ -79,6 +79,7 @@ namespace Site.VideoAccess
             db.AddInParameter(dbCmd, "@v_intro", DbType.String, obj.v_intro);
             db.AddInParameter(dbCmd, "@v_coverImgSrc", DbType.String, obj.v_coverImgSrc);
             db.AddInParameter(dbCmd, "@v_playSrc", DbType.String, obj.v_playSrc);
+            db.AddInParameter(dbCmd, "@v_min_playSrc", DbType.String, obj.v_min_playSrc);
             db.AddInParameter(dbCmd, "@v_timeLength", DbType.String, obj.v_timeLength);
             db.AddInParameter(dbCmd, "@v_createTime", DbType.String, obj.v_createTime);
             db.AddInParameter(dbCmd, "@v_status", DbType.Int32, obj.v_status);
@@ -125,6 +126,7 @@ namespace Site.VideoAccess
             db.AddInParameter(dbCmd, "@v_intro", DbType.String, obj.v_intro);
             db.AddInParameter(dbCmd, "@v_coverImgSrc", DbType.String, obj.v_coverImgSrc);
             db.AddInParameter(dbCmd, "@v_playSrc", DbType.String, obj.v_playSrc);
+            db.AddInParameter(dbCmd, "@v_min_playSrc", DbType.String, obj.v_min_playSrc);
             db.AddInParameter(dbCmd, "@v_timeLength", DbType.String, obj.v_timeLength);
             db.AddInParameter(dbCmd, "@v_createTime", DbType.String, obj.v_createTime);
             db.AddInParameter(dbCmd, "@v_status", DbType.Int32, obj.v_status);
@@ -326,6 +328,284 @@ namespace Site.VideoAccess
 
         #endregion
 
+        #region 邮件日志
+
+        #region Proc_SendMailLog_Insert
+        public int SendMailLog_Insert(SendMailLog obj)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_SendMailLog_Insert");
+            db.AddOutParameter(dbCmd, "@Id", DbType.Int32, 4);
+            db.AddInParameter(dbCmd, "@Email", DbType.String, obj.Email);
+            db.AddInParameter(dbCmd, "@Title", DbType.String, obj.Title);
+            db.AddInParameter(dbCmd, "@SendTime", DbType.String, obj.SendTime);
+            db.AddInParameter(dbCmd, "@SendContent", DbType.String, obj.SendContent);
+            db.AddInParameter(dbCmd, "@IsSuccess", DbType.Boolean, obj.IsSuccess);
+            db.AddInParameter(dbCmd, "@Remark", DbType.String, obj.Remark);
+            db.AddInParameter(dbCmd, "@CreateTime", DbType.String, obj.CreateTime);
+            try
+            {
+                int returnValue = db.ExecuteNonQuery(dbCmd);
+                int Id = (int)dbCmd.Parameters["@Id"].Value;
+                return returnValue;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+        #region Proc_SendMailLog_DeleteById
+        public int SendMailLog_DeleteById(int Id)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_SendMailLog_DeleteById");
+            db.AddInParameter(dbCmd, "@Id", DbType.Int32, Id);
+            try
+            {
+                int returnValue = db.ExecuteNonQuery(dbCmd);
+                return returnValue;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+        #region Proc_SendMailLog_UpdateById
+        public int SendMailLog_UpdateById(SendMailLog obj)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_SendMailLog_UpdateById");
+            db.AddInParameter(dbCmd, "@Id", DbType.Int32, obj.Id);
+            db.AddInParameter(dbCmd, "@Email", DbType.String, obj.Email);
+            db.AddInParameter(dbCmd, "@Title", DbType.String, obj.Title);
+            db.AddInParameter(dbCmd, "@SendTime", DbType.String, obj.SendTime);
+            db.AddInParameter(dbCmd, "@SendContent", DbType.String, obj.SendContent);
+            db.AddInParameter(dbCmd, "@IsSuccess", DbType.Boolean, obj.IsSuccess);
+            db.AddInParameter(dbCmd, "@Remark", DbType.String, obj.Remark);
+            db.AddInParameter(dbCmd, "@CreateTime", DbType.String, obj.CreateTime);
+            try
+            {
+                int returnValue = db.ExecuteNonQuery(dbCmd);
+                return returnValue;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+        #region Proc_SendMailLog_SelectById
+        public SendMailLog SendMailLog_SelectById(int Id)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_SendMailLog_SelectById");
+            db.AddInParameter(dbCmd, "@Id", DbType.Int32, Id);
+            SendMailLog obj = null;
+            try
+            {
+                using (IDataReader reader = db.ExecuteReader(dbCmd))
+                {
+                    while (reader.Read())
+                    {
+                        obj = Obj2Model<SendMailLog>(reader);
+                    }
+                }
+                return obj;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+        #region Proc_SendMailLog_SelectPage
+        public List<SendMailLog> SendMailLog_SelectPage(string cloumns, int pageIndex, int pageSize, string orderBy, string where, out int rowCount)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_SendMailLog_SelectPage");
+            db.AddOutParameter(dbCmd, "@rowCount", DbType.Int32, 4);
+            db.AddInParameter(dbCmd, "@cloumns", DbType.String, cloumns);
+            db.AddInParameter(dbCmd, "@pageIndex", DbType.Int32, pageIndex);
+            db.AddInParameter(dbCmd, "@pageSize", DbType.Int32, pageSize);
+            db.AddInParameter(dbCmd, "@orderBy", DbType.String, orderBy);
+            db.AddInParameter(dbCmd, "@where", DbType.String, where);
+            List<SendMailLog> list = new List<SendMailLog>();
+            try
+            {
+                using (IDataReader reader = db.ExecuteReader(dbCmd))
+                {
+                    while (reader.Read())
+                    {
+                        SendMailLog obj = Obj2Model<SendMailLog>(reader);
+
+                        list.Add(obj);
+                    }
+                    reader.NextResult();
+                }
+                rowCount = (int)dbCmd.Parameters["@rowCount"].Value;
+                return list;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region 套餐设置
+
+        #region Proc_ComboInfo_Insert
+        public int ComboInfo_Insert(ComboInfo obj)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_ComboInfo_Insert");
+            db.AddOutParameter(dbCmd, "@Id", DbType.Int32, 4);
+            db.AddInParameter(dbCmd, "@c_id", DbType.String, obj.c_id);
+            db.AddInParameter(dbCmd, "@c_title", DbType.String, obj.c_title);
+            db.AddInParameter(dbCmd, "@c_intro", DbType.String, obj.c_intro);
+            db.AddInParameter(dbCmd, "@c_num", DbType.Int32, obj.c_num);
+            db.AddInParameter(dbCmd, "@c_days", DbType.Int32, obj.c_days);
+            db.AddInParameter(dbCmd, "@c_status", DbType.Int32, obj.c_status);
+            try
+            {
+                int returnValue = db.ExecuteNonQuery(dbCmd);
+                int Id = (int)dbCmd.Parameters["@Id"].Value;
+                return returnValue;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+
+        #region Proc_ComboInfo_DeleteById
+        public int ComboInfo_DeleteById(int Id)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_ComboInfo_DeleteById");
+            db.AddInParameter(dbCmd, "@Id", DbType.Int32, Id);
+            try
+            {
+                int returnValue = db.ExecuteNonQuery(dbCmd);
+                return returnValue;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+        #region Proc_ComboInfo_UpdateById
+        public int ComboInfo_UpdateById(ComboInfo obj)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_ComboInfo_UpdateById");
+            db.AddInParameter(dbCmd, "@Id", DbType.Int32, obj.Id);
+            db.AddInParameter(dbCmd, "@c_id", DbType.String, obj.c_id);
+            db.AddInParameter(dbCmd, "@c_title", DbType.String, obj.c_title);
+            db.AddInParameter(dbCmd, "@c_intro", DbType.String, obj.c_intro);
+            db.AddInParameter(dbCmd, "@c_num", DbType.Int32, obj.c_num);
+            db.AddInParameter(dbCmd, "@c_days", DbType.Int32, obj.c_days);
+            db.AddInParameter(dbCmd, "@c_status", DbType.Int32, obj.c_status);
+            try
+            {
+                int returnValue = db.ExecuteNonQuery(dbCmd);
+                return returnValue;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+        #region Proc_ComboInfo_SelectById
+        public ComboInfo ComboInfo_SelectById(int Id)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_ComboInfo_SelectById");
+            db.AddInParameter(dbCmd, "@Id", DbType.Int32, Id);
+            ComboInfo obj = null;
+            try
+            {
+                using (IDataReader reader = db.ExecuteReader(dbCmd))
+                {
+                    while (reader.Read())
+                    {
+                        obj = Obj2Model<ComboInfo>(reader);
+                    }
+                }
+                return obj;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+        #region Proc_ComboInfo_SelectPage
+        public List<ComboInfo> ComboInfo_SelectPage(string cloumns, int pageIndex, int pageSize, string orderBy, string where, out int rowCount)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_ComboInfo_SelectPage");
+            db.AddOutParameter(dbCmd, "@rowCount", DbType.Int32, 4);
+            db.AddInParameter(dbCmd, "@cloumns", DbType.String, cloumns);
+            db.AddInParameter(dbCmd, "@pageIndex", DbType.Int32, pageIndex);
+            db.AddInParameter(dbCmd, "@pageSize", DbType.Int32, pageSize);
+            db.AddInParameter(dbCmd, "@orderBy", DbType.String, orderBy);
+            db.AddInParameter(dbCmd, "@where", DbType.String, where);
+            List<ComboInfo> list = new List<ComboInfo>();
+            try
+            {
+                using (IDataReader reader = db.ExecuteReader(dbCmd))
+                {
+                    while (reader.Read())
+                    {
+                        ComboInfo obj = Obj2Model<ComboInfo>(reader);
+
+                        list.Add(obj);
+                    }
+                    reader.NextResult();
+                }
+                rowCount = (int)dbCmd.Parameters["@rowCount"].Value;
+                return list;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+        #region Proc_ComboInfo_SelectByc_id
+        public ComboInfo ComboInfo_SelectByc_id(string c_id)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_ComboInfo_SelectByc_id");
+            db.AddInParameter(dbCmd, "@c_id", DbType.String, c_id);
+            ComboInfo obj = null;
+            try
+            {
+                using (IDataReader reader = db.ExecuteReader(dbCmd))
+                {
+                    while (reader.Read())
+                    {
+                        obj = Obj2Model<ComboInfo>(reader);
+                    }
+                }
+                return obj;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+
+
+        #endregion
 
         #region 泛型方法（获取实体信息） + Obj2Model<T>(IDataReader reader)
         /// <summary>

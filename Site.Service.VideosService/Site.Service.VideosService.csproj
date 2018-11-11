@@ -47,16 +47,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Search\ComboInfoSearchInfo.cs" />
+    <Compile Include="Search\SendMailLogSearchInfo.cs" />
     <Compile Include="Search\VideoCateSearchInfo.cs" />
     <Compile Include="Search\VideoSearchInfo.cs" />
     <Compile Include="VideoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VideoServiceClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Connected Services\VideosService\Site.Service.VideosService.VideosService.ComboInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VideosService\Site.Service.VideosService.VideosService.ComboInfo_SelectPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VideosService\Site.Service.VideosService.VideosService.SendMailLog.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VideosService\Site.Service.VideosService.VideosService.SendMailLog_SelectPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\VideosService\Site.Service.VideosService.VideosService.VideoCate.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

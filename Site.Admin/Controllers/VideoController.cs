@@ -18,6 +18,7 @@ namespace Site.Admin.Controllers
     [Authorizase]
     public class VideoController : Controller
     {
+        #region 01 内容管理
         /// <summary>
         /// 视频
         /// </summary>
@@ -36,7 +37,7 @@ namespace Site.Admin.Controllers
             int rowCount;
             //查询所有的分类
             VideoCateSearchInfo search = new VideoCateSearchInfo();
-            List<VideoCate> list = VideoService.VideoCate_SelectPage(search, page, pageSize, out rowCount);
+            List<VideoCate> list = VideoServiceClass.VideoCate_SelectPage(search, page, pageSize, out rowCount);
             ViewData["list"] = list;
 
             return PartialView();
@@ -54,7 +55,7 @@ namespace Site.Admin.Controllers
             search.v_c_id = cateId;
             search.v_titile = f_title;
 
-            List<VideoInfo> list = VideoService.VideoInfo_SelectPage(search, page, pageSize, out rowCount);
+            List<VideoInfo> list = VideoServiceClass.VideoInfo_SelectPage(search, page, pageSize, out rowCount);
             ViewData["list"] = list;
 
             ViewData["page"] = page;
@@ -75,7 +76,7 @@ namespace Site.Admin.Controllers
             }
             else
             {
-                info = VideoService.VideoInfo_SelectById(fid.ToInt32(0));
+                info = VideoServiceClass.VideoInfo_SelectById(fid.ToInt32(0));
             }
             ViewData["window"] = Request["window"] ?? string.Empty;
             ViewData["info"] = info;
@@ -106,7 +107,7 @@ namespace Site.Admin.Controllers
             }
             else
             {
-                info = VideoService.VideoInfo_SelectById(fid.ToInt32());
+                info = VideoServiceClass.VideoInfo_SelectById(fid.ToInt32());
             }
 
             info.v_titile = c_title;
@@ -118,7 +119,7 @@ namespace Site.Admin.Controllers
             //TODO:新增时
             if (string.IsNullOrEmpty(fid))
             {
-                int result = VideoService.VideoInfo_Insert(info);
+                int result = VideoServiceClass.VideoInfo_Insert(info);
                 if (result > 0)
                 {
                     return Json(new { success = true, errors = new { text = "新增成功" } });
@@ -130,7 +131,7 @@ namespace Site.Admin.Controllers
             }
             else
             {
-                int result = VideoService.VideoInfo_UpdateById(info);
+                int result = VideoServiceClass.VideoInfo_UpdateById(info);
                 if (result > 0)
                 {
                     return Json(new { success = true, errors = new { text = "修改成功" } });
@@ -155,9 +156,9 @@ namespace Site.Admin.Controllers
             string[] c_idArr = c_id.Split(new string[] { ",", "，" }, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < c_idArr.Length; i++)
             {
-                info = VideoService.VideoInfo_SelectById(c_idArr[i].ToInt32());
+                info = VideoServiceClass.VideoInfo_SelectById(c_idArr[i].ToInt32());
                 info.v_status = status;
-                result = VideoService.VideoInfo_UpdateById(info);
+                result = VideoServiceClass.VideoInfo_UpdateById(info);
                 if (result > 0)
                 {
                     successCount++;
@@ -183,7 +184,7 @@ namespace Site.Admin.Controllers
         {
             string c_id = Request["c_id"] ?? string.Empty;
 
-            int result = VideoService.VideoInfo_DeleteById(c_id.ToInt32());
+            int result = VideoServiceClass.VideoInfo_DeleteById(c_id.ToInt32());
             if (result > 0)
             {
                 return Json(new { success = true, errors = new { text = "删除成功" } });
@@ -255,7 +256,7 @@ namespace Site.Admin.Controllers
             string[] c_idArr = c_id.Split(new string[] { ",", "，" }, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < c_idArr.Length; i++)
             {
-                fInfo = VideoService.VideoInfo_SelectById(c_idArr[i].ToInt32());
+                fInfo = VideoServiceClass.VideoInfo_SelectById(c_idArr[i].ToInt32());
                 item = SiteServiceClass.Site_CMSItem_SelectByc_gidAndb_gid(c_idArr[i], b_gid);
                 if (item != null)
                 {
@@ -269,7 +270,7 @@ namespace Site.Admin.Controllers
                 item.i_createTime = DateTime.Now;
                 item.i_createUser = SiteHelp.CurrentUserName;
                 item.i_c_gid = fInfo.Id.ToString();//唯一Id
-                item.i_c_type = string.Empty;
+                item.i_c_type = fInfo.v_c_id.ToString();//分类ID
                 item.i_gid = Guid.NewGuid().ToString().Substring(0, 8);
                 item.i_p_gid = p_gid;
                 item.i_status = (int)SiteEnum.SiteItemStatus.待审核;
@@ -292,7 +293,7 @@ namespace Site.Admin.Controllers
                                   imgData,
                                   SiteEnum.SiteUploadConfigName.baseUpload.ToString(),
                                   new List<string>() { b_info.b_img_size },
-                                  ".jpg", "s"
+                                  ".jpg", "s", SiteEnum.SiteService.VideoUploadService
                                   );
                             item.i_c_img_src = srcResult[1];
                         }
@@ -321,5 +322,198 @@ namespace Site.Admin.Controllers
 
             }
         }
+        #endregion
+
+        #region 02 邮件日志
+
+        [ValidatePermission]
+        public ActionResult SendMailLog()
+        {
+            return View();
+        }
+
+        public ActionResult SendMailLogListView()
+        {
+            int page = Request["page"].ToString().ToInt32(1);
+            int pageSize = Request["pagesize"].ToString().ToInt32(15);
+            string email = Request["Email"] ?? string.Empty;
+            string title = Request["title"] ?? string.Empty;
+
+            int rowCount;
+            SendMailLogSearchInfo search = new SendMailLogSearchInfo();
+            search.Email = email;
+
+            List<SendMailLog> list = VideoServiceClass.SendMailLog_SelectPage(search, page, pageSize, out rowCount);
+            ViewData["list"] = list;
+
+            ViewData["page"] = page;
+            ViewData["pageSize"] = pageSize;
+            ViewData["rowCount"] = rowCount;
+
+            return PartialView();
+        }
+
+        public ActionResult SendMailLogDelete(int id)
+        {
+            int result = VideoServiceClass.SendMailLog_DeleteById(id);
+            if (result > 0)
+            {
+                return Json(new { success = true, errors = new { text = "删除成功" } });
+            }
+            else
+            {
+                return Json(new { success = false, errors = new { text = "删除失败" } });
+            }
+        }
+
+        public ActionResult ReSendMail(int id)
+        {
+            SendMailLog sInfo = VideoServiceClass.SendMailLog_SelectById(id);
+
+            SentMail.SentMail sm = new SentMail.SentMail();
+            sm.Init("591community@gmail.com", "账号激活", sInfo.Email, sInfo.SendContent, true);
+            string error;
+            sm.SentNetMail(out error);
+
+            sInfo.Remark = error;
+            sInfo.SendTime = DateTime.Now;
+
+            int result = VideoServiceClass.SendMailLog_UpdateById(sInfo);
+
+            if (result > 0)
+            {
+                return Json(new { success = true, errors = new { text = "删除成功" } });
+            }
+            else
+            {
+                return Json(new { success = false, errors = new { text = "删除失败" } });
+            }
+        }
+
+
+        #endregion
+
+        #region 套餐管理
+
+        [ValidatePermission]
+        public ActionResult ComboInfoList()
+        {
+            return View();
+        }
+
+        public ActionResult ComboInfoListView()
+        {
+            int page = Request["page"].ToString().ToInt32(1);
+            int pageSize = Request["pagesize"].ToString().ToInt32(15);
+            //搜索关键字
+            string title = Request["title"] ?? string.Empty;
+
+            int rowCount;
+            //查询所有的模块
+            ComboInfoSearchInfo search = new ComboInfoSearchInfo()
+            {
+                Title = title
+            };
+            List<ComboInfo> list = VideoServiceClass.ComboInfo_SelectPage(search, page, pageSize, out rowCount);
+            ViewData["list"] = list;
+
+            ViewData["page"] = page;
+            ViewData["pageSize"] = pageSize;
+            ViewData["rowCount"] = rowCount;
+
+            return PartialView();
+        }
+
+        public ActionResult ComboInfoEditView()
+        {
+            string c_id = Request["c_id"] ?? string.Empty;
+            string window = Request["window"] ?? string.Empty;
+
+            ComboInfo info = null;
+            if (string.IsNullOrEmpty(c_id))
+            {
+                info = new ComboInfo();
+            }
+            else
+            {
+                info = VideoServiceClass.ComboInfo_SelectByc_id(c_id);
+            }
+
+            ViewData["window"] = window;
+            ViewData["info"] = info;
+            return View();
+        }
+
+        public ActionResult ComboInfoEdit()
+        {
+            string c_id = Request["c_id"] ?? string.Empty;
+            string c_title = Request["c_title"] ?? string.Empty;
+            string c_intro = Request["c_intro"] ?? string.Empty;
+            int c_num = Request["c_num"].ToInt32(0);
+            int c_days = Request["c_days"].ToInt32(0);
+            int c_status = Request["c_status"].ToInt32(0);
+
+            ComboInfo info = null;
+            if (string.IsNullOrEmpty(c_id))
+            {
+                info = new ComboInfo();
+                //新增
+                string guid = Guid.NewGuid().ToString().Replace("-", "");
+                info.c_id = guid;
+            }
+            else
+            {
+                info = VideoServiceClass.ComboInfo_SelectByc_id(c_id);
+            }
+
+            info.c_title = c_title;
+            info.c_intro = c_intro;
+            info.c_num = c_num;
+            info.c_days = c_days;
+            info.c_status = (int)SiteEnum.BasicStatus.有效;
+
+
+            if (string.IsNullOrEmpty(c_id))
+            {
+                int result = VideoServiceClass.ComboInfo_Insert(info);
+                if (result > 0)
+                {
+                    return Json(new { success = true, errors = new { text = "新增成功" } });
+                }
+                else
+                {
+                    return Json(new { success = false, errors = new { text = "新增失败" } });
+                }
+            }
+            else
+            {
+                int result = VideoServiceClass.ComboInfo_UpdateById(info);
+                if (result > 0)
+                {
+                    return Json(new { success = true, errors = new { text = "修改成功" } });
+                }
+                else
+                {
+                    return Json(new { success = false, errors = new { text = "修改失败" } });
+                }
+            }
+        }
+
+        public ActionResult ComboInfoDelete()
+        {
+            int id = Request["Id"].ToInt32(0);
+            int result = VideoServiceClass.ComboInfo_DeleteById(id);
+            if (result > 0)
+            {
+                return Json(new { success = true, errors = new { text = "删除成功" } });
+            }
+            else
+            {
+                return Json(new { success = true, errors = new { text = "删除失败" } });
+            }
+        }
+
+        #endregion
+
     }
 }

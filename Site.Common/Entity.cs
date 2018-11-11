@@ -410,7 +410,7 @@ namespace Site.Common
         public static string GetDescription<T>(int enumItemValue)
         {
             string name = Enum.GetName(typeof(T), enumItemValue);
-            SiteEnum.SiteItemStatus enumItem = (SiteEnum.SiteItemStatus)Enum.Parse(typeof(T), name);
+            T enumItem = (T)Enum.Parse(typeof(T), name);
             FieldInfo fieldinfo = enumItem.GetType().GetField(name);
 
             object[] arr = fieldinfo.GetCustomAttributes(typeof(DescriptionAttribute), false);

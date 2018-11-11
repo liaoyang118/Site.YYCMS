@@ -1,0 +1,67 @@
+﻿@using Site.Service.VideosService.VideosService;
+@using Site.Common;
+@{
+    List<ComboInfo> list = ViewData["list"] as List<ComboInfo>;
+    int page = (int)ViewData["page"];
+    int pageSize = (int)ViewData["pageSize"];
+    int rowCount = (int)ViewData["rowCount"];
+}
+<table class="tableClass">
+    <tr>
+        <th>序号</th>
+        <th>名称</th>
+        <th>简介</th>
+        <th>金额</th>
+        <th>天数</th>
+        <th style="text-align: center">状态</th>
+        <th style="text-align: center">操作</th>
+    </tr>
+    @if (list.Count > 0)
+    {
+        int i = 1;
+        foreach (ComboInfo item in list)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@item.c_title</td>
+                <td>@item.c_intro</td>
+                <td>@item.c_num</td>
+                <td>@item.c_days</td>
+                <td style="text-align: center">
+                    @{
+                        string className = Entity.GetDescription<SiteEnum.BasicStatus>(Convert.ToInt32(item.c_status));
+                        <span class="@className">@Enum.GetName(typeof(SiteEnum.BasicStatus), Convert.ToInt32(item.c_status))</span>
+                    }
+                </td>
+                <td style="text-align: center">
+                    <a href="javascript:void(0);" class="op" onclick="EditComboInfo(false,'@item.c_id')">改</a>
+                    <a href="javascript:void(0);" class="op" onclick="ComboInfoDelete('@item.Id')">删</a>
+                </td>
+            </tr>
+            i++;
+        }
+    }
+    else
+    {
+        <tr>
+            <td style="text-align: center" colspan="8">暂无任何数据</td>
+        </tr>
+    }
+</table>
+<div id="pageBar" class="page"></div>
+
+<script type="text/javascript">
+    $(function () {
+        //页码条
+        UserPage.MakePageBar("pageBar", '@rowCount', '@page','@pageSize', function () {
+            LoadList(UserPage.currentPage);
+        });
+        $(".tableClass tr:gt(0)").mouseenter(function () {
+            $(this).addClass("mouseOver");
+        }).mouseleave(function () {
+            $(this).removeClass("mouseOver");
+        }).click(function () {
+            $(this).addClass("mouseClick").siblings().removeClass("mouseClick");
+        });
+    });
+</script>

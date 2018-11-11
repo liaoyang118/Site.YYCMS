@@ -23,7 +23,7 @@
                                 <div class="zoom-container">
                                     <div class="zoom-caption">
                                         <span>@dic["11"][i].i_subTitle</span>
-                                        <a href="@SiteUntility.GetVideoRelationDetailUrl(dic["11"][i].i_c_type,dic["11"][i].i_c_gid)" target="_blank">
+                                        <a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["11"][i].i_c_type,dic["11"][i].i_c_gid)" target="_blank">
                                             <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                         </a>
                                         <p>@dic["11"][i].i_title.SubOmitString(8)</p>
@@ -40,7 +40,7 @@
                                 <div class="zoom-container">
                                     <div class="zoom-caption">
                                         <span>@dic["12"][i].i_subTitle</span>
-                                        <a href="@SiteUntility.GetVideoRelationDetailUrl(dic["12"][i].i_c_type,dic["12"][i].i_c_gid)" target="_blank">
+                                        <a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["12"][i].i_c_type,dic["12"][i].i_c_gid)" target="_blank">
                                             <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                         </a>
                                         <p>@dic["12"][i].i_title.SubOmitString(25)</p>
@@ -48,14 +48,14 @@
                                     <img src="@dic["12"][i].i_c_img_src" />
                                 </div>
                             }
-                            </div>
+                        </div>
                         <div class="col-md-3">
                             @for (int i = 2; i < dic["12"].GetLength<Site_CMSItem>(4); i++)
                             {
                                 <div class="zoom-container">
                                     <div class="zoom-caption">
                                         <span>@dic["12"][i].i_subTitle</span>
-                                        <a href="@SiteUntility.GetVideoRelationDetailUrl(dic["12"][i].i_c_type,dic["12"][i].i_c_gid)" target="_blank">
+                                        <a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["12"][i].i_c_type,dic["12"][i].i_c_gid)" target="_blank">
                                             <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                         </a>
                                         <p>@dic["12"][i].i_title.SubOmitString(15)</p>
@@ -83,7 +83,7 @@
                                             <div class="zoom-container">
                                                 <div class="zoom-caption">
                                                     <span>@dic["13"][i].i_subTitle</span>
-                                                    <a href="@SiteUntility.GetVideoRelationDetailUrl(dic["13"][i].i_c_type,dic["13"][i].i_c_gid)" target="_blank">
+                                                    <a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["13"][i].i_c_type,dic["13"][i].i_c_gid)" target="_blank">
                                                         <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                                     </a>
                                                     <p>@dic["13"][i].i_title.SubOmitString(25)</p>
@@ -99,7 +99,7 @@
                                             <div class="zoom-container">
                                                 <div class="zoom-caption">
                                                     <span>@dic["13"][i].i_subTitle</span>
-                                                    <a href="@SiteUntility.GetVideoRelationDetailUrl(dic["13"][i].i_c_type,dic["13"][i].i_c_gid)" target="_blank">
+                                                    <a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["13"][i].i_c_type,dic["13"][i].i_c_gid)" target="_blank">
                                                         <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                                     </a>
                                                     <p>@dic["13"][i].i_title.SubOmitString(15)</p>
@@ -107,7 +107,7 @@
                                                 <img src="@dic["13"][i].i_c_img_src" />
                                             </div>
                                             <div class="wrapper">
-                                                <h5 class="vid-name"><a href="@SiteUntility.GetVideoRelationDetailUrl(dic["13"][i].i_c_type,dic["13"][i].i_c_gid)" target="_blank">@dic["13"][i].i_title.SubOmitString(15)</a></h5>
+                                                <h5 class="vid-name"><a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["13"][i].i_c_type,dic["13"][i].i_c_gid)" target="_blank">@dic["13"][i].i_title.SubOmitString(15)</a></h5>
                                                 <div class="info">
                                                     <span><i class="fa fa-calendar"></i>@dic["13"][i].i_createTime.ToStringFullDate()</span>
                                                     <span><i class="fa fa-heart"></i>1,200</span>
@@ -123,7 +123,7 @@
                                             <div class="zoom-container">
                                                 <div class="zoom-caption">
                                                     <span>@dic["14"][i].i_subTitle</span>
-                                                    <a href="@SiteUntility.GetVideoRelationDetailUrl(dic["14"][i].i_c_type,dic["14"][i].i_c_gid)" target="_blank">
+                                                    <a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["14"][i].i_c_type,dic["14"][i].i_c_gid)" target="_blank">
                                                         <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                                     </a>
                                                     <p>@dic["14"][i].i_title.SubOmitString(25)</p>
@@ -139,7 +139,7 @@
                                             <div class="zoom-container">
                                                 <div class="zoom-caption">
                                                     <span>@dic["14"][i].i_subTitle</span>
-                                                    <a href="@SiteUntility.GetVideoRelationDetailUrl(dic["14"][i].i_c_type,dic["14"][i].i_c_gid)" target="_blank">
+                                                    <a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["14"][i].i_c_type,dic["14"][i].i_c_gid)" target="_blank">
                                                         <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                                     </a>
                                                     <p>@dic["14"][i].i_title.SubOmitString(15)</p>
@@ -147,7 +147,7 @@
                                                 <img src="@dic["14"][i].i_c_img_src" />
                                             </div>
                                             <div class="wrapper">
-                                                <h5 class="vid-name"><a href="@SiteUntility.GetVideoRelationDetailUrl(dic["14"][i].i_c_type,dic["14"][i].i_c_gid)" target="_blank">@dic["14"][i].i_title.SubOmitString(15)</a></h5>
+                                                <h5 class="vid-name"><a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["14"][i].i_c_type,dic["14"][i].i_c_gid)" target="_blank">@dic["14"][i].i_title.SubOmitString(15)</a></h5>
                                                 <div class="info">
                                                     <span><i class="fa fa-calendar"></i>@dic["14"][i].i_createTime.ToStringFullDate()</span>
                                                     <span><i class="fa fa-heart"></i>1,200</span>
@@ -173,20 +173,20 @@
                                             <div class="zoom-container">
                                                 <div class="zoom-caption">
                                                     <span>@dic["15"][i].i_subTitle</span>
-                                                    <a href="@SiteUntility.GetVideoRelationDetailUrl(dic["15"][i].i_c_type,dic["15"][i].i_c_gid)" target="_blank">
+                                                    <a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["15"][i].i_c_type,dic["15"][i].i_c_gid)" target="_blank">
                                                         <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                                     </a>
                                                     <p>@dic["15"][i].i_title.SubOmitString(15)</p>
                                                 </div>
                                                 <img src="@dic["15"][i].i_c_img_src" />
                                             </div>
-                                            <h3 class="vid-name"><a href="@SiteUntility.GetVideoRelationDetailUrl(dic["15"][i].i_c_type,dic["15"][i].i_c_gid)" target="_blank">@dic["15"][i].i_title.SubOmitString(15)</a></h3>
+                                            <h3 class="vid-name"><a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["15"][i].i_c_type,dic["15"][i].i_c_gid)" target="_blank">@dic["15"][i].i_title.SubOmitString(15)</a></h3>
                                             <div class="info">
                                                 <span><i class="fa fa-calendar"></i>@dic["15"][i].i_createTime.ToStringFullDate()</span>
                                                 <span><i class="fa fa-heart"></i>1,200</span>
                                             </div>
                                         </div>
-                                    }                                   
+                                    }
                                 </div>
                                 <div class="col-md-4">
                                     @for (int i = 2; i < dic["15"].GetLength<Site_CMSItem>(4); i++)
@@ -195,14 +195,14 @@
                                             <div class="zoom-container">
                                                 <div class="zoom-caption">
                                                     <span>@dic["15"][i].i_subTitle</span>
-                                                    <a href="@SiteUntility.GetVideoRelationDetailUrl(dic["15"][i].i_c_type,dic["15"][i].i_c_gid)" target="_blank">
+                                                    <a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["15"][i].i_c_type,dic["15"][i].i_c_gid)" target="_blank">
                                                         <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                                     </a>
                                                     <p>@dic["15"][i].i_title.SubOmitString(15)</p>
                                                 </div>
                                                 <img src="@dic["15"][i].i_c_img_src" />
                                             </div>
-                                            <h3 class="vid-name"><a href="@SiteUntility.GetVideoRelationDetailUrl(dic["15"][i].i_c_type,dic["15"][i].i_c_gid)" target="_blank">@dic["15"][i].i_title.SubOmitString(15)</a></h3>
+                                            <h3 class="vid-name"><a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["15"][i].i_c_type,dic["15"][i].i_c_gid)" target="_blank">@dic["15"][i].i_title.SubOmitString(15)</a></h3>
                                             <div class="info">
                                                 <span><i class="fa fa-calendar"></i>@dic["15"][i].i_createTime.ToStringFullDate()</span>
                                                 <span><i class="fa fa-heart"></i>1,200</span>
@@ -217,14 +217,14 @@
                                             <div class="zoom-container">
                                                 <div class="zoom-caption">
                                                     <span>@dic["15"][i].i_subTitle</span>
-                                                    <a href="@SiteUntility.GetVideoRelationDetailUrl(dic["15"][i].i_c_type,dic["15"][i].i_c_gid)" target="_blank">
+                                                    <a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["15"][i].i_c_type,dic["15"][i].i_c_gid)" target="_blank">
                                                         <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                                     </a>
                                                     <p>@dic["15"][i].i_title.SubOmitString(15)</p>
                                                 </div>
                                                 <img src="@dic["15"][i].i_c_img_src" />
                                             </div>
-                                            <h3 class="vid-name"><a href="@SiteUntility.GetVideoRelationDetailUrl(dic["15"][i].i_c_type,dic["15"][i].i_c_gid)" target="_blank">@dic["15"][i].i_title.SubOmitString(15)</a></h3>
+                                            <h3 class="vid-name"><a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["15"][i].i_c_type,dic["15"][i].i_c_gid)" target="_blank">@dic["15"][i].i_title.SubOmitString(15)</a></h3>
                                             <div class="info">
                                                 <span><i class="fa fa-calendar"></i>@dic["15"][i].i_createTime.ToStringFullDate()</span>
                                                 <span><i class="fa fa-heart"></i>1,200</span>
@@ -249,14 +249,14 @@
                                             <div class="zoom-container">
                                                 <div class="zoom-caption">
                                                     <span>@dic["16"][i].i_subTitle</span>
-                                                    <a href="@SiteUntility.GetVideoRelationDetailUrl(dic["16"][i].i_c_type,dic["16"][i].i_c_gid)" target="_blank">
+                                                    <a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["16"][i].i_c_type,dic["16"][i].i_c_gid)" target="_blank">
                                                         <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                                     </a>
                                                     <p>@dic["16"][i].i_title.SubOmitString(25)</p>
                                                 </div>
                                                 <img src="@dic["16"][i].i_c_img_src" />
                                             </div>
-                                            <h3 class="vid-name"><a href="@SiteUntility.GetVideoRelationDetailUrl(dic["16"][i].i_c_type,dic["16"][i].i_c_gid)" target="_blank">@dic["16"][i].i_title.SubOmitString(25)</a></h3>
+                                            <h3 class="vid-name"><a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["16"][i].i_c_type,dic["16"][i].i_c_gid)" target="_blank">@dic["16"][i].i_title.SubOmitString(25)</a></h3>
                                             <div class="info">
                                                 <span><i class="fa fa-calendar"></i>@dic["16"][i].i_createTime.ToStringFullDate()</span>
                                                 <span><i class="fa fa-heart"></i>1,200</span>
@@ -271,7 +271,7 @@
                                             <div class="zoom-container">
                                                 <div class="zoom-caption">
                                                     <span>@dic["16"][i].i_subTitle</span>
-                                                    <a href="@SiteUntility.GetVideoRelationDetailUrl(dic["16"][i].i_c_type,dic["16"][i].i_c_gid)" target="_blank">
+                                                    <a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["16"][i].i_c_type,dic["16"][i].i_c_gid)" target="_blank">
                                                         <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                                     </a>
                                                     <p>@dic["16"][i].i_title.SubOmitString(15)</p>
@@ -279,7 +279,7 @@
                                                 <img src="@dic["16"][i].i_c_img_src" />
                                             </div>
                                             <div class="wrapper">
-                                                <h5 class="vid-name"><a href="@SiteUntility.GetVideoRelationDetailUrl(dic["16"][i].i_c_type,dic["16"][i].i_c_gid)" target="_blank">@dic["16"][i].i_title.SubOmitString(15)</a></h5>
+                                                <h5 class="vid-name"><a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["16"][i].i_c_type,dic["16"][i].i_c_gid)" target="_blank">@dic["16"][i].i_title.SubOmitString(15)</a></h5>
                                                 <div class="info">
                                                     <span><i class="fa fa-calendar"></i>@dic["16"][i].i_createTime.ToStringFullDate()</span>
                                                     <span><i class="fa fa-heart"></i>1,200</span>
@@ -306,14 +306,14 @@
                                             <div class="zoom-container">
                                                 <div class="zoom-caption">
                                                     <span>@dic["17"][i].i_subTitle</span>
-                                                    <a href="@SiteUntility.GetVideoRelationDetailUrl(dic["17"][i].i_c_type,dic["17"][i].i_c_gid)" target="_blank">
+                                                    <a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["17"][i].i_c_type,dic["17"][i].i_c_gid)" target="_blank">
                                                         <i class="fa fa-play-circle-o fa-5x" style="color: #fff"></i>
                                                     </a>
                                                     <p>@dic["17"][i].i_title.SubOmitString(15)</p>
                                                 </div>
                                                 <img src="@dic["17"][i].i_c_img_src" />
                                             </div>
-                                            <h3 class="vid-name"><a href="@SiteUntility.GetVideoRelationDetailUrl(dic["17"][i].i_c_type,dic["17"][i].i_c_gid)" target="_blank">@dic["17"][i].i_title.SubOmitString(15)</a></h3>
+                                            <h3 class="vid-name"><a href="@SiteUntility.GetVideoMinRelationDetailUrl(dic["17"][i].i_c_type,dic["17"][i].i_c_gid)" target="_blank">@dic["17"][i].i_title.SubOmitString(15)</a></h3>
                                             <div class="info">
                                                 <span><i class="fa fa-calendar"></i>@dic["17"][i].i_createTime.ToStringFullDate()</span>
                                                 <span><i class="fa fa-heart"></i>1,200</span>
@@ -326,7 +326,7 @@
                     </div>
                 </div>
                 @@{
-                    Html.RenderPartial("../Sidebar/Video_Index_Sidebar");
+                    Html.RenderPartial("../Sidebar/Video_Index_Min_Sidebar");
                 }
             </div>
         </div>

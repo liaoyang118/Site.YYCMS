@@ -64,7 +64,7 @@ namespace Site.WCF.VideoService
                 return access.VideoCate_Insert(obj);
             }
         }
-        
+
         public int VideoCate_DeleteByc_id(int Id)
         {
             using (VideosAccess access = new VideosAccess())
@@ -98,6 +98,105 @@ namespace Site.WCF.VideoService
                 return access.VideoCate_SelectPage(cloumns, pageIndex, pageSize, orderBy, where, out rowCount);
             }
         }
+
+        #endregion
+
+        #region 邮件日志
+
+        public int SendMailLog_Insert(SendMailLog obj)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.SendMailLog_Insert(obj);
+            }
+        }
+
+        public int SendMailLog_DeleteById(int Id)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.SendMailLog_DeleteById(Id);
+            }
+        }
+
+
+        public int SendMailLog_UpdateById(SendMailLog obj)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.SendMailLog_UpdateById(obj);
+            }
+        }
+
+
+        public SendMailLog SendMailLog_SelectById(int Id)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.SendMailLog_SelectById(Id);
+            }
+        }
+
+        public List<SendMailLog> SendMailLog_SelectPage(string cloumns, int pageIndex, int pageSize, string orderBy, string where, out int rowCount)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.SendMailLog_SelectPage(cloumns, pageIndex, pageSize, orderBy, where, out rowCount);
+            }
+        }
+
+        #endregion
+
+        #region 套餐
+
+        public int ComboInfo_Insert(ComboInfo obj)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.ComboInfo_Insert(obj);
+            }
+        }
+
+        public int ComboInfo_DeleteById(int Id)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.ComboInfo_DeleteById(Id);
+            }
+        }
+
+        public int ComboInfo_UpdateById(ComboInfo obj)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.ComboInfo_UpdateById(obj);
+            }
+        }
+
+        public ComboInfo ComboInfo_SelectById(int Id)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.ComboInfo_SelectById(Id);
+            }
+        }
+
+        public List<ComboInfo> ComboInfo_SelectPage(string cloumns, int pageIndex, int pageSize, string orderBy, string where, out int rowCount)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.ComboInfo_SelectPage(cloumns, pageIndex, pageSize, orderBy, where, out rowCount);
+            }
+        }
+
+        public ComboInfo ComboInfo_SelectByc_id(string c_id)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.ComboInfo_SelectByc_id(c_id);
+            }
+        }
+
 
         #endregion
     }

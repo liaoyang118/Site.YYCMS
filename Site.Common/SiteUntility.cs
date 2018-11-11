@@ -14,7 +14,7 @@ namespace Site.Common
     /// </summary>
     public class SiteUntility
     {
-        #region 新闻站点
+        #region 01 新闻站点
 
         #region  URL生成
 
@@ -161,7 +161,7 @@ namespace Site.Common
 
         #endregion
 
-        #region 小说站点
+        #region 02 小说站点
 
         #region URL生成
 
@@ -202,8 +202,70 @@ namespace Site.Common
 
         #endregion
 
+        #region 03 视频站点
+
+        public static string GetVideoRelationCateUrl(string cateId)
+        {
+            if (string.IsNullOrEmpty(cateId.Trim(' ')))
+            {
+                return "/";
+            }
+            return string.Format("/List/{0}.html", cateId);
+        }
+
+        private static string GetVideoRelationCatePageUrl(string cateId, int pageIndex)
+        {
+            if (string.IsNullOrEmpty(cateId.Trim(' ')))
+            {
+                return "/";
+            }
+            return string.Format("/List/{0}.html?page={1}", cateId, pageIndex);
+        }
+
+        public static string GetVideoDomainCateUrl(string cateId)
+        {
+            if (string.IsNullOrEmpty(cateId))
+            {
+                return "/";
+            }
+            return string.Format("http://{0}/List/{1}.html", ConfigurationManager.AppSettings["591Domain"], cateId);
+        }
+
+        private static string GetVideoDomainCatePageUrl(string cateId, int pageIndex)
+        {
+            if (string.IsNullOrEmpty(cateId))
+            {
+                return "/";
+            }
+            return string.Format("http://{0}/List/{1}.html?page={2}", ConfigurationManager.AppSettings["591Domain"], cateId, pageIndex);
+        }
+
+        public static string GetVideoRelationDetailUrl(string cateId, string c_gid)
+        {
+            return string.Format("/Detail/{0}/{1}.html", cateId, c_gid);
+        }
+
+        public static string GetVideoMinRelationDetailUrl(string cateId, string c_gid)
+        {
+            return string.Format("/Detail/Min/{0}/{1}.html", cateId, c_gid);
+        }
 
 
+        public static string GetVideoDomainDetailUrl(string cateId, string c_gid)
+        {
+            return string.Format("http://{0}/Detail/{1}/{2}.html", ConfigurationManager.AppSettings["591Domain"], cateId, c_gid);
+        }
+
+
+        public static string GetVideoMinDomainDetailUrl(string cateId, string c_gid)
+        {
+            return string.Format("http://{0}/Detail/Min/{1}/{2}.html", ConfigurationManager.AppSettings["591Domain"], cateId, c_gid);
+        }
+
+
+        #endregion
+
+        #region 10 远程抓取图片  + byte[] GetRemoteImage(string imageHttpUrl, out string error)
         /// <summary>
         /// 远程抓取图片
         /// </summary>
@@ -249,5 +311,6 @@ namespace Site.Common
             }
             return imgData;
         }
+        #endregion
     }
 }

@@ -49,6 +49,47 @@ namespace Site.WCF.VideoService
         VideoCate VideoCate_SelectByc_id(int Id);
 
         #endregion
+
+        #region 邮件日志
+
+        [OperationContract]
+        int SendMailLog_Insert(SendMailLog obj);
+
+        [OperationContract]
+        int SendMailLog_DeleteById(int Id);
+
+        [OperationContract]
+        int SendMailLog_UpdateById(SendMailLog obj);
+
+        [OperationContract]
+        List<SendMailLog> SendMailLog_SelectPage(string cloumns, int pageIndex, int pageSize, string orderBy, string where, out int rowCount);
+
+        [OperationContract]
+        SendMailLog SendMailLog_SelectById(int Id);
+
+        #endregion
+
+        #region 套餐
+
+        [OperationContract]
+        int ComboInfo_Insert(ComboInfo obj);
+
+        [OperationContract]
+        int ComboInfo_DeleteById(int Id);
+
+        [OperationContract]
+        int ComboInfo_UpdateById(ComboInfo obj);
+
+        [OperationContract]
+        List<ComboInfo> ComboInfo_SelectPage(string cloumns, int pageIndex, int pageSize, string orderBy, string where, out int rowCount);
+
+        [OperationContract]
+        ComboInfo ComboInfo_SelectById(int Id);
+
+        [OperationContract]
+        ComboInfo ComboInfo_SelectByc_id(string c_id);
+
+        #endregion
     }
 
 

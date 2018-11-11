@@ -9,6 +9,7 @@
       <xs:element minOccurs="0" name="v_createTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="v_id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="v_intro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="v_min_playSrc" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="v_playSrc" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="v_status" type="xs:int" />
       <xs:element minOccurs="0" name="v_timeLength" nillable="true" type="xs:string" />
@@ -36,4 +37,41 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfVideoCate" nillable="true" type="tns:ArrayOfVideoCate" />
+  <xs:complexType name="SendMailLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SendContent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SendTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SendMailLog" nillable="true" type="tns:SendMailLog" />
+  <xs:complexType name="ArrayOfSendMailLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SendMailLog" nillable="true" type="tns:SendMailLog" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSendMailLog" nillable="true" type="tns:ArrayOfSendMailLog" />
+  <xs:complexType name="ComboInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="c_days" type="xs:int" />
+      <xs:element minOccurs="0" name="c_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_intro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="c_num" type="xs:int" />
+      <xs:element minOccurs="0" name="c_status" type="xs:int" />
+      <xs:element minOccurs="0" name="c_title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ComboInfo" nillable="true" type="tns:ComboInfo" />
+  <xs:complexType name="ArrayOfComboInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ComboInfo" nillable="true" type="tns:ComboInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfComboInfo" nillable="true" type="tns:ArrayOfComboInfo" />
 </xs:schema>

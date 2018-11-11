@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComboInfo.cs" />
+    <Compile Include="SendMailLog.cs" />
     <Compile Include="VideoCate.cs" />
     <Compile Include="VideoInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -151,4 +151,168 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SendMailLog_Insert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Site.VideoModel" minOccurs="0" name="obj" nillable="true" type="q9:SendMailLog" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMailLog_InsertResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendMailLog_InsertResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMailLog_DeleteById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMailLog_DeleteByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendMailLog_DeleteByIdResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMailLog_UpdateById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Site.VideoModel" minOccurs="0" name="obj" nillable="true" type="q10:SendMailLog" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMailLog_UpdateByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendMailLog_UpdateByIdResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMailLog_SelectPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cloumns" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="orderBy" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="where" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMailLog_SelectPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Site.VideoModel" minOccurs="0" name="SendMailLog_SelectPageResult" nillable="true" type="q11:ArrayOfSendMailLog" />
+        <xs:element minOccurs="0" name="rowCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMailLog_SelectById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendMailLog_SelectByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Site.VideoModel" minOccurs="0" name="SendMailLog_SelectByIdResult" nillable="true" type="q12:SendMailLog" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComboInfo_Insert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Site.VideoModel" minOccurs="0" name="obj" nillable="true" type="q13:ComboInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComboInfo_InsertResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ComboInfo_InsertResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComboInfo_DeleteById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComboInfo_DeleteByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ComboInfo_DeleteByIdResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComboInfo_UpdateById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Site.VideoModel" minOccurs="0" name="obj" nillable="true" type="q14:ComboInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComboInfo_UpdateByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ComboInfo_UpdateByIdResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComboInfo_SelectPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cloumns" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element minOccurs="0" name="orderBy" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="where" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComboInfo_SelectPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Site.VideoModel" minOccurs="0" name="ComboInfo_SelectPageResult" nillable="true" type="q15:ArrayOfComboInfo" />
+        <xs:element minOccurs="0" name="rowCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComboInfo_SelectById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComboInfo_SelectByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Site.VideoModel" minOccurs="0" name="ComboInfo_SelectByIdResult" nillable="true" type="q16:ComboInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComboInfo_SelectByc_id">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="c_id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ComboInfo_SelectByc_idResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Site.VideoModel" minOccurs="0" name="ComboInfo_SelectByc_idResult" nillable="true" type="q17:ComboInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
