@@ -393,7 +393,7 @@ namespace Site.Admin.Controllers
 
         #endregion
 
-        #region 套餐管理
+        #region 03 套餐管理
 
         [ValidatePermission]
         public ActionResult ComboInfoList()
@@ -510,6 +510,51 @@ namespace Site.Admin.Controllers
             else
             {
                 return Json(new { success = true, errors = new { text = "删除失败" } });
+            }
+        }
+
+        #endregion
+
+        #region 04 访问日志
+
+        [ValidatePermission]
+        public ActionResult VisitsLog()
+        {
+            return View();
+        }
+
+
+        public ActionResult VisitsLogListView()
+        {
+            int page = Request["page"].ToString().ToInt32(1);
+            int pageSize = Request["pagesize"].ToString().ToInt32(15);
+            string ip = Request["ip"] ?? string.Empty;
+
+            int rowCount;
+            UserVisitsInfoSearchInfo search = new UserVisitsInfoSearchInfo();
+            search.v_ip = ip;
+
+            List<UserVisitsInfo> list = VideoServiceClass.UserVisitsInfo_SelectPage(search, page, pageSize, out rowCount);
+            ViewData["list"] = list;
+
+            ViewData["page"] = page;
+            ViewData["pageSize"] = pageSize;
+            ViewData["rowCount"] = rowCount;
+
+            return PartialView();
+        }
+
+
+        public ActionResult VisitsLogDelete(int id)
+        {
+            int result = VideoServiceClass.UserVisitsInfo_DeleteById(id);
+            if (result > 0)
+            {
+                return Json(new { success = true, errors = new { text = "删除成功" } });
+            }
+            else
+            {
+                return Json(new { success = false, errors = new { text = "删除失败" } });
             }
         }
 

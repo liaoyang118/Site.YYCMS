@@ -90,6 +90,26 @@ namespace Site.WCF.VideoService
         ComboInfo ComboInfo_SelectByc_id(string c_id);
 
         #endregion
+
+        #region 访问日志
+
+        [OperationContract]
+        int UserVisitsInfo_Insert(UserVisitsInfo obj);
+
+        [OperationContract]
+        int UserVisitsInfo_DeleteById(int Id);
+
+        [OperationContract]
+        int UserVisitsInfo_UpdateById(UserVisitsInfo obj);
+
+        [OperationContract]
+        UserVisitsInfo UserVisitsInfo_SelectById(int Id);
+
+        [OperationContract]
+        List<UserVisitsInfo> UserVisitsInfo_SelectPage(string cloumns, int pageIndex, int pageSize, string orderBy, string where, out int rowCount);
+
+
+        #endregion
     }
 
 

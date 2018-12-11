@@ -609,6 +609,179 @@ namespace Site.Service.VideosService.VideosService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserVisitsInfo", Namespace="http://schemas.datacontract.org/2004/07/Site.VideoModel")]
+    [System.SerializableAttribute()]
+    public partial class UserVisitsInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string platformField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string u_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string v_browserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string v_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string v_ipField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string v_osField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime v_timeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string v_urlField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string platform {
+            get {
+                return this.platformField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.platformField, value) != true)) {
+                    this.platformField = value;
+                    this.RaisePropertyChanged("platform");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string u_id {
+            get {
+                return this.u_idField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.u_idField, value) != true)) {
+                    this.u_idField = value;
+                    this.RaisePropertyChanged("u_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string v_browser {
+            get {
+                return this.v_browserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.v_browserField, value) != true)) {
+                    this.v_browserField = value;
+                    this.RaisePropertyChanged("v_browser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string v_id {
+            get {
+                return this.v_idField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.v_idField, value) != true)) {
+                    this.v_idField = value;
+                    this.RaisePropertyChanged("v_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string v_ip {
+            get {
+                return this.v_ipField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.v_ipField, value) != true)) {
+                    this.v_ipField = value;
+                    this.RaisePropertyChanged("v_ip");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string v_os {
+            get {
+                return this.v_osField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.v_osField, value) != true)) {
+                    this.v_osField = value;
+                    this.RaisePropertyChanged("v_os");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime v_time {
+            get {
+                return this.v_timeField;
+            }
+            set {
+                if ((this.v_timeField.Equals(value) != true)) {
+                    this.v_timeField = value;
+                    this.RaisePropertyChanged("v_time");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string v_url {
+            get {
+                return this.v_urlField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.v_urlField, value) != true)) {
+                    this.v_urlField = value;
+                    this.RaisePropertyChanged("v_url");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://service.jsonyang.com", ConfigurationName="VideosService.IVideosService")]
     public interface IVideosService {
@@ -742,6 +915,37 @@ namespace Site.Service.VideosService.VideosService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/ComboInfo_SelectByc_id", ReplyAction="http://service.jsonyang.com/IVideosService/ComboInfo_SelectByc_idResponse")]
         System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.ComboInfo> ComboInfo_SelectByc_idAsync(string c_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_Insert", ReplyAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_InsertResponse")]
+        int UserVisitsInfo_Insert(Site.Service.VideosService.VideosService.UserVisitsInfo obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_Insert", ReplyAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_InsertResponse")]
+        System.Threading.Tasks.Task<int> UserVisitsInfo_InsertAsync(Site.Service.VideosService.VideosService.UserVisitsInfo obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_DeleteById", ReplyAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_DeleteByIdResponse")]
+        int UserVisitsInfo_DeleteById(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_DeleteById", ReplyAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_DeleteByIdResponse")]
+        System.Threading.Tasks.Task<int> UserVisitsInfo_DeleteByIdAsync(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_UpdateById", ReplyAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_UpdateByIdResponse")]
+        int UserVisitsInfo_UpdateById(Site.Service.VideosService.VideosService.UserVisitsInfo obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_UpdateById", ReplyAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_UpdateByIdResponse")]
+        System.Threading.Tasks.Task<int> UserVisitsInfo_UpdateByIdAsync(Site.Service.VideosService.VideosService.UserVisitsInfo obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_SelectById", ReplyAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_SelectByIdResponse")]
+        Site.Service.VideosService.VideosService.UserVisitsInfo UserVisitsInfo_SelectById(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_SelectById", ReplyAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_SelectByIdResponse")]
+        System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.UserVisitsInfo> UserVisitsInfo_SelectByIdAsync(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_SelectPage", ReplyAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_SelectPageResponse")]
+        Site.Service.VideosService.VideosService.UserVisitsInfo_SelectPageResponse UserVisitsInfo_SelectPage(Site.Service.VideosService.VideosService.UserVisitsInfo_SelectPageRequest request);
+        
+        // CODEGEN: 正在生成消息协定，应为该操作具有多个返回值。
+        [System.ServiceModel.OperationContractAttribute(Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_SelectPage", ReplyAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_SelectPageResponse")]
+        System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.UserVisitsInfo_SelectPageResponse> UserVisitsInfo_SelectPageAsync(Site.Service.VideosService.VideosService.UserVisitsInfo_SelectPageRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -948,6 +1152,58 @@ namespace Site.Service.VideosService.VideosService {
         
         public ComboInfo_SelectPageResponse(System.Collections.Generic.List<Site.Service.VideosService.VideosService.ComboInfo> ComboInfo_SelectPageResult, int rowCount) {
             this.ComboInfo_SelectPageResult = ComboInfo_SelectPageResult;
+            this.rowCount = rowCount;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="UserVisitsInfo_SelectPage", WrapperNamespace="http://service.jsonyang.com", IsWrapped=true)]
+    public partial class UserVisitsInfo_SelectPageRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=0)]
+        public string cloumns;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=1)]
+        public int pageIndex;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=2)]
+        public int pageSize;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=3)]
+        public string orderBy;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=4)]
+        public string where;
+        
+        public UserVisitsInfo_SelectPageRequest() {
+        }
+        
+        public UserVisitsInfo_SelectPageRequest(string cloumns, int pageIndex, int pageSize, string orderBy, string where) {
+            this.cloumns = cloumns;
+            this.pageIndex = pageIndex;
+            this.pageSize = pageSize;
+            this.orderBy = orderBy;
+            this.where = where;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="UserVisitsInfo_SelectPageResponse", WrapperNamespace="http://service.jsonyang.com", IsWrapped=true)]
+    public partial class UserVisitsInfo_SelectPageResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=0)]
+        public System.Collections.Generic.List<Site.Service.VideosService.VideosService.UserVisitsInfo> UserVisitsInfo_SelectPageResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.jsonyang.com", Order=1)]
+        public int rowCount;
+        
+        public UserVisitsInfo_SelectPageResponse() {
+        }
+        
+        public UserVisitsInfo_SelectPageResponse(System.Collections.Generic.List<Site.Service.VideosService.VideosService.UserVisitsInfo> UserVisitsInfo_SelectPageResult, int rowCount) {
+            this.UserVisitsInfo_SelectPageResult = UserVisitsInfo_SelectPageResult;
             this.rowCount = rowCount;
         }
     }
@@ -1197,6 +1453,59 @@ namespace Site.Service.VideosService.VideosService {
         
         public System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.ComboInfo> ComboInfo_SelectByc_idAsync(string c_id) {
             return base.Channel.ComboInfo_SelectByc_idAsync(c_id);
+        }
+        
+        public int UserVisitsInfo_Insert(Site.Service.VideosService.VideosService.UserVisitsInfo obj) {
+            return base.Channel.UserVisitsInfo_Insert(obj);
+        }
+        
+        public System.Threading.Tasks.Task<int> UserVisitsInfo_InsertAsync(Site.Service.VideosService.VideosService.UserVisitsInfo obj) {
+            return base.Channel.UserVisitsInfo_InsertAsync(obj);
+        }
+        
+        public int UserVisitsInfo_DeleteById(int Id) {
+            return base.Channel.UserVisitsInfo_DeleteById(Id);
+        }
+        
+        public System.Threading.Tasks.Task<int> UserVisitsInfo_DeleteByIdAsync(int Id) {
+            return base.Channel.UserVisitsInfo_DeleteByIdAsync(Id);
+        }
+        
+        public int UserVisitsInfo_UpdateById(Site.Service.VideosService.VideosService.UserVisitsInfo obj) {
+            return base.Channel.UserVisitsInfo_UpdateById(obj);
+        }
+        
+        public System.Threading.Tasks.Task<int> UserVisitsInfo_UpdateByIdAsync(Site.Service.VideosService.VideosService.UserVisitsInfo obj) {
+            return base.Channel.UserVisitsInfo_UpdateByIdAsync(obj);
+        }
+        
+        public Site.Service.VideosService.VideosService.UserVisitsInfo UserVisitsInfo_SelectById(int Id) {
+            return base.Channel.UserVisitsInfo_SelectById(Id);
+        }
+        
+        public System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.UserVisitsInfo> UserVisitsInfo_SelectByIdAsync(int Id) {
+            return base.Channel.UserVisitsInfo_SelectByIdAsync(Id);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Site.Service.VideosService.VideosService.UserVisitsInfo_SelectPageResponse Site.Service.VideosService.VideosService.IVideosService.UserVisitsInfo_SelectPage(Site.Service.VideosService.VideosService.UserVisitsInfo_SelectPageRequest request) {
+            return base.Channel.UserVisitsInfo_SelectPage(request);
+        }
+        
+        public System.Collections.Generic.List<Site.Service.VideosService.VideosService.UserVisitsInfo> UserVisitsInfo_SelectPage(string cloumns, int pageIndex, int pageSize, string orderBy, string where, out int rowCount) {
+            Site.Service.VideosService.VideosService.UserVisitsInfo_SelectPageRequest inValue = new Site.Service.VideosService.VideosService.UserVisitsInfo_SelectPageRequest();
+            inValue.cloumns = cloumns;
+            inValue.pageIndex = pageIndex;
+            inValue.pageSize = pageSize;
+            inValue.orderBy = orderBy;
+            inValue.where = where;
+            Site.Service.VideosService.VideosService.UserVisitsInfo_SelectPageResponse retVal = ((Site.Service.VideosService.VideosService.IVideosService)(this)).UserVisitsInfo_SelectPage(inValue);
+            rowCount = retVal.rowCount;
+            return retVal.UserVisitsInfo_SelectPageResult;
+        }
+        
+        public System.Threading.Tasks.Task<Site.Service.VideosService.VideosService.UserVisitsInfo_SelectPageResponse> UserVisitsInfo_SelectPageAsync(Site.Service.VideosService.VideosService.UserVisitsInfo_SelectPageRequest request) {
+            return base.Channel.UserVisitsInfo_SelectPageAsync(request);
         }
     }
 }

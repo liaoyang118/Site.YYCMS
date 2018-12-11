@@ -248,5 +248,62 @@ namespace Site.Service.VideosService
 
 
         #endregion
+
+        #region 访问日志
+
+        public static int UserVisitsInfo_Insert(UserVisitsInfo obj)
+        {
+            IVideosService channel = Entity.CreateChannel<IVideosService>(SiteEnum.SiteService.VideoService);
+            var result = channel.UserVisitsInfo_Insert(obj);
+            (channel as IDisposable).Dispose();
+            return result;
+        }
+
+        public static int UserVisitsInfo_DeleteById(int Id)
+        {
+            IVideosService channel = Entity.CreateChannel<IVideosService>(SiteEnum.SiteService.VideoService);
+            var result = channel.UserVisitsInfo_DeleteById(Id);
+            (channel as IDisposable).Dispose();
+            return result;
+        }
+
+        public static int UserVisitsInfo_UpdateById(UserVisitsInfo obj)
+        {
+            IVideosService channel = Entity.CreateChannel<IVideosService>(SiteEnum.SiteService.VideoService);
+            var result = channel.UserVisitsInfo_UpdateById(obj);
+            (channel as IDisposable).Dispose();
+            return result;
+        }
+
+        public static UserVisitsInfo UserVisitsInfo_SelectById(int Id)
+        {
+            IVideosService channel = Entity.CreateChannel<IVideosService>(SiteEnum.SiteService.VideoService);
+            var result = channel.UserVisitsInfo_SelectById(Id);
+            (channel as IDisposable).Dispose();
+            return result;
+        }
+
+        public static List<UserVisitsInfo> UserVisitsInfo_SelectPage(UserVisitsInfoSearchInfo search, int pageIndex, int pageSize, out int rowCount)
+        {
+            IVideosService channel = Entity.CreateChannel<IVideosService>(SiteEnum.SiteService.VideoService);
+            UserVisitsInfo_SelectPageRequest request = new UserVisitsInfo_SelectPageRequest()
+            {
+                cloumns = "*",
+                orderBy = search.DefaultOrder,
+                pageIndex = pageIndex,
+                pageSize = pageSize,
+                where = search.ToWhereString()
+            };
+
+            var result = channel.UserVisitsInfo_SelectPage(request);
+            (channel as IDisposable).Dispose();
+
+            rowCount = result.rowCount;
+            return result.UserVisitsInfo_SelectPageResult;
+        }
+
+
+
+        #endregion
     }
 }

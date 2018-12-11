@@ -152,7 +152,7 @@ var mDialogUI = {
             if (mask != undefined && mask != null) {
                 mask.remove();
             }
-        }, 15000)
+        }, 1000*60)
     },
     //closeLoading
     closeLoading: function () {

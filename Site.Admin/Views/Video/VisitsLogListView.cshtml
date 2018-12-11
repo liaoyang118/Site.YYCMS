@@ -1,0 +1,93 @@
+﻿@using Site.Service.VideosService.VideosService;
+@using Site.Common;
+@{
+    List<UserVisitsInfo> list = ViewData["list"] as List<UserVisitsInfo>;
+
+    int page = (int)ViewData["page"];
+    int pageSize = (int)ViewData["pageSize"];
+    int rowCount = (int)ViewData["rowCount"];
+}
+<table class="tableClass">
+    <tr>
+        <th style="text-align: center">
+            <input class="chk chk_correct" type="checkbox" id="chkall" name="chkall" value="" />
+        </th>
+        <th style="text-align: center">序号</th>
+        <th style="text-align: left">IP</th>
+        <th style="text-align: left">OS</th>
+        <th style="text-align: left">Browser</th>
+        <th style="text-align: left">Url</th>
+        <th style="text-align: left">Time</th>
+        <th style="text-align: left">操作</th>
+    </tr>
+    @if (list.Count > 0)
+    {
+        int i = 1;
+        foreach (UserVisitsInfo item in list)
+        {
+            <tr>
+                <td style="text-align: center">
+                    <input class="chk" type="checkbox" id="chk_@i" name="chk_@i" value="@item.Id" />
+                </td>
+                <td style="text-align: center">@i</td>
+                <td style="text-align: left">@item.v_ip</td>
+                <td style="text-align: left">@item.v_os</td>
+                <td style="text-align: left">@item.v_browser</td>
+                <td style="text-align: left"><a style="text-decoration: none;" href="@item.v_url" target="_blank">@item.v_url</a></td>
+                <td style="text-align: left">@item.v_time.ToString("yyyy-MM-dd")<br />@item.v_time.ToString("HH:mm:ss")</td>
+                <td style="text-align: left">
+                    <a href="javascript:void(0);" class="op" onclick="btnDelete('@item.Id')">删</a>
+                </td>
+            </tr>
+            i++;
+        }
+    }
+    else
+    {
+        <tr>
+            <td style="text-align: center" colspan="8">暂无任何数据</td>
+        </tr>
+    }
+</table>
+<div id="itemPageBar" class="page"></div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btn_addItem").button({
+            icons: {
+                primary: "ui-icon-plus"
+            }
+        });
+        $("#btn_i_publish").button({
+            icons: {
+                primary: "ui-icon-transferthick-e-w"
+            }
+        });
+
+        $("#chkall").click(function () {
+            var isChk = $(this).is(":checked");
+            if (isChk) {
+                $("input[name^='chk_']").prop("checked", "checked");
+            }
+            else {
+                $("input[name^='chk_']").removeProp("checked");
+            }
+        });
+
+        //页码条
+        UserPage.MakePageBar("itemPageBar", '@rowCount', '@page','@pageSize', function () {
+            LoadList(UserPage.currentPage);
+        });
+        $(".tableClass tr:gt(0)").mouseenter(function () {
+            $(this).addClass("mouseOver");
+        }).mouseleave(function () {
+            $(this).removeClass("mouseOver");
+        }).click(function () {
+            $(this).addClass("mouseClick").siblings().removeClass("mouseClick");
+        });
+    });
+
+
+
+
+</script>

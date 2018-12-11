@@ -603,6 +603,140 @@ namespace Site.VideoAccess
         }
         #endregion
 
+        #region 访问日志
+
+        #region Proc_UserVisitsInfo_Insert
+        public int UserVisitsInfo_Insert(UserVisitsInfo obj)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_UserVisitsInfo_Insert");
+            db.AddOutParameter(dbCmd, "@Id", DbType.Int32, 4);
+            db.AddInParameter(dbCmd, "@u_id", DbType.String, obj.u_id);
+            db.AddInParameter(dbCmd, "@v_id", DbType.String, obj.v_id);
+            db.AddInParameter(dbCmd, "@v_ip", DbType.String, obj.v_ip);
+            db.AddInParameter(dbCmd, "@platform", DbType.String, obj.platform);
+            db.AddInParameter(dbCmd, "@v_url", DbType.String, obj.v_url);
+            db.AddInParameter(dbCmd, "@v_time", DbType.String, obj.v_time);
+            db.AddInParameter(dbCmd, "@v_browser", DbType.String, obj.v_browser);
+            db.AddInParameter(dbCmd, "@v_os", DbType.String, obj.v_os);
+            try
+            {
+                int returnValue = db.ExecuteNonQuery(dbCmd);
+                int Id = (int)dbCmd.Parameters["@Id"].Value;
+                return returnValue;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+
+        #region Proc_UserVisitsInfo_DeleteById
+        public int UserVisitsInfo_DeleteById(int Id)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_UserVisitsInfo_DeleteById");
+            db.AddInParameter(dbCmd, "@Id", DbType.Int32, Id);
+            try
+            {
+                int returnValue = db.ExecuteNonQuery(dbCmd);
+                return returnValue;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+        #region Proc_UserVisitsInfo_UpdateById
+        public int UserVisitsInfo_UpdateById(UserVisitsInfo obj)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_UserVisitsInfo_UpdateById");
+            db.AddInParameter(dbCmd, "@Id", DbType.Int32, obj.Id);
+            db.AddInParameter(dbCmd, "@u_id", DbType.String, obj.u_id);
+            db.AddInParameter(dbCmd, "@v_id", DbType.String, obj.v_id);
+            db.AddInParameter(dbCmd, "@v_ip", DbType.String, obj.v_ip);
+            db.AddInParameter(dbCmd, "@platform", DbType.String, obj.platform);
+            db.AddInParameter(dbCmd, "@v_url", DbType.String, obj.v_url);
+            db.AddInParameter(dbCmd, "@v_time", DbType.String, obj.v_time);
+            db.AddInParameter(dbCmd, "@v_browser", DbType.String, obj.v_browser);
+            db.AddInParameter(dbCmd, "@v_os", DbType.String, obj.v_os);
+            try
+            {
+                int returnValue = db.ExecuteNonQuery(dbCmd);
+                return returnValue;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+        #region Proc_UserVisitsInfo_SelectById
+        public UserVisitsInfo UserVisitsInfo_SelectById(int Id)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_UserVisitsInfo_SelectById");
+            db.AddInParameter(dbCmd, "@Id", DbType.Int32, Id);
+            UserVisitsInfo obj = null;
+            try
+            {
+                using (IDataReader reader = db.ExecuteReader(dbCmd))
+                {
+                    while (reader.Read())
+                    {
+                        //属性赋值
+                        obj = Obj2Model<UserVisitsInfo>(reader);
+                    }
+                }
+                return obj;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+        #region Proc_UserVisitsInfo_SelectPage
+        public List<UserVisitsInfo> UserVisitsInfo_SelectPage(string cloumns, int pageIndex, int pageSize, string orderBy, string where, out int rowCount)
+        {
+            DbCommand dbCmd = db.GetStoredProcCommand("Proc_UserVisitsInfo_SelectPage");
+            db.AddOutParameter(dbCmd, "@rowCount", DbType.Int32, 4);
+            db.AddInParameter(dbCmd, "@cloumns", DbType.String, cloumns);
+            db.AddInParameter(dbCmd, "@pageIndex", DbType.Int32, pageIndex);
+            db.AddInParameter(dbCmd, "@pageSize", DbType.Int32, pageSize);
+            db.AddInParameter(dbCmd, "@orderBy", DbType.String, orderBy);
+            db.AddInParameter(dbCmd, "@where", DbType.String, where);
+            List<UserVisitsInfo> list = new List<UserVisitsInfo>();
+            try
+            {
+                using (IDataReader reader = db.ExecuteReader(dbCmd))
+                {
+                    while (reader.Read())
+                    {
+                        //属性赋值
+                        UserVisitsInfo obj = Obj2Model<UserVisitsInfo>(reader);
+
+                        list.Add(obj);
+                    }
+                    reader.NextResult();
+                }
+                rowCount = (int)dbCmd.Parameters["@rowCount"].Value;
+                return list;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        #endregion
+
+
+
+        #endregion
+
 
 
         #endregion

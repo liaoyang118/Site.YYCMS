@@ -49,6 +49,7 @@
     </Compile>
     <Compile Include="Search\ComboInfoSearchInfo.cs" />
     <Compile Include="Search\SendMailLogSearchInfo.cs" />
+    <Compile Include="Search\UserVisitsInfoSearchInfo.cs" />
     <Compile Include="Search\VideoCateSearchInfo.cs" />
     <Compile Include="Search\VideoSearchInfo.cs" />
     <Compile Include="VideoService.cs" />
@@ -70,6 +71,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\VideosService\Site.Service.VideosService.VideosService.SendMailLog_SelectPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VideosService\Site.Service.VideosService.VideosService.UserVisitsInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\VideosService\Site.Service.VideosService.VideosService.UserVisitsInfo_SelectPageResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\VideosService\Site.Service.VideosService.VideosService.VideoCate.datasource">

@@ -199,5 +199,54 @@ namespace Site.WCF.VideoService
 
 
         #endregion
+
+        #region 访问日志
+
+        public int UserVisitsInfo_Insert(UserVisitsInfo obj)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.UserVisitsInfo_Insert(obj);
+            }
+        }
+
+        public int UserVisitsInfo_DeleteById(int Id)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.UserVisitsInfo_DeleteById(Id);
+            }
+        }
+
+
+        public int UserVisitsInfo_UpdateById(UserVisitsInfo obj)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.UserVisitsInfo_UpdateById(obj);
+            }
+        }
+
+
+        public UserVisitsInfo UserVisitsInfo_SelectById(int Id)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.UserVisitsInfo_SelectById(Id);
+            }
+        }
+
+        public List<UserVisitsInfo> UserVisitsInfo_SelectPage(string cloumns, int pageIndex, int pageSize, string orderBy, string where, out int rowCount)
+        {
+            using (VideosAccess access = new VideosAccess())
+            {
+                return access.UserVisitsInfo_SelectPage(cloumns, pageIndex, pageSize, orderBy, where, out rowCount);
+            }
+        }
+
+
+
+
+        #endregion
     }
 }

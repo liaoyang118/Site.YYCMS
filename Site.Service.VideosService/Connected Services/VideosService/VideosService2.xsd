@@ -74,4 +74,24 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfComboInfo" nillable="true" type="tns:ArrayOfComboInfo" />
+  <xs:complexType name="UserVisitsInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="platform" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="u_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="v_browser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="v_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="v_ip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="v_os" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="v_time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="v_url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserVisitsInfo" nillable="true" type="tns:UserVisitsInfo" />
+  <xs:complexType name="ArrayOfUserVisitsInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserVisitsInfo" nillable="true" type="tns:UserVisitsInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserVisitsInfo" nillable="true" type="tns:ArrayOfUserVisitsInfo" />
 </xs:schema>

@@ -140,6 +140,36 @@
   <wsdl:message name="IVideosService_ComboInfo_SelectByc_id_OutputMessage">
     <wsdl:part name="parameters" element="tns:ComboInfo_SelectByc_idResponse" />
   </wsdl:message>
+  <wsdl:message name="IVideosService_UserVisitsInfo_Insert_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserVisitsInfo_Insert" />
+  </wsdl:message>
+  <wsdl:message name="IVideosService_UserVisitsInfo_Insert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserVisitsInfo_InsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVideosService_UserVisitsInfo_DeleteById_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserVisitsInfo_DeleteById" />
+  </wsdl:message>
+  <wsdl:message name="IVideosService_UserVisitsInfo_DeleteById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserVisitsInfo_DeleteByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVideosService_UserVisitsInfo_UpdateById_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserVisitsInfo_UpdateById" />
+  </wsdl:message>
+  <wsdl:message name="IVideosService_UserVisitsInfo_UpdateById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserVisitsInfo_UpdateByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVideosService_UserVisitsInfo_SelectById_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserVisitsInfo_SelectById" />
+  </wsdl:message>
+  <wsdl:message name="IVideosService_UserVisitsInfo_SelectById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserVisitsInfo_SelectByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVideosService_UserVisitsInfo_SelectPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserVisitsInfo_SelectPage" />
+  </wsdl:message>
+  <wsdl:message name="IVideosService_UserVisitsInfo_SelectPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserVisitsInfo_SelectPageResponse" />
+  </wsdl:message>
   <wsdl:portType name="IVideosService">
     <wsdl:operation name="VideoInfo_Insert">
       <wsdl:input wsaw:Action="http://service.jsonyang.com/IVideosService/VideoInfo_Insert" message="tns:IVideosService_VideoInfo_Insert_InputMessage" />
@@ -224,6 +254,26 @@
     <wsdl:operation name="ComboInfo_SelectByc_id">
       <wsdl:input wsaw:Action="http://service.jsonyang.com/IVideosService/ComboInfo_SelectByc_id" message="tns:IVideosService_ComboInfo_SelectByc_id_InputMessage" />
       <wsdl:output wsaw:Action="http://service.jsonyang.com/IVideosService/ComboInfo_SelectByc_idResponse" message="tns:IVideosService_ComboInfo_SelectByc_id_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserVisitsInfo_Insert">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_Insert" message="tns:IVideosService_UserVisitsInfo_Insert_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_InsertResponse" message="tns:IVideosService_UserVisitsInfo_Insert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserVisitsInfo_DeleteById">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_DeleteById" message="tns:IVideosService_UserVisitsInfo_DeleteById_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_DeleteByIdResponse" message="tns:IVideosService_UserVisitsInfo_DeleteById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserVisitsInfo_UpdateById">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_UpdateById" message="tns:IVideosService_UserVisitsInfo_UpdateById_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_UpdateByIdResponse" message="tns:IVideosService_UserVisitsInfo_UpdateById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserVisitsInfo_SelectById">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_SelectById" message="tns:IVideosService_UserVisitsInfo_SelectById_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_SelectByIdResponse" message="tns:IVideosService_UserVisitsInfo_SelectById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserVisitsInfo_SelectPage">
+      <wsdl:input wsaw:Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_SelectPage" message="tns:IVideosService_UserVisitsInfo_SelectPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://service.jsonyang.com/IVideosService/UserVisitsInfo_SelectPageResponse" message="tns:IVideosService_UserVisitsInfo_SelectPage_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SiteBinding_IVideosService" type="tns:IVideosService">
@@ -411,6 +461,51 @@
     </wsdl:operation>
     <wsdl:operation name="ComboInfo_SelectByc_id">
       <soap12:operation soapAction="http://service.jsonyang.com/IVideosService/ComboInfo_SelectByc_id" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserVisitsInfo_Insert">
+      <soap12:operation soapAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_Insert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserVisitsInfo_DeleteById">
+      <soap12:operation soapAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_DeleteById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserVisitsInfo_UpdateById">
+      <soap12:operation soapAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_UpdateById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserVisitsInfo_SelectById">
+      <soap12:operation soapAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_SelectById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserVisitsInfo_SelectPage">
+      <soap12:operation soapAction="http://service.jsonyang.com/IVideosService/UserVisitsInfo_SelectPage" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -415,7 +415,6 @@
     <Content Include="JS\jquery.ajaxFileUpload2.js" />
     <Content Include="JS\Jquery.Dialog.js" />
     <Content Include="JS\jQuery.Form.js" />
-    <Content Include="JS\Jquery_mDialog.js" />
     <Content Include="JS\jquery_mLayout.js" />
     <Content Include="JS\Jquery_Pagination.js" />
     <Content Include="JS\mDialogV2.js" />
@@ -810,6 +809,8 @@
     <Content Include="Views\Video\SendMailLogListView.cshtml" />
     <Content Include="Views\Template\Video\Video_Detail_Min_Sidebar_Temp.cshtml" />
     <Content Include="Views\Template\Video\Video_Detail_Sidebar_Temp.cshtml" />
+    <Content Include="Views\Video\VisitsLog.cshtml" />
+    <Content Include="Views\Video\VisitsLogListView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
